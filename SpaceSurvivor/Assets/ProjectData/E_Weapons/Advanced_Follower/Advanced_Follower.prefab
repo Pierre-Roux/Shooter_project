@@ -165,7 +165,7 @@ MonoBehaviour:
   lastFireTime: 0
   hasLineOfSight: 0
   rb: {fileID: 0}
-  bulletPrefab: {fileID: 7751217143057044998, guid: 72fdde0decac51c4b87f56e5a88c315f, type: 3}
+  bulletPrefab: {fileID: 7751217143057044998, guid: 5e9eaff63a5c34440b814266ccd7acde, type: 3}
   fireCooldown: 1
   fireForce: 10
   firepoint: {fileID: 4755155104480303911}
