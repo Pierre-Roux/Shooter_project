@@ -25,6 +25,7 @@
 
 # Visual Studio cache directory
 .vs/
+.SpaceSurvivor/Library/PackageCache/
 
 # Gradle cache directory
 .gradle/
