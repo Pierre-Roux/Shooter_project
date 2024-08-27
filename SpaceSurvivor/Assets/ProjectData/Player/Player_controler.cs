@@ -10,6 +10,7 @@ using UnityEngine.EventSystems;
 
 public class Player_controler : MonoBehaviour
 {
+    public float globalSpeed;
     Rigidbody2D rb ;
     float speed ;
     float maxVelocity;
@@ -41,10 +42,10 @@ public class Player_controler : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D> ();
-        speed = 10000f * Time.fixedDeltaTime;
-        maxVelocity = 250f * Time.fixedDeltaTime;
-        sprintSpeed = 20000f * Time.fixedDeltaTime;
-        maxSprintVelocity = 500f * Time.fixedDeltaTime;
+        speed = 10000f * Time.fixedDeltaTime * globalSpeed;
+        maxVelocity = 250f * Time.fixedDeltaTime * globalSpeed;
+        sprintSpeed = 20000f * Time.fixedDeltaTime * globalSpeed;
+        maxSprintVelocity = 500f * Time.fixedDeltaTime * globalSpeed;
         breakForce = 1000f * Time.fixedDeltaTime;
         rotationSpeed = 10f * Time.fixedDeltaTime;
         playerMort = false;

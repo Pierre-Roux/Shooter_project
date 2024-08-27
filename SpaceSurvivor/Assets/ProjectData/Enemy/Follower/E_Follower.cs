@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 using Unity.VisualScripting;
+using System.Linq;
 
 public class E_Follower : EnemyBase
 {

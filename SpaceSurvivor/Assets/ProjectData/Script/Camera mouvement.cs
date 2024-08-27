@@ -60,7 +60,7 @@ public class Cameramouvement : MonoBehaviour
                 }
             }
 
-            Debug.Log($"Camera Position: {transform.position}, Target Position: {targetPosition}, Velocity: {velocity}");
+            //Debug.Log($"Camera Position: {transform.position}, Target Position: {targetPosition}, Velocity: {velocity}");
         }
     }
 }

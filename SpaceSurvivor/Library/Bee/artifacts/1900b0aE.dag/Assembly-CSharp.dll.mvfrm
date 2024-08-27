@@ -52,6 +52,9 @@ UnityEditor
 AdvancedRuleOverrideTile
 UnityEngine
 RuleOverrideTile
+RegisterGenericJobTypeAttribute
+Unity
+Entities
 MaterialQuality
 Utilities
 MaterialQualityUtilities

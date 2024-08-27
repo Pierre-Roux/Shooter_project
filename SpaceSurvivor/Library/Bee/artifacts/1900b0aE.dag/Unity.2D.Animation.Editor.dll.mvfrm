@@ -8,6 +8,9 @@ SpriteLibCategory
 SpriteLibraryAsset
 SpriteResolver
 SpriteSkin
+RegisterGenericJobTypeAttribute
+Unity
+Entities
 AssetModificationProcessor
 
 Sysroot

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,7 @@ public class SceneAnchor : MonoBehaviour
     public float unloadDistance;
     public SceneField SceneToManage;
     [HideInInspector] public GameObject target;
+    AsyncOperation chargementNiveau;
 
     void Start()
     {
@@ -30,7 +32,7 @@ public class SceneAnchor : MonoBehaviour
         {
             LoadScene();
         } 
-        else
+        else if (Vector2.Distance(transform.position, target.transform.position) >= unloadDistance)
         {
             UnLoadScene();
         }
@@ -51,7 +53,8 @@ public class SceneAnchor : MonoBehaviour
 
         if (!isSceneLoaded)
         {
-            SceneManager.LoadSceneAsync(SceneToManage.SceneName,LoadSceneMode.Additive);
+            chargementNiveau = SceneManager.LoadSceneAsync(SceneToManage.SceneName,LoadSceneMode.Additive);
+            StartCoroutine(UpdateScan());
         }
     }
 
@@ -65,5 +68,15 @@ public class SceneAnchor : MonoBehaviour
                 SceneManager.UnloadSceneAsync(SceneToManage.SceneName);
             }
         }
+    }
+
+    IEnumerator UpdateScan()
+    {
+        // Attendre que la scène soit complètement chargée
+        yield return new WaitUntil(() => chargementNiveau.isDone);
+
+        // Scanner la nouvelle grille
+        Debug.Log("Scanning new grid...");
+        AstarPath.active.ScanAsync();
     }
 }

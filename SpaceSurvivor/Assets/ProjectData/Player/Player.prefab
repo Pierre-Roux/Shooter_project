@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96820e4c179f9e546b76371a24dcbca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalSpeed: 1.5
   weapon: {fileID: 0}
   particlePrefab: {fileID: 6920372984886411168, guid: 6ea5c27a5d6d8714d85eee2bed0df350, type: 3}
   Particle_spawn_point: {fileID: 597433960201613068}
