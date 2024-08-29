@@ -47,8 +47,9 @@ public abstract class EnemyBase : MonoBehaviour
         int layerToIgnore3 = LayerMask.NameToLayer("Bullets");
         int layerToIgnore4 = LayerMask.NameToLayer("EnemyBullets");
         int layerToIgnore5 = LayerMask.NameToLayer("FixEnemy");
+        int layerToIgnore6 = LayerMask.NameToLayer("Ignore Raycast");
 
-        int layerMask = ~( (1 << layerToIgnore1) | (1 << layerToIgnore2) | (1 << layerToIgnore3) | (1 << layerToIgnore4) | (1 << layerToIgnore5));
+        int layerMask = ~( (1 << layerToIgnore1) | (1 << layerToIgnore2) | (1 << layerToIgnore3) | (1 << layerToIgnore4) | (1 << layerToIgnore5) | (1 << layerToIgnore6));
 
         Vector2 direction = (target.transform.position - transform.position).normalized;
         float distance = Vector2.Distance(transform.position, target.transform.position);
@@ -57,8 +58,17 @@ public abstract class EnemyBase : MonoBehaviour
         RaycastHit2D ray = Physics2D.BoxCast(transform.position, size, 0f, direction, distance, layerMask);
         if (ray.collider != null)
         {
+            Debug.Log(ray.collider);
             hasLineOfSight = ray.collider.CompareTag("Player");
         }
+        if (hasLineOfSight)
+        {
+            Debug.DrawLine(transform.position, target.transform.position, Color.green);
+        }
+        else
+        {
+            Debug.DrawLine(transform.position, target.transform.position,Color.red);
+        } 
     }
 
     public virtual void LookPlayer()
