@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1122334842439774995}
   - component: {fileID: 6887877529945841951}
   - component: {fileID: 3240794649711318647}
+  - component: {fileID: -710698739313800322}
   m_Layer: 6
   m_Name: Rock
   m_TagString: Obstacle
@@ -503,3 +504,50 @@ PolygonCollider2D:
       - {x: 4.0763674, y: -30.25193}
       - {x: 4.793506, y: -29.98772}
   m_UseDelaunayMesh: 0
+--- !u!114 &-710698739313800322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770945094678140493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -27.451235, y: -21.378063, z: 0}
+  - {x: -37.3869, y: -0.74280393, z: 0}
+  - {x: -37.284527, y: 1.7141923, z: 0}
+  - {x: -32.609882, y: 4.9451694, z: 0}
+  - {x: -24.59005, y: 26.898403, z: 0}
+  - {x: -15.785812, y: 27.819777, z: 0}
+  - {x: -11.383696, y: 26.591278, z: 0}
+  - {x: -4.319832, y: 29.969648, z: 0}
+  - {x: -0.6343379, y: 29.048275, z: 0}
+  - {x: 5.6105266, y: 32.32427, z: 0}
+  - {x: 10.831643, y: 31.71002, z: 0}
+  - {x: 14.517137, y: 31.71002, z: 0}
+  - {x: 33.940758, y: 27.57001, z: 0}
+  - {x: 38.22097, y: 15.342776, z: 0}
+  - {x: 26.22229, y: -22.11977, z: 0}
+  - {x: 13.690333, y: -27.319199, z: 0}
+  - {x: 3.8538246, y: -30.443733, z: 0}
+  - {x: -7.7739716, y: -28.519066, z: 0}
+  - {x: -16.03973, y: -24.786144, z: 0}
+  - {x: -17.90619, y: -25.05278, z: 0}
+  - {x: -20.305925, y: -23.186321, z: 0}
+  m_ShapePathHash: -1615603734
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 41338
+  m_LocalBounds:
+    m_Center: {x: 0.41703415, y: 0.94026756, z: 0}
+    m_Extent: {x: 37.803936, y: 31.384, z: 0}
