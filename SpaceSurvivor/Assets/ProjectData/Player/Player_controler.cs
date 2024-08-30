@@ -8,8 +8,11 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+using UnityEngine.Rendering.Universal;
+
 public class Player_controler : MonoBehaviour
 {
+
     public float globalSpeed;
     Rigidbody2D rb ;
     float speed ;
@@ -24,11 +27,15 @@ public class Player_controler : MonoBehaviour
     private float currentVelocity;
     public ParticleSystem particlePrefab; 
     public GameObject Particle_spawn_point;
-    public int PlayerHealth;
+    public float health;
+    public float maxHealth;
     public Boolean playerMort;
     float aimAngle;
     WeaponBase[] weapons;
     public static Player_controler Instance { get; private set; }
+    public float GlowIntensity;
+    private float GlowDuration = 0.1f;
+    private float initialIntensity;
 
     void Awake() {
         if (Instance == null) {
@@ -50,6 +57,8 @@ public class Player_controler : MonoBehaviour
         rotationSpeed = 10f * Time.fixedDeltaTime;
         playerMort = false;
         weapons = GetComponentsInChildren<WeaponBase>();
+        health = maxHealth;
+        initialIntensity = GetComponent<Light2D>().intensity;
     }
 
     // Update is called once per frame
@@ -61,7 +70,7 @@ public class Player_controler : MonoBehaviour
         moveDirection = new Vector2 (moveX, moveY).normalized;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (PlayerHealth <= 0)
+        if (health <= 0)
         {
             foreach (WeaponBase weapon in weapons)
             {
@@ -146,6 +155,20 @@ public class Player_controler : MonoBehaviour
         }
     }
 
+    public virtual void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        if (health <= 0)
+        {
+            playerMort = true;
+        }
+        else
+        {
+            StartCoroutine(GlowOnHit());
+        }
+    }
+
     void EmitIndependentParticles()
     {
         // Instantiate the particle system at the player's position and rotation
@@ -163,5 +186,37 @@ public class Player_controler : MonoBehaviour
         {
             weapon.Fire();
         }
+    }
+
+    IEnumerator GlowOnHit()
+    {
+        float elapsedTime = 0f;
+        
+        Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
+
+        while (elapsedTime < GlowDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float lerpFactor = elapsedTime / GlowDuration;
+
+            // Augmenter le glow
+            GetComponent<Light2D>().intensity = Mathf.Lerp(initialIntensity, initialIntensity + GlowIntensity, lerpFactor);
+
+            yield return null;
+        }
+
+        // Revenir à la valeur d'origine
+        elapsedTime = 0f;
+        while (elapsedTime < GlowDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float lerpFactor = elapsedTime / GlowDuration;
+
+            GetComponent<Light2D>().intensity = Mathf.Lerp(initialIntensity + GlowIntensity, initialIntensity, lerpFactor);
+
+            yield return null;
+        }
+
+        Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
     }
 }

@@ -8,42 +8,36 @@ public class Simple_Canon : WeaponBase
 {
     public Transform firepoint;
     public Transform WeaponPosition;
-
     private Transform target;
     
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindWithTag("Player").transform;
-        rb = GetComponent<Rigidbody2D> ();
         lastFireTime = -fireCooldown; 
     }
 
-    void Update()
+    void FixedUpdate()
     {
             transform.position = WeaponPosition.position;
             
-            Vector2 aimDirection = new Vector2(target.position.x,target.position.y) - rb.position;
+            Vector2 aimDirection = (Vector2)(target.position - transform.position);
             float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg -90f;
-            rb.rotation = aimAngle;
-
-            if (rb.rotation == aimAngle)
+            transform.rotation = Quaternion.Euler(0, 0, aimAngle);
+            if (hasLineOfSight)
             {
-                StartCoroutine(ShortDelayFire());
+                if (Time.time >= lastFireTime + fireCooldown)
+                {
+                    StartCoroutine(ShortDelayFire());
+                }
             }
     }
 
     public override void Fire()
     {
-        if (hasLineOfSight)
-        {
-            if (Time.time >= lastFireTime + fireCooldown)
-            {
-                GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce,ForceMode2D.Impulse);
-                lastFireTime = Time.time;
-            }        
-        }
+        GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce,ForceMode2D.Impulse);
+        lastFireTime = Time.time;   
     }
 
     IEnumerator ShortDelayFire()
@@ -51,6 +45,5 @@ public class Simple_Canon : WeaponBase
         // délai de 0.1 seconde
         yield return new WaitForSeconds(0.02f);
         Fire();
-
     }
 }

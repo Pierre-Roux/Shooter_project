@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1375468904044233000}
   - component: {fileID: 1072437768298826672}
-  - component: {fileID: 5588685419135024541}
   m_Layer: 7
   m_Name: Simple_Canon
   m_TagString: Untagged
@@ -82,33 +81,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   bulletPrefab: {fileID: 7751217143057044998, guid: 4f64e240a9c58df45b15a4c9cc389288, type: 3}
   fireCooldown: 1
-  fireForce: 8
+  fireForce: 12
   firepoint: {fileID: 4755155104480303911}
   WeaponPosition: {fileID: 0}
---- !u!50 &5588685419135024541
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9085399047606047401}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 3456
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

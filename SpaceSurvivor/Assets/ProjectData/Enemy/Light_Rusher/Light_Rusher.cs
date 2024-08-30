@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,7 +57,7 @@ public class Light_Rusher : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            player.PlayerHealth -= damage;
+            player.TakeDamage(damage);
             lastAttackTime = Time.time;
         }
     }

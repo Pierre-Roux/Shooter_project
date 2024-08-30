@@ -118,8 +118,10 @@
 -define:ENABLE_TIMELINE
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
+-define:DOTWEEN
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Managed/UnityEngine/UnityEditor.DiagnosticsModule.dll"
@@ -331,6 +333,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/AstarPackageToolsEditor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/AstarPathfindingProject.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/AstarPathfindingProjectEditor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/DOTween.Modules.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Drawing.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/DrawingEditor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/DrawingPackageToolsEditor.ref.dll"
@@ -424,6 +427,7 @@
 "Assets/ProjectData/Script/SceneAnchor_IN.cs"
 "Assets/ProjectData/Script/SceneAncor_OUT.cs"
 "Assets/ProjectData/Script/SceneField.cs"
+"Assets/ProjectData/UI/HealthBar/HealthBar.cs"
 -langversion:9.0
 
 /deterministic

@@ -79,7 +79,7 @@ public class Light_Fighter : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            player.PlayerHealth -= damage;
+            player.TakeDamage(damage);
             lastAttackTime = Time.time;
         }
     }

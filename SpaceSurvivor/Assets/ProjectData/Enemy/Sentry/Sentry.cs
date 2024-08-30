@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Sentry : EnemyBase
 {
@@ -49,7 +50,7 @@ public class Sentry : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            player.PlayerHealth -= damage;
+            player.TakeDamage(damage);
             lastAttackTime = Time.time;
         }
     }

@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Advanced_Canon : WeaponBase
 {
     public Transform firepoint;
     public Transform WeaponPosition;
     public float rotationSpeed;
-
     private Transform target;
+    private float closeDistanceThreshold = 10f;
     
     // Start is called before the first frame update
     void Start()
     {
         target = Player_controler.Instance.transform; 
-        rb = GetComponent<Rigidbody2D> ();
         lastFireTime = -fireCooldown; 
     }
 
@@ -25,13 +25,26 @@ public class Advanced_Canon : WeaponBase
         float timeToReachTarget = Vector2.Distance(transform.position, target.position) / fireForce;
         Vector2 futurePosition = (Vector2)target.position + playerVelocity * timeToReachTarget;
 
-        Vector2 aimDirection = futurePosition - rb.position;
-        float targetAimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+        if (Vector2.Distance(futurePosition, transform.position) <= closeDistanceThreshold)
+        {
+            Vector2 aimDirection = (Vector2)(target.position - transform.position);
+            float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg -90f;
+            transform.DORotateQuaternion(Quaternion.Euler(0, 0, aimAngle), rotationSpeed);
 
-        // Lissage de la rotation pour éviter les oscillations
-        float currentRotation = rb.rotation;
-        float smoothedRotation = Mathf.LerpAngle(currentRotation, targetAimAngle, rotationSpeed * Time.deltaTime);
-        rb.rotation = smoothedRotation;
+            if (hasLineOfSight)
+            {
+                if (Time.time >= lastFireTime + fireCooldown)
+                {
+                    StartCoroutine(ShortDelayFire());
+                }
+            }
+        }
+        else
+        {
+            Vector2 aimDirection = futurePosition - (Vector2)transform.position;
+            float targetAimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+            transform.DORotateQuaternion(Quaternion.Euler(0, 0, targetAimAngle), rotationSpeed);
+        }
 
         if (hasLineOfSight)
         {

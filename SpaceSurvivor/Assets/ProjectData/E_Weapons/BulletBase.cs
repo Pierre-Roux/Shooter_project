@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -21,7 +22,7 @@ public class BulletBase : MonoBehaviour
             player = coll.gameObject.GetComponent<Player_controler>();
             if (player != null)
             {
-                player.PlayerHealth -= damage;
+                player.TakeDamage(damage);
             }
         }
         Destroy(gameObject);

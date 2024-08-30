@@ -9,7 +9,6 @@ public class Artillery : EnemyBase
     public float rotationSpeed;
     public float MeleAttackCooldown;
     public float turnDelay;
-
     private Vector2 moveDirection;
     private Quaternion TurnDirection;
     private float currentVelocity;
@@ -41,7 +40,7 @@ public class Artillery : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + MeleAttackCooldown)
         {
-            player.PlayerHealth -= damage;
+            player.TakeDamage(damage);
             lastAttackTime = Time.time;
         }
     }

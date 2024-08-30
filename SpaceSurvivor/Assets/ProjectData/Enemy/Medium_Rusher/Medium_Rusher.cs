@@ -43,7 +43,6 @@ public class Medium_Rusher : EnemyBase
             ditanceToTarget = Vector2.Distance(transform.position, target.transform.position);
             if (ditanceToTarget < stopDistance)
             {
-                Debug.Log("line of sight : " + hasLineOfSight);
                 if (!hasLineOfSight)
                 {
                     path.destination = target.transform.position;
@@ -51,10 +50,8 @@ public class Medium_Rusher : EnemyBase
                 }
                 else
                 {
-                    Debug.Log("DashMethod2");
                     if (Time.time >= lastDashTime + dashCooldown)
                     {
-                        Debug.Log("Dash");
                         path.canMove = false;
 
                         dashTimeRemaining = dashDuration;
@@ -65,7 +62,6 @@ public class Medium_Rusher : EnemyBase
                     }
                     else
                     {
-                        Debug.Log("NotDash");
                         path.canMove = false;
                         LookPlayer(); 
                     }
@@ -98,7 +94,7 @@ public class Medium_Rusher : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            player.PlayerHealth -= damage;
+            player.TakeDamage(damage);
             lastAttackTime = Time.time;
         }
     }
