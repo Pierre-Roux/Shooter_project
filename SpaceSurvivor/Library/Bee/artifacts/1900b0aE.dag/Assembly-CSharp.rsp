@@ -427,6 +427,7 @@
 "Assets/ProjectData/Script/SceneAnchor_IN.cs"
 "Assets/ProjectData/Script/SceneAncor_OUT.cs"
 "Assets/ProjectData/Script/SceneField.cs"
+"Assets/ProjectData/Script/UIManager.cs"
 "Assets/ProjectData/UI/HealthBar/HealthBar.cs"
 -langversion:9.0
 
