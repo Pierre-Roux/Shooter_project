@@ -83,7 +83,7 @@ MonoBehaviour:
   health: 20
   damage: 0
   speed: 0
-  GlowIntensity: 3
+  GlowIntensity: 5
   IsDead: 0
   hasLineOfSight: 0
   target: {fileID: 0}

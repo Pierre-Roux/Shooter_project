@@ -81,6 +81,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   bulletPrefab: {fileID: 7751217143057044998, guid: 4f64e240a9c58df45b15a4c9cc389288, type: 3}
   fireCooldown: 1
-  fireForce: 12
+  fireForce: 25
   firepoint: {fileID: 4755155104480303911}
   WeaponPosition: {fileID: 0}

@@ -52,7 +52,7 @@ MonoBehaviour:
   health: 10
   damage: 1
   speed: 0
-  GlowIntensity: 3
+  GlowIntensity: 10
   IsDead: 0
   hasLineOfSight: 0
   target: {fileID: 0}
