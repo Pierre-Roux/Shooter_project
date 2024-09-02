@@ -52,8 +52,7 @@ MonoBehaviour:
   health: 10
   damage: 1
   speed: 0
-  GlowIntensity: 1
-  GlowRadius: 1
+  GlowIntensity: 3
   IsDead: 0
   hasLineOfSight: 0
   target: {fileID: 0}
@@ -187,19 +186,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_LightType: 3
-  m_BlendStyleIndex: 0
+  m_LightType: 2
+  m_BlendStyleIndex: 1
   m_FalloffIntensity: 0.3
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 0}
+  m_LightCookieSprite: {fileID: 21300000, guid: 1eaca65c46a4b5b4eb9236a3ddf132b9, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
@@ -208,8 +207,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 5.995, y: 5.995, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -232,6 +231,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2632991602850044139}
     m_Modifications:
+    - target: {fileID: -1732121406838447143, guid: dfc81276496af6542ae94816bd621dc1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1732121406838447143, guid: dfc81276496af6542ae94816bd621dc1, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.x
+      value: 4.56
+      objectReference: {fileID: 0}
+    - target: {fileID: -1732121406838447143, guid: dfc81276496af6542ae94816bd621dc1, type: 3}
+      propertyPath: m_LocalBounds.m_Extent.y
+      value: 8.44
+      objectReference: {fileID: 0}
     - target: {fileID: 1375468904044233000, guid: dfc81276496af6542ae94816bd621dc1, type: 3}
       propertyPath: m_LocalScale.x
       value: 1

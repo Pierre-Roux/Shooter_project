@@ -12,7 +12,7 @@ public abstract class EnemyBase : MonoBehaviour
     public int damage;  // Les dégâts que l'ennemi peut infliger
     public float speed; // La vitesse de déplacement de l'ennemi
     public float GlowIntensity;
-    public float GlowRadius;
+    //public float GlowRadius;
     private float GlowDuration = 0.1f;
     private float initialIntensity;
     private float initialRadius;
@@ -98,7 +98,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         float elapsedTime = 0f;
         
-        Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity + " Objective : " + GetComponent<Light2D>().pointLightOuterRadius);
+        //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity + " Objective : " + GetComponent<Light2D>().pointLightOuterRadius);
 
         while (elapsedTime < GlowDuration)
         {
@@ -107,7 +107,7 @@ public abstract class EnemyBase : MonoBehaviour
 
             // Augmenter le glow
             GetComponent<Light2D>().intensity = Mathf.Lerp(initialIntensity, initialIntensity + GlowIntensity, lerpFactor);
-            GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(initialRadius, initialRadius + GlowRadius, lerpFactor);
+            //GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(initialRadius, initialRadius + GlowRadius, lerpFactor);
 
             yield return null;
         }
@@ -120,11 +120,11 @@ public abstract class EnemyBase : MonoBehaviour
             float lerpFactor = elapsedTime / GlowDuration;
 
             GetComponent<Light2D>().intensity = Mathf.Lerp(initialIntensity + GlowIntensity, initialIntensity, lerpFactor);
-            GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(initialRadius + GlowRadius, initialRadius, lerpFactor);
+            //GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(initialRadius + GlowRadius, initialRadius, lerpFactor);
 
             yield return null;
         }
 
-        Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity + " Objective : " + GetComponent<Light2D>().pointLightOuterRadius);
+        //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity + " Objective : " + GetComponent<Light2D>().pointLightOuterRadius);
     }
 }

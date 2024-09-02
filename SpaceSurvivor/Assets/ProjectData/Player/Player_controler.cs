@@ -192,7 +192,7 @@ public class Player_controler : MonoBehaviour
     {
         float elapsedTime = 0f;
         
-        Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
+        //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
 
         while (elapsedTime < GlowDuration)
         {
@@ -217,6 +217,6 @@ public class Player_controler : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
+        //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
     }
 }
