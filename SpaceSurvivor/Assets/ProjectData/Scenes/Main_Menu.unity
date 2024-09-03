@@ -835,6 +835,7 @@ MonoBehaviour:
   menuObjects:
   - {fileID: 1144646631}
   - {fileID: 1670803628}
+  - {fileID: 524554374}
   Persistant_Scene:
     m_SceneAsset: {fileID: 102900000, guid: 8e5eb9b4abb908b4e81eff1bdeabe209, type: 3}
     m_SceneName: Persitant_Scene

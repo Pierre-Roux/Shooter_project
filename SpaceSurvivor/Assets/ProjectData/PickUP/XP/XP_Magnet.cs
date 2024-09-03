@@ -17,7 +17,7 @@ public class XP_Magnet : MonoBehaviour
             other.transform.position = Vector3.Lerp(other.transform.position, player.transform.position, Time.deltaTime * attractionSpeed);
 
             float distance = Vector3.Distance(other.transform.position, player.transform.position);
-            if (distance < 0.4f)  // Distance d'absorption
+            if (distance < 0.9f)  // Distance d'absorption
             {
                 CollectXP(other.gameObject);
             }
