@@ -423,11 +423,11 @@
 "Assets/ProjectData/P_Weapons/WeaponBase.cs"
 "Assets/ProjectData/Script/Camera mouvement.cs"
 "Assets/ProjectData/Script/DontDestroy.cs"
-"Assets/ProjectData/Script/General Scene Manager.cs"
 "Assets/ProjectData/Script/SceneAnchor_IN.cs"
 "Assets/ProjectData/Script/SceneAncor_OUT.cs"
 "Assets/ProjectData/Script/SceneField.cs"
-"Assets/ProjectData/Script/UIManager.cs"
+"Assets/ProjectData/Script/UIManager_Game.cs"
+"Assets/ProjectData/Script/UIManager_MM.cs"
 "Assets/ProjectData/UI/HealthBar/HealthBar.cs"
 -langversion:9.0
 

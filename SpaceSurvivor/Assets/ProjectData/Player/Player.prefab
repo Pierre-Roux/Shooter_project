@@ -199,10 +199,10 @@ MonoBehaviour:
   weapon: {fileID: 0}
   particlePrefab: {fileID: 6920372984886411168, guid: 6ea5c27a5d6d8714d85eee2bed0df350, type: 3}
   Particle_spawn_point: {fileID: 597433960201613068}
-  health: 25
-  maxHealth: 25
+  health: 50
+  maxHealth: 50
   playerMort: 0
-  GlowIntensity: 10.46
+  GlowIntensity: 10
 --- !u!212 &808367282721455904
 SpriteRenderer:
   m_ObjectHideFlags: 0
