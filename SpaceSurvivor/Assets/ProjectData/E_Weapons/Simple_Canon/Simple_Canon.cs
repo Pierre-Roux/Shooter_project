@@ -9,6 +9,7 @@ public class Simple_Canon : WeaponBase
     public Transform firepoint;
     public Transform WeaponPosition;
     private Transform target;
+    private Vector2 aimDirection ;
     
     // Start is called before the first frame update
     void Start()
@@ -21,22 +22,21 @@ public class Simple_Canon : WeaponBase
     {
             transform.position = WeaponPosition.position;
             
-            Vector2 aimDirection = (Vector2)(target.position - transform.position);
-            float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg -90f;
-            transform.rotation = Quaternion.Euler(0, 0, aimAngle);
-            if (hasLineOfSight)
+            // Calcule la direction vers le joueur
+            aimDirection = (target.position - transform.position).normalized;
+
+            if (hasLineOfSight && Time.time >= lastFireTime + fireCooldown)
             {
-                if (Time.time >= lastFireTime + fireCooldown)
-                {
-                    StartCoroutine(ShortDelayFire());
-                }
+                StartCoroutine(ShortDelayFire());
             }
     }
 
     public override void Fire()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce,ForceMode2D.Impulse);
+        // Calcule l'angle de rotation basé sur la direction vers le joueur
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        GameObject bullet = Instantiate(bulletPrefab, firepoint.position, Quaternion.Euler(0, 0, angle+90f));
+        bullet.GetComponent<Rigidbody2D>().AddForce(aimDirection * fireForce,ForceMode2D.Impulse);
         lastFireTime = Time.time;   
     }
 

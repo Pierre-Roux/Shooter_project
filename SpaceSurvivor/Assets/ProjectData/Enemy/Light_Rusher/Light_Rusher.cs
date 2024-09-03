@@ -1,11 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using Unity.VisualScripting;
-using System.Linq;
-
 public class Light_Rusher : EnemyBase
 {
     private AIPath path;

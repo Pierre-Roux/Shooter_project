@@ -165,7 +165,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 2.2921376
+  m_Mass: 2.3309736
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -212,8 +212,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.07582337, y: 0.05686879}
-  m_Size: {x: 5.852795, y: 11.0468025}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 6, y: 11}
   m_Direction: 0
 --- !u!114 &5185739104336819258
 MonoBehaviour:
@@ -498,6 +498,22 @@ PrefabInstance:
     - target: {fileID: 1765948478022943862, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755155104480303911, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755155104480303911, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755155104480303911, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755155104480303911, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6457726511349071412, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
       propertyPath: m_Layer

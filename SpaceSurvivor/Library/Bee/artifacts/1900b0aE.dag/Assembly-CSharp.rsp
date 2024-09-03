@@ -411,6 +411,8 @@
 "Assets/ProjectData/Enemy/Sentry/Sentry.cs"
 "Assets/ProjectData/Enemy/Spawner/Burst_Spawner.cs"
 "Assets/ProjectData/Enemy/Spawner/Contnuous_Spawner.cs"
+"Assets/ProjectData/Enemy/Worm/BodyPartScript.cs"
+"Assets/ProjectData/Enemy/Worm/WormScript.cs"
 "Assets/ProjectData/E_Weapons/Advanced_Canon/Advanced_Canon.cs"
 "Assets/ProjectData/E_Weapons/BulletBase.cs"
 "Assets/ProjectData/E_Weapons/Cross_Canon/Cross_Canon.cs"
