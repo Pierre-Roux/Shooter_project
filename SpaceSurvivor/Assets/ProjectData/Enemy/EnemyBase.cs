@@ -13,6 +13,12 @@ public abstract class EnemyBase : MonoBehaviour
     public float speed; // La vitesse de déplacement de l'ennemi
     public float GlowIntensity;
     //public float GlowRadius;
+    public GameObject small_XP;
+    public GameObject Medium_XP;
+    public GameObject Large_XP;
+    public int small_XP_Reward;
+    public int Medium_XP_Reward;
+    public int Large_XP_Reward;
     private float GlowDuration = 0.1f;
     private float initialIntensity;
     private float initialRadius;
@@ -21,9 +27,7 @@ public abstract class EnemyBase : MonoBehaviour
     [HideInInspector] public GameObject target;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public WeaponBase[] weapons;
-
-
-
+    
 
     public virtual void TakeDamage(int damageAmount)
     {
@@ -41,6 +45,19 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void Die()
     {
+        for (int i = 0; i < small_XP_Reward; i++)
+        {
+            Instantiate(small_XP,(Vector2)transform.position,transform.rotation);   
+        }
+        for (int i = 0; i < Medium_XP_Reward; i++)
+        {
+            Instantiate(Medium_XP,(Vector2)transform.position,transform.rotation);   
+        }
+        for (int i = 0; i < Large_XP_Reward; i++)
+        {
+            Instantiate(Large_XP,(Vector2)transform.position,transform.rotation);   
+        }
+
         Destroy(gameObject);
     }
 
@@ -62,8 +79,9 @@ public abstract class EnemyBase : MonoBehaviour
         int layerToIgnore4 = LayerMask.NameToLayer("EnemyBullets");
         int layerToIgnore5 = LayerMask.NameToLayer("FixEnemy");
         int layerToIgnore6 = LayerMask.NameToLayer("Ignore Raycast");
+        int layerToIgnore7 = LayerMask.NameToLayer("XP");
 
-        int layerMask = ~( (1 << layerToIgnore1) | (1 << layerToIgnore2) | (1 << layerToIgnore3) | (1 << layerToIgnore4) | (1 << layerToIgnore5) | (1 << layerToIgnore6));
+        int layerMask = ~( (1 << layerToIgnore1) | (1 << layerToIgnore2) | (1 << layerToIgnore3) | (1 << layerToIgnore4) | (1 << layerToIgnore5) | (1 << layerToIgnore6) | (1 << layerToIgnore7));
 
         Vector2 direction = (target.transform.position - transform.position).normalized;
         float distance = Vector2.Distance(transform.position, target.transform.position);
@@ -72,11 +90,12 @@ public abstract class EnemyBase : MonoBehaviour
         RaycastHit2D ray = Physics2D.BoxCast(transform.position, size, 0f, direction, distance, layerMask);
         if (ray.collider != null)
         {
+            Debug.Log(ray.collider.tag);
             hasLineOfSight = ray.collider.CompareTag("Player");
         }
 
-        // For debug
-        /*
+        //For debug
+        
         if (hasLineOfSight)
         {
             Debug.DrawLine(transform.position, target.transform.position, Color.green);
@@ -84,7 +103,7 @@ public abstract class EnemyBase : MonoBehaviour
         else
         {
             Debug.DrawLine(transform.position, target.transform.position,Color.red);
-        }*/
+        }
     }
 
     public virtual void LookPlayer()

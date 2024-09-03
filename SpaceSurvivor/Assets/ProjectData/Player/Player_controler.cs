@@ -29,6 +29,8 @@ public class Player_controler : MonoBehaviour
     public GameObject Particle_spawn_point;
     public float health;
     public float maxHealth;
+    public float XP;
+    public float maxXP;
     public Boolean playerMort;
     float aimAngle;
     WeaponBase[] weapons;
@@ -58,6 +60,7 @@ public class Player_controler : MonoBehaviour
         playerMort = false;
         weapons = GetComponentsInChildren<WeaponBase>();
         health = maxHealth;
+        XP = 0;
         initialIntensity = GetComponent<Light2D>().intensity;
     }
 
@@ -218,5 +221,15 @@ public class Player_controler : MonoBehaviour
         }
 
         //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
+    }
+
+    public void GainXP(int Amount)
+    {
+        XP += Amount;
+    }
+
+    public void LevelUp()
+    {
+        Debug.Log("LevelUp");
     }
 }

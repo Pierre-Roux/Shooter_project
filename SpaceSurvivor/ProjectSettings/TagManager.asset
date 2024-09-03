@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - EnemyBullet
   - Obstacle
+  - XP
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Bullets
   - EnemyBullets
   - FixEnemy
-  - 
+  - XP
   - 
   - 
   - 

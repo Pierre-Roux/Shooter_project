@@ -58,7 +58,6 @@ public class GaussCanon : WeaponBase
             lineRenderer.enabled = false;   
             for (int i = 0; i < particles.Count; i++)
             {
-                Debug.Log(particles[i].name);
                 particles[i].Stop();
             }     
         }       

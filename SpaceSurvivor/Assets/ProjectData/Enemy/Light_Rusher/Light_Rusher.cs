@@ -10,7 +10,7 @@ public class Light_Rusher : EnemyBase
 {
     private AIPath path;
     public float stopDistance;
-    public float attackCooldown ; 
+    public float attackCooldown ;
     private float ditanceToTarget;
     private float lastAttackTime;
     
@@ -60,10 +60,5 @@ public class Light_Rusher : EnemyBase
             player.TakeDamage(damage);
             lastAttackTime = Time.time;
         }
-    }
-
-    public override void Die()
-    {
-        Destroy(gameObject);
     }
 }

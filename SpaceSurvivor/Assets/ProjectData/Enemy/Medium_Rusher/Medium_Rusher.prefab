@@ -51,10 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29b2f2f25344e1a4cbbb8682962c3a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 15
   damage: 3
   speed: 8
   GlowIntensity: 10
+  small_XP: {fileID: 9198873428497900977, guid: d71560468d1e85346a93e1daf82ea99a, type: 3}
+  Medium_XP: {fileID: 9198873428497900977, guid: 8d3e5fba66020d04ca3b9dde592cf8c9, type: 3}
+  Large_XP: {fileID: 9198873428497900977, guid: 918fb977b6628174c8a9aeaa69a86a6a, type: 3}
+  small_XP_Reward: 0
+  Medium_XP_Reward: 1
+  Large_XP_Reward: 0
   IsDead: 0
   hasLineOfSight: 0
   target: {fileID: 0}

@@ -9,7 +9,7 @@ public class Light_Fighter : EnemyBase
 {
     private AIPath path;
     [SerializeField] private float stopDistance;
-    public float attackCooldown ; 
+    public float attackCooldown ;
     private float lastAttackTime;
     private float ditanceToTarget;
 

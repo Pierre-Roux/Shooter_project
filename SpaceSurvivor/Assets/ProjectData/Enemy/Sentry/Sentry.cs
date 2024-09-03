@@ -5,7 +5,7 @@ using System;
 
 public class Sentry : EnemyBase
 {
-    public float attackCooldown ; 
+    public float attackCooldown ;
     private float lastAttackTime;
     // Update is called once per frame
     

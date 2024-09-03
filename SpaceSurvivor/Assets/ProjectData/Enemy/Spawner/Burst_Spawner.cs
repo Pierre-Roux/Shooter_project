@@ -10,7 +10,6 @@ public class Burst_Spawner : EnemyBase
     public GameObject enemy;
     public Transform spawnPoint;
     public float spawnDistance;
-
     private float lastSpawnTime;
     private float lastBurstTime;
     private float enemyInQueue;

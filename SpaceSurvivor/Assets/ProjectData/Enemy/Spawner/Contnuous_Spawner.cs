@@ -9,7 +9,6 @@ public class Contnuous_Spawner : EnemyBase
     public GameObject enemy;
     public Transform spawnPoint;
     public float spawnDistance;
-
     private float lastSpawnTime;
     
 
