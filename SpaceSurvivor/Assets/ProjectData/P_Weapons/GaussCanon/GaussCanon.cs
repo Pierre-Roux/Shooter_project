@@ -14,6 +14,9 @@ public class GaussCanon : WeaponBase
     public GameObject endVFX;
     private List<ParticleSystem> particles = new List<ParticleSystem>();
     private bool Activated;
+    private float addSpeed;
+    private float addIntensity;
+    private Color addColor;
 
 
     private bool isFiring;
@@ -24,6 +27,10 @@ public class GaussCanon : WeaponBase
         FillList();
         lastFireTime = -fireCooldown; 
         Activated = true;
+        Level = 0;
+        addSpeed = -1;
+        addIntensity = 8;
+        addColor = new Color(191,47,7);
     }
 
     void Update()
@@ -65,6 +72,12 @@ public class GaussCanon : WeaponBase
 
     void UpdateLaser()
     {
+        LineRenderer lineRenderer = GetComponent<LineRenderer>();
+        Material lineMaterial = lineRenderer.material;
+        lineMaterial.SetFloat("LaserThickness", addIntensity);
+        lineMaterial.SetFloat("LaserThickness", addIntensity);
+        lineMaterial.SetColor("Color", addColor);
+
         // Raycast to check for hit
         RaycastHit2D hitInfo = Physics2D.Raycast(firepoint.position, firepoint.up, maxLaserDistance, hitLayerMask);
 
@@ -120,6 +133,39 @@ public class GaussCanon : WeaponBase
             {
                 particles.Add(particleSystem);
             }
+        }
+    }
+
+    public override void Upgrade()
+    {
+        Level += 1;
+        Debug.Log(gameObject.name + " Level : " + Level);
+        switch (Level)
+        {
+            case 1 :
+                hitCooldown -= 0.05f;
+                addIntensity = 8;
+                addSpeed = -1.5f;
+                addColor = new Color(200,47,7);
+                maxLaserDistance += 10;
+            break;
+            case 2 :
+                hitCooldown -= 0.05f;
+                addIntensity = 7;
+                addSpeed = -2f;
+                addColor = new Color(210,47,7);
+                maxLaserDistance += 10;
+            break;
+            case 3 :
+                hitCooldown -= 0.1f;
+                addIntensity = 6;
+                addSpeed = -2.5f;
+                damage += 1;
+                addColor = new Color(230,47,7);
+                maxLaserDistance += 10;
+            break;
+            default:
+            break;
         }
     }
 }

@@ -417,6 +417,7 @@
 "Assets/ProjectData/E_Weapons/BulletBase.cs"
 "Assets/ProjectData/E_Weapons/Cross_Canon/Cross_Canon.cs"
 "Assets/ProjectData/E_Weapons/Simple_Canon/Simple_Canon.cs"
+"Assets/ProjectData/PickUP/PickUpObject/PickUpObject.cs"
 "Assets/ProjectData/PickUP/XP/XP.cs"
 "Assets/ProjectData/PickUP/XP/XP_Magnet.cs"
 "Assets/ProjectData/Player/Player_controler.cs"
@@ -432,6 +433,7 @@
 "Assets/ProjectData/Script/SceneField.cs"
 "Assets/ProjectData/Script/UIManager_Game.cs"
 "Assets/ProjectData/Script/UIManager_MM.cs"
+"Assets/ProjectData/Script/UpgradeManager.cs"
 "Assets/ProjectData/UI/HealthBar/HealthBar.cs"
 "Assets/ProjectData/UI/XPBar/XPBar.cs"
 -langversion:9.0

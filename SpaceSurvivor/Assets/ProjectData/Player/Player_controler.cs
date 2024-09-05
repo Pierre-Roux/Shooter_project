@@ -33,11 +33,12 @@ public class Player_controler : MonoBehaviour
     public float maxXP;
     public Boolean playerMort;
     float aimAngle;
-    WeaponBase[] weapons;
+    public WeaponBase[] weapons;
     public static Player_controler Instance { get; private set; }
     public float GlowIntensity;
     private float GlowDuration = 0.1f;
     private float initialIntensity;
+    public bool upgraded;
 
     void Awake() {
         if (Instance == null) {
@@ -58,10 +59,15 @@ public class Player_controler : MonoBehaviour
         breakForce = 1000f * Time.fixedDeltaTime;
         rotationSpeed = 10f * Time.fixedDeltaTime;
         playerMort = false;
-        weapons = GetComponentsInChildren<WeaponBase>();
+        UpdateWeapon();
         health = maxHealth;
         XP = 0;
         initialIntensity = GetComponent<Light2D>().intensity;
+    }
+
+    public void UpdateWeapon()
+    {
+        weapons = GetComponentsInChildren<WeaponBase>();
     }
 
     // Update is called once per frame
@@ -231,5 +237,6 @@ public class Player_controler : MonoBehaviour
     public void LevelUp()
     {
         Debug.Log("LevelUp");
+        upgraded = true;
     }
 }
