@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class Contnuous_Spawner : EnemyBase
 {
-    public float spawnCooldown;
-    public GameObject enemy;
-    public Transform spawnPoint;
-    public float spawnDistance;
-    private float lastSpawnTime;
+[Header("Param")] 
+    [SerializeField] public GameObject enemy;
+    [SerializeField] public float spawnCooldown;
+    [SerializeField] public float spawnDistance;
+[Header("Other")] 
+    [SerializeField] public Transform spawnPoint;
     
+    [HideInInspector] private float lastSpawnTime;
 
     // Start is called before the first frame update
     void Start()

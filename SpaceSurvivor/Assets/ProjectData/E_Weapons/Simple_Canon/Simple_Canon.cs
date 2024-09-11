@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class Simple_Canon : WeaponBase
 {
-    public Transform firepoint;
-    public Transform WeaponPosition;
-    private Transform target;
-    private Vector2 aimDirection ;
+[Header("Other")] 
+    [SerializeField] public Transform firepoint;
+    [SerializeField] public Transform WeaponPosition;
+
+    [HideInInspector] private Transform target;
+    [HideInInspector] private Vector2 aimDirection ;
     
     // Start is called before the first frame update
     void Start()

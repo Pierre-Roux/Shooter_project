@@ -1,25 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio; 
 
 public class GaussCanon : WeaponBase
 {
-    public Transform firepoint;
-    public LineRenderer lineRenderer; 
-    public float maxLaserDistance;
-    public LayerMask hitLayerMask; 
-    public float hitCooldown;
-    public int damage;
-    public GameObject startVFX;
-    public GameObject endVFX;
-    private List<ParticleSystem> particles = new List<ParticleSystem>();
-    private bool Activated;
-    private float addSpeed;
-    private float addIntensity;
-    private Color addColor;
+[Header("Param")] 
+    [SerializeField] public float maxLaserDistance;
+    [SerializeField] public float hitCooldown;
+    [SerializeField] public int damage;
+[Header("Other")] 
+    [SerializeField] public Transform firepoint;
+    [SerializeField] public LineRenderer lineRenderer; 
+    [SerializeField] public LayerMask hitLayerMask; 
+    [SerializeField] public GameObject startVFX;
+    [SerializeField] public GameObject endVFX;
 
 
-    private bool isFiring;
+    [HideInInspector] private List<ParticleSystem> particles = new List<ParticleSystem>();
+    [HideInInspector] private bool Activated;
+    [HideInInspector] private float addSpeed;
+    [HideInInspector] private float addIntensity;
+    [HideInInspector] private Color addColor;
+    [HideInInspector] private bool isFiring;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +35,7 @@ public class GaussCanon : WeaponBase
         addSpeed = -1;
         addIntensity = 8;
         addColor = new Color(191,47,7);
+        ShootSoundInstance = RuntimeManager.CreateInstance(Shoot_soundEvent);
     }
 
     void Update()
@@ -39,6 +44,11 @@ public class GaussCanon : WeaponBase
         if (isFiring)
         {
             UpdateLaser();
+            PlayShootSound();
+        }
+        else
+        {
+            StopShootSound();
         }
     }
 
@@ -46,6 +56,7 @@ public class GaussCanon : WeaponBase
     {
         if (!Activated)
         {
+            
             isFiring = true;
             Activated = true;
             lineRenderer.enabled = true;  
@@ -166,6 +177,28 @@ public class GaussCanon : WeaponBase
             break;
             default:
             break;
+        }
+    }
+
+    public override void PlayShootSound()
+    {
+        FMOD.Studio.PLAYBACK_STATE playbackState;
+        ShootSoundInstance.getPlaybackState(out playbackState);
+
+        if (playbackState != FMOD.Studio.PLAYBACK_STATE.PLAYING)
+        {
+            ShootSoundInstance.start();
+        } 
+    }
+
+    public void StopShootSound()
+    {
+        FMOD.Studio.PLAYBACK_STATE playbackState;
+        ShootSoundInstance.getPlaybackState(out playbackState);
+
+        if (playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED)
+        {
+            ShootSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
     }
 }

@@ -5,11 +5,13 @@ using DG.Tweening;
 
 public class Advanced_Canon : WeaponBase
 {
-    public Transform firepoint;
-    public Transform WeaponPosition;
-    public float rotationSpeed;
-    private Transform target;
-    private float closeDistanceThreshold = 10f;
+[Header("Param")] 
+    [SerializeField] public float rotationSpeed;
+[Header("Other")] 
+    [SerializeField] public Transform firepoint;
+    [SerializeField] public Transform WeaponPosition;
+    [HideInInspector] private Transform target;
+    [HideInInspector] private float closeDistanceThreshold = 10f;
     
     // Start is called before the first frame update
     void Start()

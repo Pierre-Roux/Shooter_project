@@ -1,13 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio; 
 
 public class XP_Magnet : MonoBehaviour
 {
-    public float attractionRadius; 
-    public float attractionSpeed;   
-    public GameObject player;
 
+    [Header("Audio")]
+        [SerializeField] public EventReference Small_XP_soundEvent;
+        [SerializeField] public EventReference Medium_XP_soundEvent;
+        [SerializeField] public EventReference Large_XP_soundEvent;
+
+    [Header("Attraction")]
+        public float attractionRadius; 
+        public float attractionSpeed;  
+
+    [Header("Other")] 
+        public GameObject player;
+
+    [HideInInspector] private FMOD.Studio.EventInstance ShootSoundInstance;
+
+  
     void OnTriggerStay2D(Collider2D other)
     {
         // Vérifier si l'objet touché est un objet XP
@@ -29,17 +43,38 @@ public class XP_Magnet : MonoBehaviour
         if (xpObject.GetComponent<XP>().type == "Large")
         {
             player.GetComponent<Player_controler>().GainXP(10);
+            PlayLargeXPSound();
         }
         else if (xpObject.GetComponent<XP>().type == "Medium")
         {
             player.GetComponent<Player_controler>().GainXP(3);
+            PlayMediumXPSound();
         }
         else if (xpObject.GetComponent<XP>().type == "Small")
         {
             player.GetComponent<Player_controler>().GainXP(1);
+            PlaySmallXPSound();
         }
 
 
         Destroy(xpObject);
+    }
+
+    public virtual void PlaySmallXPSound()
+    {
+        ShootSoundInstance = RuntimeManager.CreateInstance(Small_XP_soundEvent);
+        ShootSoundInstance.start();
+    }
+
+    public virtual void PlayMediumXPSound()
+    {
+        ShootSoundInstance = RuntimeManager.CreateInstance(Medium_XP_soundEvent);
+        ShootSoundInstance.start();
+    }
+
+    public virtual void PlayLargeXPSound()
+    {
+        ShootSoundInstance = RuntimeManager.CreateInstance(Large_XP_soundEvent);
+        ShootSoundInstance.start();
     }
 }

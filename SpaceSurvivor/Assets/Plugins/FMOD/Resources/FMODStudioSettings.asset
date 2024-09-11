@@ -259,7 +259,10 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
+  - Experience
+  - Guns
   - Soundscape
+  - Spaceship
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

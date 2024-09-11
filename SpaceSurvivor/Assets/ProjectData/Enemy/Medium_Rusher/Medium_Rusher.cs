@@ -7,18 +7,20 @@ using System;
 
 public class Medium_Rusher : EnemyBase
 {
-    private AIPath path;
-    public float stopDistance;
-    public float attackCooldown ; 
-    public float dashCooldown ; 
-    public float dashSpeed;
-    public float dashDuration;
-    private float ditanceToTarget;
-    private float lastAttackTime;
-    private float lastDashTime;
-    private String Etat;
-    private Vector2 dashDirection;
-    private float dashTimeRemaining;
+[Header("Param")] 
+    [SerializeField] public float stopDistance;
+    [SerializeField] public float attackCooldown ; 
+    [SerializeField] public float dashCooldown ; 
+    [SerializeField] public float dashSpeed;
+    [SerializeField] public float dashDuration;
+
+    [HideInInspector] private AIPath path;
+    [HideInInspector] private float ditanceToTarget;
+    [HideInInspector] private float lastAttackTime;
+    [HideInInspector] private float lastDashTime;
+    [HideInInspector] private String Etat;
+    [HideInInspector] private Vector2 dashDirection;
+    [HideInInspector] private float dashTimeRemaining;
     
     
     // Start is called before the first frame update

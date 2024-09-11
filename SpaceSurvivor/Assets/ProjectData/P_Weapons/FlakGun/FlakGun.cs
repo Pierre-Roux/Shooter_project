@@ -7,10 +7,13 @@ using UnityEngine.Rendering.Universal;
 
 public class FlakGun : WeaponBase
 {
-    public Transform firepoint1;
+[Header("Param")] 
     public int bulletNumber;
-    private Color addColor;
-    private float addIntensity;
+[Header("Other")] 
+    public Transform firepoint1;
+
+    [HideInInspector] private Color addColor;
+    [HideInInspector] private float addIntensity;
     
 
     void Start()
@@ -25,7 +28,7 @@ public class FlakGun : WeaponBase
     {
         if (Time.time >= lastFireTime + fireCooldown)
         {
-            
+            PlayShootSound();
             for (int i = 0; i < bulletNumber; i++)
             {
                 int randomAngle = UnityEngine.Random.Range(-30, 30);

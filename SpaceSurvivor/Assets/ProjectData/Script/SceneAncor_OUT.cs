@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneAncor_OUT : MonoBehaviour
 {
-    public SceneField SceneToManage;
+    [SerializeField] public SceneField SceneToManage;
+    
     [HideInInspector] public GameObject target;
     
     void Start()

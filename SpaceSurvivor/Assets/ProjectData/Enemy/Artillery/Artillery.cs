@@ -7,13 +7,12 @@ using Unity.Mathematics;
 
 public class Artillery : EnemyBase
 {
-    public float rotationSpeed;
-    public float MeleAttackCooldown;
-    public float turnDelay;
-    private Vector2 moveDirection;
-    private Quaternion TurnDirection;
-    private float currentVelocity;
-    private float lastAttackTime;
+[Header("Param")] 
+    [SerializeField] public float rotationSpeed;
+    [SerializeField] public float MeleAttackCooldown;
+    [SerializeField] public float turnDelay;
+
+    [HideInInspector] private float lastAttackTime;
 
     void Start()
     {

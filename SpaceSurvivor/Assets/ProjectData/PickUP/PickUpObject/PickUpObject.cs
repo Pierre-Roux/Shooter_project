@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour
 {
-    public GameObject objectToInstanciate;
-    private Transform target;
+[Header("Param")] 
+    [SerializeField] public GameObject objectToInstanciate;
+    [HideInInspector] private Transform target;
 
     void Start()
     {

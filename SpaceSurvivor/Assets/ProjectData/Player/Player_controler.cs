@@ -7,38 +7,52 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using FMODUnity;
+using FMOD.Studio; 
 
 using UnityEngine.Rendering.Universal;
 
 public class Player_controler : MonoBehaviour
-{
-
-    public float globalSpeed;
-    Rigidbody2D rb ;
-    float speed ;
-    float maxVelocity;
-    float sprintSpeed ;
-    float maxSprintVelocity;
-    float breakForce;
-    float rotationSpeed;
-    public WeaponBase weapon;
-    Vector2 moveDirection;
-    Vector2 mousePosition;
-    private float currentVelocity;
-    public ParticleSystem particlePrefab; 
-    public GameObject Particle_spawn_point;
-    public float health;
-    public float maxHealth;
-    public float XP;
-    public float maxXP;
-    public Boolean playerMort;
-    float aimAngle;
-    public WeaponBase[] weapons;
+{  
     public static Player_controler Instance { get; private set; }
-    public float GlowIntensity;
-    private float GlowDuration = 0.1f;
-    private float initialIntensity;
-    public bool upgraded;
+
+[Header("Audio")]
+    [SerializeField] private EventReference engine_soundEvent;    
+    [SerializeField] private EventReference turboEngine_soundEvent;
+[Header("Param")] 
+    [Tooltip("")] 
+    [SerializeField] public float globalSpeed;
+    [SerializeField] public float GlowIntensity;
+    [SerializeField] public float maxHealth;
+    [SerializeField] public float maxXP;
+[Header("Other")] 
+    [SerializeField] public ParticleSystem particlePrefab; 
+    [SerializeField] public GameObject Particle_spawn_point;
+
+    [HideInInspector] public float health;
+    [HideInInspector] public float XP;
+    [HideInInspector] public WeaponBase[] weapons;
+    [HideInInspector] public Boolean playerMort;
+    [HideInInspector] public bool upgraded;
+
+    [HideInInspector] private Rigidbody2D rb ;
+    [HideInInspector] private float speed ;
+    [HideInInspector] private float maxVelocity;
+    [HideInInspector] private float sprintSpeed ;
+    [HideInInspector] private float maxSprintVelocity;
+    [HideInInspector] private float breakForce;
+    [HideInInspector] private float rotationSpeed;
+    [HideInInspector] private bool OnTurbo;
+    [HideInInspector] private bool OnMove;
+    [HideInInspector] private Vector2 moveDirection;
+    [HideInInspector] private Vector2 mousePosition;
+    [HideInInspector] private float currentVelocity;
+    [HideInInspector] private float aimAngle;
+    [HideInInspector] private float GlowDuration = 0.1f;
+    [HideInInspector] private float initialIntensity;
+    [HideInInspector] private FMOD.Studio.EventInstance engineSoundInstance;
+    [HideInInspector] private FMOD.Studio.EventInstance turboEngineSoundInstance;
+    
 
     void Awake() {
         if (Instance == null) {
@@ -47,7 +61,6 @@ public class Player_controler : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 
     void Start()
     {
@@ -63,6 +76,10 @@ public class Player_controler : MonoBehaviour
         health = maxHealth;
         XP = 0;
         initialIntensity = GetComponent<Light2D>().intensity;
+        engineSoundInstance = RuntimeManager.CreateInstance(engine_soundEvent);
+        OnMove = false;
+        turboEngineSoundInstance = RuntimeManager.CreateInstance(turboEngine_soundEvent);
+        OnTurbo = false;
     }
 
     public void UpdateWeapon()
@@ -130,6 +147,8 @@ public class Player_controler : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftShift)) 
                 {
+                    StopEngineSound();
+                    PlayTurboSound();
                     rb.AddForce(moveDirection * sprintSpeed);
                     if (rb.velocity.magnitude > maxSprintVelocity)
                     {
@@ -138,6 +157,8 @@ public class Player_controler : MonoBehaviour
                 }
                 else
                 {
+                    StopTurboSound();
+                    PlayEngineSound();
                     rb.AddForce(moveDirection * speed);
                     if (rb.velocity.magnitude > maxVelocity)
                     {
@@ -146,6 +167,8 @@ public class Player_controler : MonoBehaviour
                 }
             }
             else {
+                StopEngineSound();
+                StopTurboSound();
                 rb.AddForce(-rb.velocity*breakForce, ForceMode2D.Force);
             }
 
@@ -190,7 +213,7 @@ public class Player_controler : MonoBehaviour
     IEnumerator ShortDelayFire()
     {
         //délai de 0.1 seconde
-        yield return new WaitForSeconds(0.02f);
+        yield return new WaitForSeconds(0.00f);
         foreach (WeaponBase weapon in weapons)
         {
             weapon.Fire();
@@ -238,5 +261,49 @@ public class Player_controler : MonoBehaviour
     {
         Debug.Log("LevelUp");
         upgraded = true;
+    }
+
+    public void PlayEngineSound()
+    {
+        if (!OnMove)
+        {
+            engineSoundInstance.start(); // Démarre la lecture du son
+            OnMove = true;
+        }
+    }
+    public void StopEngineSound()
+    {
+        if (OnMove)
+        {
+            engineSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //engineSoundInstance.release();
+            OnMove = false;
+        }
+    }
+
+    public void PlayTurboSound()
+    {
+        if (!OnTurbo)
+        {
+            turboEngineSoundInstance.start(); // Démarre la lecture du son
+            OnTurbo = true;
+        }
+    }
+    public void StopTurboSound()
+    {
+        if (OnTurbo)
+        {
+            turboEngineSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            //turboEngineSoundInstance.release();
+            OnTurbo = false;
+        }
+
+        /*FMOD.Studio.PLAYBACK_STATE playbackState;
+        turboEngineSoundInstance.getPlaybackState(out playbackState);
+
+        if (playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED)
+        {
+            turboEngineSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        }*/
     }
 }

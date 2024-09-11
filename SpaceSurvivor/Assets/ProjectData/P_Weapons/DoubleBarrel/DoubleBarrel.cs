@@ -7,12 +7,14 @@ using UnityEngine.Rendering.Universal;
 
 public class DoubleBarrel : WeaponBase
 {
-    public Transform firepoint1;
-    public Transform firepoint2;
-    private Boolean ShootedRight;
-    private Color addColor;
-    private int addIntensity;
-    private int addDamage;
+[Header("Other")] 
+    [SerializeField] public Transform firepoint1;
+    [SerializeField] public Transform firepoint2;
+
+    [HideInInspector] private Boolean ShootedRight;
+    [HideInInspector] private Color addColor;
+    [HideInInspector] private int addIntensity;
+    [HideInInspector] private int addDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class DoubleBarrel : WeaponBase
         {
             if (ShootedRight)
             {
+                PlayShootSound();
                 GameObject bullet = Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(firepoint1.up * fireForce,ForceMode2D.Impulse);
                 bullet.GetComponent<Light2D>().color += addColor;
@@ -39,6 +42,7 @@ public class DoubleBarrel : WeaponBase
             }
             else
             {
+                PlayShootSound();
                 GameObject bullet = Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(firepoint2.up * fireForce,ForceMode2D.Impulse);
                 bullet.GetComponent<Light2D>().color += addColor;
@@ -77,5 +81,4 @@ public class DoubleBarrel : WeaponBase
             break;
         }
     }
-
 }

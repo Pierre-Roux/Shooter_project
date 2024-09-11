@@ -8,27 +8,29 @@ using UnityEngine.Rendering.Universal;
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    public int health;  // La santé de l'ennemi
-    public int damage;  // Les dégâts que l'ennemi peut infliger
-    public float speed; // La vitesse de déplacement de l'ennemi
-    public float GlowIntensity;
-    //public float GlowRadius;
-    public GameObject small_XP;
-    public GameObject Medium_XP;
-    public GameObject Large_XP;
-    public int small_XP_Reward;
-    public int Medium_XP_Reward;
-    public int Large_XP_Reward;
-    private float GlowDuration = 0.1f;
-    private float initialIntensity;
-    private float initialRadius;
+[Header("Base_Param")]
+    [SerializeField] public int health; 
+    [SerializeField] public int damage; 
+    [SerializeField] public float speed; 
+    [SerializeField] public float GlowIntensity;
+[Header("XP")]
+    [SerializeField] public GameObject small_XP;
+    [SerializeField] public GameObject Medium_XP;
+    [SerializeField] public GameObject Large_XP;
+    [SerializeField] public int small_XP_Reward;
+    [SerializeField] public int Medium_XP_Reward;
+    [SerializeField] public int Large_XP_Reward;
+
     [HideInInspector] public bool IsDead;
     [HideInInspector] public bool hasLineOfSight;
     [HideInInspector] public GameObject target;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public WeaponBase[] weapons;
     
-
+    [HideInInspector] private float GlowDuration = 0.1f;
+    [HideInInspector] private float initialIntensity;
+    [HideInInspector] private float initialRadius;
+    
     public virtual void TakeDamage(int damageAmount)
     {
         health -= damageAmount;

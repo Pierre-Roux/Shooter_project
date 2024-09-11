@@ -5,5 +5,5 @@ using UnityEngine;
 
 public class XP : MonoBehaviour
 {
-    public String type; 
+    [SerializeField] public String type; 
 }

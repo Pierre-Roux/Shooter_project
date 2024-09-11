@@ -190,6 +190,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c1ecc9e3b766d448bca9ed5f315a8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Small_XP_soundEvent:
+    Guid:
+      Data1: 970887523
+      Data2: 1104475970
+      Data3: 1193924746
+      Data4: 485612282
+    Path: event:/XP loot
+  Medium_XP_soundEvent:
+    Guid:
+      Data1: 970887523
+      Data2: 1104475970
+      Data3: 1193924746
+      Data4: 485612282
+    Path: event:/XP loot
+  Large_XP_soundEvent:
+    Guid:
+      Data1: 970887523
+      Data2: 1104475970
+      Data3: 1193924746
+      Data4: 485612282
+    Path: event:/XP loot
   attractionRadius: 14
   attractionSpeed: 5
   player: {fileID: 7741124011829069023}
@@ -242,6 +263,7 @@ GameObject:
   - component: {fileID: 1546929458826437668}
   - component: {fileID: 2396507289980416089}
   - component: {fileID: 3401652810469319953}
+  - component: {fileID: 5692779364478336935}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -288,7 +310,23 @@ MonoBehaviour:
   XP: 0
   maxXP: 10
   playerMort: 0
+  weapons: []
   GlowIntensity: 10
+  upgraded: 0
+  engine_soundEvent:
+    Guid:
+      Data1: -1191421496
+      Data2: 1258092150
+      Data3: -666373990
+      Data4: 972770947
+    Path: event:/Engine
+  turboEngine_soundEvent:
+    Guid:
+      Data1: -1191421496
+      Data2: 1258092150
+      Data3: -666373990
+      Data4: 972770947
+    Path: event:/Engine
 --- !u!212 &808367282721455904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -908,6 +946,37 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &5692779364478336935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741124011829069023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1191421496
+      Data2: 1258092150
+      Data3: -666373990
+      Data4: 972770947
+    Path: event:/Engine
+  Event: 
+  PlayEvent: 0
+  StopEvent: 0
+  AllowFadeout: 0
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &9125871486587826725
 GameObject:
   m_ObjectHideFlags: 0

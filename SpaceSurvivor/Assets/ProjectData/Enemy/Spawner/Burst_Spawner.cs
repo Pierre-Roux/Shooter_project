@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Burst_Spawner : EnemyBase
 {
-    public float burstCooldown;
-    public float spawnDelay;
-    public float enemyNumber;
-    public GameObject enemy;
-    public Transform spawnPoint;
-    public float spawnDistance;
-    private float lastSpawnTime;
-    private float lastBurstTime;
-    private float enemyInQueue;
+[Header("Param")] 
+    [SerializeField] public GameObject enemy;
+    [SerializeField] public float spawnCooldown;
+    [SerializeField] public float spawnDistance;
+    [SerializeField] public float burstCooldown;
+    [SerializeField] public float spawnDelay;
+    [SerializeField] public float enemyNumber;
+[Header("Other")] 
+    [SerializeField] public Transform spawnPoint;
     
+    [HideInInspector] private float lastSpawnTime;
+    [HideInInspector] private float lastBurstTime;
+    [HideInInspector] private float enemyInQueue;
 
 
     // Start is called before the first frame update

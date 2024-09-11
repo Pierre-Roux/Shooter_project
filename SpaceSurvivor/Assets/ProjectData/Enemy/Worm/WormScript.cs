@@ -5,11 +5,13 @@ using Pathfinding;
 
 public class WormScript : EnemyBase
 {
-    private AIPath path;
-    public float stopDistance;
-    public float attackCooldown ;
-    private float ditanceToTarget;
-    private float lastAttackTime;
+[Header("Param")] 
+    [SerializeField] public float stopDistance;
+    [SerializeField] public float attackCooldown ;
+
+    [HideInInspector] private AIPath path;
+    [HideInInspector] private float ditanceToTarget;
+    [HideInInspector] private float lastAttackTime;
     
     
     // Start is called before the first frame update

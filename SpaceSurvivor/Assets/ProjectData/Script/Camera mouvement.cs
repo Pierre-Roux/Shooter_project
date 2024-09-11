@@ -6,14 +6,15 @@ using DG.Tweening;
 
 public class Cameramouvement : MonoBehaviour
 {
-    GameObject player;
-    public float distanceFactor; 
-    public float smoothTime; 
-    public float snapDistance;
 
-    private Vector3 velocity = Vector3.zero;
-    private Vector2 targetPosition;
-    private bool Snaped;
+    [SerializeField] public float distanceFactor; 
+    [SerializeField] public float smoothTime; 
+    [SerializeField] public float snapDistance;
+
+    [HideInInspector] private GameObject player;
+    [HideInInspector] private Vector3 velocity = Vector3.zero;
+    [HideInInspector] private Vector2 targetPosition;
+    [HideInInspector] private bool Snaped;
 
     // Start is called before the first frame update
     void Start()

@@ -9776,6 +9776,13 @@ MonoBehaviour:
   hasLineOfSight: 0
   rb: {fileID: 0}
   Level: 0
+  Shoot_soundEvent:
+    Guid:
+      Data1: -1809606907
+      Data2: 1163079615
+      Data3: -1338198140
+      Data4: -659009235
+    Path: event:/Guns/gauss
   bulletPrefab: {fileID: 0}
   fireCooldown: 1
   fireForce: 0

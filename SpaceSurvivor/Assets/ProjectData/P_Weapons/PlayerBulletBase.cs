@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class PlayerBulletBase : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public int damage;
-    private EnemyBase enemy;
-    public float lifeTime;
+[Header("Param")] 
+    [SerializeField] public int damage;
+    [SerializeField] public float lifeTime;
+
+    [HideInInspector] private EnemyBase enemy;
 
     void Start()
     {

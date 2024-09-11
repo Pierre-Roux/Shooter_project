@@ -5,9 +5,11 @@ using System;
 
 public class Sentry : EnemyBase
 {
-    public float attackCooldown ;
-    private float lastAttackTime;
-    // Update is called once per frame
+[Header("Param")] 
+    [SerializeField] public float attackCooldown ;
+    
+    [HideInInspector] private float lastAttackTime;
+
     
     void Update()
 

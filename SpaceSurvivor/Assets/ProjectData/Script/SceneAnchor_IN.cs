@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneAnchor_IN : MonoBehaviour
 {
-    public SceneField SceneToManage;
+    [SerializeField] public SceneField SceneToManage;
+    
     [HideInInspector] public GameObject target;
-    AsyncOperation chargementNiveau;
+    [HideInInspector] private AsyncOperation chargementNiveau;
 
     void Start()
     {

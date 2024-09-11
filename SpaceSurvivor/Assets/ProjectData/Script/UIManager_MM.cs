@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 
 public class UIManager_MM : MonoBehaviour
 {
-    public String GameState;
-    public GameObject loadingBar;
-    public Image loadingBarSlider;
-    public GameObject[] menuObjects;
-    private List<AsyncOperation> sceneToLoad = new List<AsyncOperation>();
-    public SceneField Persistant_Scene;
+[Header("Other")] 
+    [SerializeField] public GameObject loadingBar;
+    [SerializeField] public Image loadingBarSlider;
+    [SerializeField] public GameObject[] menuObjects;
+    [SerializeField] public SceneField Persistant_Scene;
+
+    [HideInInspector] private List<AsyncOperation> sceneToLoad = new List<AsyncOperation>();
 
     // Start is called before the first frame update
     void Start()

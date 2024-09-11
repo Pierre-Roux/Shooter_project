@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BodyPartScript : EnemyBase
 {
-
-    public float attackCooldown ;
-    private float lastAttackTime;
+[Header("Param")] 
+    [SerializeField] public float attackCooldown ;
+    [HideInInspector] private float lastAttackTime;
     
     
     // Start is called before the first frame update

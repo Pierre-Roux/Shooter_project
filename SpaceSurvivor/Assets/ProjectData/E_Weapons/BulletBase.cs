@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class BulletBase : MonoBehaviour
 {
-    public int damage;
-    private Player_controler player;
-    public float lifeTime;
+[Header("Base_Param")] 
+    [SerializeField] public int damage;
+    [SerializeField] public float lifeTime;
+
+    [HideInInspector] private Player_controler player;
 
     void Start()
     {

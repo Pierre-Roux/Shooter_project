@@ -80,11 +80,19 @@ MonoBehaviour:
   lastFireTime: 0
   hasLineOfSight: 0
   rb: {fileID: 0}
+  Level: 0
   bulletPrefab: {fileID: 7751217143057044998, guid: 303e891fe56a4164bb11d1321e8fb920, type: 3}
   fireCooldown: 0.3
   fireForce: 20
   firepoint1: {fileID: 234521894561230992}
   firepoint2: {fileID: 6132428318763242967}
+  Shoot_soundEvent:
+    Guid:
+      Data1: 652696880
+      Data2: 1136217614
+      Data3: 880144301
+      Data4: 1403310707
+    Path: event:/Guns/double barrels
 --- !u!1 &6920104994008817525
 GameObject:
   m_ObjectHideFlags: 0

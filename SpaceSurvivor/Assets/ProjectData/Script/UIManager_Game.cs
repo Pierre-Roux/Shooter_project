@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+[Header("Other")] 
+    [SerializeField] public GameObject endPanel;
 
     [HideInInspector] public GameObject Player;
-    public GameObject endPanel;
 
     void Start()
     {

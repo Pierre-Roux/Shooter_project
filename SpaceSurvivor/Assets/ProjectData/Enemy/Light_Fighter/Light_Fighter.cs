@@ -7,11 +7,13 @@ using System;
 
 public class Light_Fighter : EnemyBase
 {
-    private AIPath path;
+[Header("Param")] 
     [SerializeField] private float stopDistance;
-    public float attackCooldown ;
-    private float lastAttackTime;
-    private float ditanceToTarget;
+    [SerializeField] public float attackCooldown ;
+
+    [HideInInspector] private AIPath path;
+    [HideInInspector] private float lastAttackTime;
+    [HideInInspector] private float ditanceToTarget;
 
     // Start is called before the first frame update
     void Start()
