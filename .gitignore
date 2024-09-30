@@ -71,9 +71,10 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
  
-SpaceSurvivor/Library/
-SpaceSurvivor/Temp/
-SpaceSurvivor/Logs/
-SpaceSurvivor/Artifacts/
-SpaceSurvivor/Library/Bee/
-SpaceSurvivor/Library/artifacts/
+SpaceSurvivor\Library\
+SpaceSurvivor\Library\PackageCache\
+SpaceSurvivor\Temp\
+SpaceSurvivor\Logs\
+SpaceSurvivor\Artifacts\
+SpaceSurvivor\Library\Bee\
+SpaceSurvivor\Library\artifacts\
