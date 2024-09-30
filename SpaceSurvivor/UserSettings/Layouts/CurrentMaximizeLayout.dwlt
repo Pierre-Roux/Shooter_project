@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 58
+  controlID: 206
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 59
+  controlID: 207
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 60
+  controlID: 208
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -236,9 +236,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 6c790000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 18f1ffff76f5ffff14fbffff
+      m_ExpandedIDs: 14fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -699,9 +699,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.9186902, y: -0.38126057, z: -1.9595476}
+    m_Target: {x: -6.7159467, y: -2.5982985, z: -48.42636}
     speed: 2
-    m_Value: {x: -0.9186902, y: -0.38126057, z: -1.9595476}
+    m_Value: {x: -6.7159467, y: -2.5982985, z: -48.42636}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -751,16 +751,16 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 22.761057
+    m_Target: 28.473688
     speed: 2
-    m_Value: 22.761057
+    m_Value: 28.473688
   m_Ortho:
     m_Target: 1
     speed: 2
     m_Value: 1
   m_CameraSettings:
-    m_Speed: 1.6001996
-    m_SpeedNormalized: 0.7999998
+    m_Speed: 1.5402296
+    m_SpeedNormalized: 0.7699998
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -1750,7 +1750,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/ProjectData/Scenes
+    - Assets/ProjectData/P_Weapons/DoubleBarrel
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1758,16 +1758,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/ProjectData/Scenes
+  - Assets/ProjectData/P_Weapons/DoubleBarrel
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\roux_\Desktop\SpaceSurvivor\Shooter_project\SpaceSurvivor
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 222}
-    m_SelectedIDs: 00790000
-    m_LastClickedID: 30976
-    m_ExpandedIDs: 000000008c7700008e7700009077000092770000947700009c77000000ca9a3b
+    m_SelectedIDs: ea780000
+    m_LastClickedID: 30954
+    m_ExpandedIDs: 000000008c7700008e7700009077000092770000947700009677000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1795,7 +1795,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c7700008e77000090770000927700009477000096770000987700009a7700009c7700009e770000
+    m_ExpandedIDs: 000000008c7700008e7700009077000092770000947700009677000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1820,9 +1820,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 6c790000
-    m_LastClickedInstanceID: 31084
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300004e61000062640000327400001287000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
