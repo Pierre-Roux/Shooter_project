@@ -9736,7 +9736,7 @@ GameObject:
   - component: {fileID: 1592278289949102546}
   - component: {fileID: 1461646606429722491}
   m_Layer: 0
-  m_Name: GaussCanon
+  m_Name: BeamLaser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

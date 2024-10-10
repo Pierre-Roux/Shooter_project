@@ -19,12 +19,15 @@ public abstract class WeaponBase : MonoBehaviour
     [HideInInspector] public Rigidbody2D rb ;
     [HideInInspector] public int Level;
     [HideInInspector] public FMOD.Studio.EventInstance ShootSoundInstance;
+    [HideInInspector] public List<Upgrade> availableUpgrades;
 
     public abstract void Fire();
 
     public virtual void CancelFire(){}
 
     public virtual void Upgrade(){}
+
+    public virtual void ApplyUpgrade(Upgrade selectedUpgrade){}
 
     public virtual void PlayShootSound()
     {

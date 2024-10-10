@@ -5,7 +5,7 @@ using Pathfinding;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class DoubleBarrel : WeaponBase
+public class LightBlaster : WeaponBase
 {
 [Header("Other")] 
     [SerializeField] public Transform firepoint1;
@@ -25,6 +25,15 @@ public class DoubleBarrel : WeaponBase
         addColor = new Color(0,0,0);
         addIntensity = 0;
         addDamage = 0;
+
+        // Initialisation des upgrades possibles
+        // string pieceName, string upgradeName, float cooldown, Color color, int intensity, int damage
+        availableUpgrades = new List<Upgrade>
+        {
+            new Upgrade("LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0),
+            new Upgrade("LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2),
+            new Upgrade("LightBlaster","Intensity Boost", 0f, new Color(50,0,0), 2, 0)
+        };
     }
 
     public override void Fire()
@@ -55,30 +64,13 @@ public class DoubleBarrel : WeaponBase
         }        
     }
 
-    public override void Upgrade()
+    // Appliquer l'upgrade
+    public override void ApplyUpgrade(Upgrade upgrade)
     {
-        Level += 1;
-        Debug.Log(gameObject.name + " Level : " + Level);
-        switch (Level)
-        {
-            case 1 :
-                fireCooldown -= 0.05f;
-                addColor = new Color(10,0,0);
-            break;
-            case 2 :
-                fireCooldown -= 0.05f;
-                addColor = new Color(30,0,0);
-                addIntensity = 1;
-                addDamage +=1;
-            break;
-            case 3 :
-                fireCooldown -= 0.1f;
-                addColor = new Color(50,0,0);
-                addIntensity = 2;
-                addDamage +=1;
-            break;
-            default:
-            break;
-        }
+        fireCooldown -= upgrade.fireCooldownReduction;
+        addColor += upgrade.colorBonus;
+        addIntensity += upgrade.intensityBonus;
+        addDamage += upgrade.damageBonus;
     }
+
 }

@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class FlakGun : WeaponBase
+public class FlakCannon : WeaponBase
 {
 [Header("Param")] 
     public int bulletNumber;

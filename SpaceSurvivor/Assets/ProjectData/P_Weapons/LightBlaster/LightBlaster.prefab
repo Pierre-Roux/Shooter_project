@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7831534202234256050}
   - component: {fileID: 4489912823097919477}
   m_Layer: 0
-  m_Name: DoubleBarrel
+  m_Name: LightBlaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

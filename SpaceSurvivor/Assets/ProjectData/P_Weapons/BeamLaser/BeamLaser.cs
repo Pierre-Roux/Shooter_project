@@ -4,7 +4,7 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio; 
 
-public class GaussCanon : WeaponBase
+public class BeamLaser : WeaponBase
 {
 [Header("Param")] 
     [SerializeField] public float maxLaserDistance;

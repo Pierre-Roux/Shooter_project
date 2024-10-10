@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8626797113995777156}
   - component: {fileID: 4310721054895837568}
   m_Layer: 0
-  m_Name: FlakGun
+  m_Name: FlakCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

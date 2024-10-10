@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GaussLaser
+  m_Name: BeamLaser
   m_Shader: {fileID: -6465566751694194690, guid: 687132635667f054baa131f4586eba3a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
