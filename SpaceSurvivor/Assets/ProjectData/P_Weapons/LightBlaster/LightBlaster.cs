@@ -27,12 +27,12 @@ public class LightBlaster : WeaponBase
         addDamage = 0;
 
         // Initialisation des upgrades possibles
-        // string pieceName, string upgradeName, float cooldown, Color color, int intensity, int damage
+        // string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
-            new Upgrade("LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0),
-            new Upgrade("LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2),
-            new Upgrade("LightBlaster","Intensity Boost", 0f, new Color(50,0,0), 2, 0)
+            new Upgrade("LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
+            new Upgrade("LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("LightBlaster","Intensity Boost", 0f, new Color(50,0,0), 2, 0, 0, 0,"La lumiere c'est important !")
         };
     }
 

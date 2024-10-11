@@ -259,7 +259,6 @@ public class Player_controler : MonoBehaviour
 
     public void LevelUp()
     {
-        Debug.Log("LevelUp");
         upgraded = true;
     }
 

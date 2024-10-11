@@ -17,6 +17,9 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] public TMP_Text Description1Text;             
     [SerializeField] public TMP_Text Description2Text;             
     [SerializeField] public TMP_Text Description3Text;          
+    [SerializeField] public TMP_Text WeaponName1Text;             
+    [SerializeField] public TMP_Text WeaponName2Text;             
+    [SerializeField] public TMP_Text WeaponName3Text;   
     
     [HideInInspector] public GameObject Player;
 
@@ -77,6 +80,14 @@ public class UpgradeManager : MonoBehaviour
         Button1Text.text = upgrades[0].Name;
         Button2Text.text = upgrades[1].Name;
         Button3Text.text = upgrades[2].Name;
+
+        WeaponName1Text.text = upgrades[0].PieceName;
+        WeaponName2Text.text = upgrades[1].PieceName;
+        WeaponName3Text.text = upgrades[2].PieceName;
+
+        Description1Text.text = upgrades[0].Description;
+        Description2Text.text = upgrades[1].Description;
+        Description3Text.text = upgrades[2].Description;
 
         // Ajouter des listeners pour les boutons
         Button1.onClick.RemoveAllListeners();

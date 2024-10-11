@@ -36,6 +36,14 @@ public class BeamLaser : WeaponBase
         addIntensity = 8;
         addColor = new Color(191,47,7);
         ShootSoundInstance = RuntimeManager.CreateInstance(Shoot_soundEvent);
+
+        // Initialisation des upgrades possibles
+        // string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
+        availableUpgrades = new List<Upgrade>
+        {
+            new Upgrade("BeamLaser","Range Boost", 0f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
+            new Upgrade("BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2")
+        };
     }
 
     void Update()
@@ -147,39 +155,6 @@ public class BeamLaser : WeaponBase
         }
     }
 
-    public override void Upgrade()
-    {
-        Level += 1;
-        Debug.Log(gameObject.name + " Level : " + Level);
-        switch (Level)
-        {
-            case 1 :
-                hitCooldown -= 0.05f;
-                addIntensity = 8;
-                addSpeed = -1.5f;
-                addColor = new Color(200,47,7);
-                maxLaserDistance += 10;
-            break;
-            case 2 :
-                hitCooldown -= 0.05f;
-                addIntensity = 7;
-                addSpeed = -2f;
-                addColor = new Color(210,47,7);
-                maxLaserDistance += 10;
-            break;
-            case 3 :
-                hitCooldown -= 0.1f;
-                addIntensity = 6;
-                addSpeed = -2.5f;
-                damage += 1;
-                addColor = new Color(230,47,7);
-                maxLaserDistance += 10;
-            break;
-            default:
-            break;
-        }
-    }
-
     public override void PlayShootSound()
     {
         FMOD.Studio.PLAYBACK_STATE playbackState;
@@ -200,5 +175,12 @@ public class BeamLaser : WeaponBase
         {
             ShootSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }
+    }
+
+    // Appliquer l'upgrade
+    public override void ApplyUpgrade(Upgrade upgrade)
+    {
+        fireCooldown -= upgrade.fireCooldownReduction;
+        maxLaserDistance +=  upgrade.Range;
     }
 }

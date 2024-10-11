@@ -22,6 +22,15 @@ public class FlakCannon : WeaponBase
         Level = 0;
         addColor = new Color(0,0,0);
         addIntensity = 0;
+
+        // Initialisation des upgrades possibles
+        // string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
+        availableUpgrades = new List<Upgrade>
+        {
+            new Upgrade("FlakCannon","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
+            new Upgrade("FlakCannon","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("FlakCannon","Bullet number", 0f, new Color(0,0,0), 0, 0, 3, 0,"Bullet +3")
+        };
     }
 
     public override void Fire()
@@ -46,31 +55,12 @@ public class FlakCannon : WeaponBase
         }  
     }
 
-    public override void Upgrade()
+    // Appliquer l'upgrade
+    public override void ApplyUpgrade(Upgrade upgrade)
     {
-        Level += 1;
-        Debug.Log(gameObject.name + " Level : " + Level);
-        switch (Level)
-        {
-            case 1 :
-                fireCooldown -= 0.5f;
-                addColor = new Color(10,0,0);
-                bulletNumber += 3;
-            break;
-            case 2 :
-                fireCooldown -= 0.5f;
-                addColor = new Color(20,0,0);
-                addIntensity = 1;
-                bulletNumber += 4;
-            break;
-            case 3 :
-                fireCooldown -= 1f;
-                addColor = new Color(40,0,0);
-                addIntensity = 1.5f;
-                bulletNumber += 5;
-            break;
-            default:
-            break;
-        }
+        fireCooldown -= upgrade.fireCooldownReduction;
+        addColor += upgrade.colorBonus;
+        addIntensity += upgrade.intensityBonus;
+        bulletNumber += upgrade.BulletNumber;
     }
 }
