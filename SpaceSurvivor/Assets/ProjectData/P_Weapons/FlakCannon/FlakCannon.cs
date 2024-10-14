@@ -24,12 +24,12 @@ public class FlakCannon : WeaponBase
         addIntensity = 0;
 
         // Initialisation des upgrades possibles
-        // string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
+        // string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
-            new Upgrade("FlakCannon","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
-            new Upgrade("FlakCannon","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("FlakCannon","Bullet number", 0f, new Color(0,0,0), 0, 0, 3, 0,"Bullet +3")
+            new Upgrade("FCFireRateT1","FlakCannon","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
+            new Upgrade("FCDamageT1","FlakCannon","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("FCShotNumberT1","FlakCannon","Bullet number", 0f, new Color(0,0,0), 0, 0, 3, 0,"Bullet +3")
         };
     }
 
@@ -62,5 +62,27 @@ public class FlakCannon : WeaponBase
         addColor += upgrade.colorBonus;
         addIntensity += upgrade.intensityBonus;
         bulletNumber += upgrade.BulletNumber;
+
+        bool foundUpgrade = false;
+        string nextTierID = upgrade.ID.Substring(0, upgrade.ID.Length - 2) + "T" + (int.Parse(upgrade.ID.Substring(upgrade.ID.Length - 1)) + 1);
+
+        Upgrade upgradeTierToAdd = new Upgrade("","","", 0f, new Color(0,0,0), 0, 0, 0, 0,"");
+        foreach (Upgrade item in TierUpgrades)
+        {
+            if (item.ID == nextTierID)
+            {
+                upgradeTierToAdd = item;
+                foundUpgrade = true;
+                break;
+            }
+        }
+
+        if (foundUpgrade == true)
+        {
+            availableUpgrades.Add(upgradeTierToAdd);
+            Debug.Log("New upgrade added to pool : " + upgradeTierToAdd.ID);
+        }
+
+        availableUpgrades.RemoveAll(u => u.ID == upgrade.ID);
     }
 }

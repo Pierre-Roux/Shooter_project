@@ -20,6 +20,7 @@ public abstract class WeaponBase : MonoBehaviour
     [HideInInspector] public int Level;
     [HideInInspector] public FMOD.Studio.EventInstance ShootSoundInstance;
     [HideInInspector] public List<Upgrade> availableUpgrades;
+    [HideInInspector] public List<Upgrade> TierUpgrades;
 
     public abstract void Fire();
 

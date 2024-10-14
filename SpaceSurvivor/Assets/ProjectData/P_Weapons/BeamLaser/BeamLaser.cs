@@ -38,11 +38,11 @@ public class BeamLaser : WeaponBase
         ShootSoundInstance = RuntimeManager.CreateInstance(Shoot_soundEvent);
 
         // Initialisation des upgrades possibles
-        // string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
+        // string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
-            new Upgrade("BeamLaser","Range Boost", 0f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
-            new Upgrade("BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2")
+            new Upgrade("BLRangeT1","BeamLaser","Range Boost", 0f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
+            new Upgrade("BLDamageT1","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2")
         };
     }
 
@@ -182,5 +182,27 @@ public class BeamLaser : WeaponBase
     {
         fireCooldown -= upgrade.fireCooldownReduction;
         maxLaserDistance +=  upgrade.Range;
+
+        bool foundUpgrade = false;
+        string nextTierID = upgrade.ID.Substring(0, upgrade.ID.Length - 2) + "T" + (int.Parse(upgrade.ID.Substring(upgrade.ID.Length - 1)) + 1);
+
+        Upgrade upgradeTierToAdd = new Upgrade("","","", 0f, new Color(0,0,0), 0, 0, 0, 0,"");
+        foreach (Upgrade item in TierUpgrades)
+        {
+            if (item.ID == nextTierID)
+            {
+                upgradeTierToAdd = item;
+                foundUpgrade = true;
+                break;
+            }
+        }
+
+        if (foundUpgrade == true)
+        {
+            availableUpgrades.Add(upgradeTierToAdd);
+            Debug.Log("New upgrade added to pool : " + upgradeTierToAdd.ID);
+        }
+
+        availableUpgrades.RemoveAll(u => u.ID == upgrade.ID);
     }
 }

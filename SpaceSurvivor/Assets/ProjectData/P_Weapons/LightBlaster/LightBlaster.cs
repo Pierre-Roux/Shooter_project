@@ -15,6 +15,8 @@ public class LightBlaster : WeaponBase
     [HideInInspector] private Color addColor;
     [HideInInspector] private int addIntensity;
     [HideInInspector] private int addDamage;
+    [HideInInspector] private int NBShot;
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,14 +27,23 @@ public class LightBlaster : WeaponBase
         addColor = new Color(0,0,0);
         addIntensity = 0;
         addDamage = 0;
+        NBShot = 1;
 
         // Initialisation des upgrades possibles
-        // string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
+        // string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
-            new Upgrade("LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
-            new Upgrade("LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("LightBlaster","Intensity Boost", 0f, new Color(50,0,0), 2, 0, 0, 0,"La lumiere c'est important !")
+            new Upgrade("LBFireRateT1","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
+            new Upgrade("LBDamageT1","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("LBDoubleShotT1","LightBlaster","Double Shot", 0f, new Color(0,0,0), 0, 0, 1, 0,"2 times harder")
+        };
+
+        TierUpgrades = new List<Upgrade>
+        {
+            new Upgrade("LBFireRateT2","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
+            new Upgrade("LBDamageT2","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("LBDoubleShotT2","LightBlaster","Triple Shot", 0f, new Color(0,0,0), 0, 0, 2, 0,"3 times harder"),
+            new Upgrade("LBDoubleShotT3","LightBlaster","Quad Shot", 0f, new Color(0,0,0), 0, 0, 3, 0,"4 times harder")
         };
     }
 
@@ -40,37 +51,93 @@ public class LightBlaster : WeaponBase
     {
         if (Time.time >= lastFireTime + fireCooldown)
         {
+            PlayShootSound();
+
             if (ShootedRight)
             {
-                PlayShootSound();
-                GameObject bullet = Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
-                bullet.GetComponent<Rigidbody2D>().AddForce(firepoint1.up * fireForce,ForceMode2D.Impulse);
-                bullet.GetComponent<Light2D>().color += addColor;
-                bullet.GetComponent<Light2D>().intensity += addIntensity;
-                ShootedRight = false; 
+                ShootBullets(firepoint1);
+                ShootedRight = false;
             }
             else
             {
-                PlayShootSound();
-                GameObject bullet = Instantiate(bulletPrefab, firepoint2.position, firepoint2.rotation);
-                bullet.GetComponent<Rigidbody2D>().AddForce(firepoint2.up * fireForce,ForceMode2D.Impulse);
-                bullet.GetComponent<Light2D>().color += addColor;
-                bullet.GetComponent<Light2D>().intensity += addIntensity;
-                bullet.GetComponent<PlayerBulletBase>().damage += addDamage;
+                ShootBullets(firepoint2);
                 ShootedRight = true;
             }
 
             lastFireTime = Time.time;
-        }        
+        }     
+    }
+
+    private void ShootBullets(Transform firepoint)
+    {
+        float offsetAmount = 0.5f;
+
+        if (NBShot == 4)
+        {
+            InstantiateBullet(firepoint, firepoint.right * offsetAmount);
+            InstantiateBullet(firepoint, -firepoint.right * offsetAmount);
+            InstantiateBullet(firepoint, firepoint.right * (offsetAmount /2.5f));
+            InstantiateBullet(firepoint, -firepoint.right *(offsetAmount /2.5f));
+        }
+        else if (NBShot == 3)
+        {
+            InstantiateBullet(firepoint, firepoint.right * offsetAmount);
+            InstantiateBullet(firepoint, -firepoint.right * offsetAmount);
+            InstantiateBullet(firepoint, Vector3.zero);
+        }
+        else if (NBShot == 2)
+        {
+            InstantiateBullet(firepoint, firepoint.right * offsetAmount);
+            InstantiateBullet(firepoint, -firepoint.right * offsetAmount);
+        }
+        else
+        {
+            InstantiateBullet(firepoint, Vector3.zero);
+        }
+    }
+
+    public void InstantiateBullet(Transform firepoint, Vector3 offset)
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firepoint.position + offset, firepoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up  * fireForce,ForceMode2D.Impulse);
+        bullet.GetComponent<Light2D>().color += addColor;
+        bullet.GetComponent<Light2D>().intensity += addIntensity;
+        bullet.GetComponent<PlayerBulletBase>().damage += addDamage;
     }
 
     // Appliquer l'upgrade
     public override void ApplyUpgrade(Upgrade upgrade)
     {
+
         fireCooldown -= upgrade.fireCooldownReduction;
         addColor += upgrade.colorBonus;
         addIntensity += upgrade.intensityBonus;
         addDamage += upgrade.damageBonus;
-    }
+        if (upgrade.BulletNumber != 0)
+        {
+            NBShot = upgrade.BulletNumber + 1;
+        }
 
+        bool foundUpgrade = false;
+        string nextTierID = upgrade.ID.Substring(0, upgrade.ID.Length - 2) + "T" + (int.Parse(upgrade.ID.Substring(upgrade.ID.Length - 1)) + 1);
+
+        Upgrade upgradeTierToAdd = new Upgrade("","","", 0f, new Color(0,0,0), 0, 0, 0, 0,"");
+        foreach (Upgrade item in TierUpgrades)
+        {
+            if (item.ID == nextTierID)
+            {
+                upgradeTierToAdd = item;
+                foundUpgrade = true;
+                break;
+            }
+        }
+
+        if (foundUpgrade == true)
+        {
+            availableUpgrades.Add(upgradeTierToAdd);
+            Debug.Log("New upgrade added to pool : " + upgradeTierToAdd.ID);
+        }
+
+        availableUpgrades.RemoveAll(u => u.ID == upgrade.ID);
+    }
 }

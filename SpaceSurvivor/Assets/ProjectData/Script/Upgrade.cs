@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
+    public string ID;
     public string PieceName;
     public string Name;
     public string Description;
@@ -14,8 +15,9 @@ public class Upgrade : MonoBehaviour
     public int BulletNumber;
     public int Range;
 
-    public Upgrade(string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description)
+    public Upgrade(string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description)
     {
+        ID = Identifier;
         PieceName = pieceName;
         Name = name;
         fireCooldownReduction = cooldown;

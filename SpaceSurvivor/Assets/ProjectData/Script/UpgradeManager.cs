@@ -76,27 +76,87 @@ public class UpgradeManager : MonoBehaviour
 
     public void DisplayUpgrades(List<Upgrade> upgrades)
     {
-        // Mettre à jour les textes des boutons avec les noms des upgrades
-        Button1Text.text = upgrades[0].Name;
-        Button2Text.text = upgrades[1].Name;
-        Button3Text.text = upgrades[2].Name;
+        RectTransform ButtonTransform1 = Button1.GetComponent<RectTransform>();
+        RectTransform ButtonTransform2 = Button2.GetComponent<RectTransform>();
+        RectTransform ButtonTransform3 = Button3.GetComponent<RectTransform>();
 
-        WeaponName1Text.text = upgrades[0].PieceName;
-        WeaponName2Text.text = upgrades[1].PieceName;
-        WeaponName3Text.text = upgrades[2].PieceName;
+        int upgradeCount = upgrades.Count;
+        switch (upgradeCount)
+        {
+            case 1:
+                Button2.gameObject.SetActive(false);
+                Button3.gameObject.SetActive(false);
 
-        Description1Text.text = upgrades[0].Description;
-        Description2Text.text = upgrades[1].Description;
-        Description3Text.text = upgrades[2].Description;
+                Button1Text.text = upgrades[0].Name;
 
-        // Ajouter des listeners pour les boutons
-        Button1.onClick.RemoveAllListeners();
-        Button2.onClick.RemoveAllListeners();
-        Button3.onClick.RemoveAllListeners();
+                WeaponName1Text.text = upgrades[0].PieceName;
 
-        Button1.onClick.AddListener(() => MakeUpgrade(upgrades[0], upgrades[0].PieceName));
-        Button2.onClick.AddListener(() => MakeUpgrade(upgrades[1], upgrades[1].PieceName));
-        Button3.onClick.AddListener(() => MakeUpgrade(upgrades[2], upgrades[2].PieceName));
+                Description1Text.text = upgrades[0].Description;
+
+                // Ajouter des listeners pour les boutons
+                Button1.onClick.RemoveAllListeners();
+
+                Button1.onClick.AddListener(() => MakeUpgrade(upgrades[0], upgrades[0].PieceName));
+
+                ButtonTransform1.anchoredPosition = new Vector2(0, -55);
+
+                break;
+            case 2:
+                Button2.gameObject.SetActive(true);
+                Button3.gameObject.SetActive(false);
+
+                Button1Text.text = upgrades[0].Name;
+                Button2Text.text = upgrades[1].Name;
+
+                WeaponName1Text.text = upgrades[0].PieceName;
+                WeaponName2Text.text = upgrades[1].PieceName;
+
+                Description1Text.text = upgrades[0].Description;
+                Description2Text.text = upgrades[1].Description;
+
+                // Ajouter des listeners pour les boutons
+                Button1.onClick.RemoveAllListeners();
+                Button2.onClick.RemoveAllListeners();
+
+                Button1.onClick.AddListener(() => MakeUpgrade(upgrades[0], upgrades[0].PieceName));
+                Button2.onClick.AddListener(() => MakeUpgrade(upgrades[1], upgrades[1].PieceName));
+
+                ButtonTransform1.anchoredPosition = new Vector2(-280, -55);
+                ButtonTransform2.anchoredPosition = new Vector2(280, -55);
+
+                break;
+            default:
+                Button2.gameObject.SetActive(true);
+                Button3.gameObject.SetActive(true);
+
+                Button1Text.text = upgrades[0].Name;
+                Button2Text.text = upgrades[1].Name;
+                Button3Text.text = upgrades[2].Name;
+
+                WeaponName1Text.text = upgrades[0].PieceName;
+                WeaponName2Text.text = upgrades[1].PieceName;
+                WeaponName3Text.text = upgrades[2].PieceName;
+
+                Description1Text.text = upgrades[0].Description;
+                Description2Text.text = upgrades[1].Description;
+                Description3Text.text = upgrades[2].Description;
+
+                // Ajouter des listeners pour les boutons
+                Button1.onClick.RemoveAllListeners();
+                Button2.onClick.RemoveAllListeners();
+                Button3.onClick.RemoveAllListeners();
+
+                Button1.onClick.AddListener(() => MakeUpgrade(upgrades[0], upgrades[0].PieceName));
+                Button2.onClick.AddListener(() => MakeUpgrade(upgrades[1], upgrades[1].PieceName));
+                Button3.onClick.AddListener(() => MakeUpgrade(upgrades[2], upgrades[2].PieceName));
+
+                // Positionner les trois boutons de manière équilibrée
+                ButtonTransform1.anchoredPosition = new Vector2(-560, -55);
+                ButtonTransform2.anchoredPosition = new Vector2(0, -55);
+                ButtonTransform3.anchoredPosition = new Vector2(560, -55);
+
+                break;
+        }
     }
 
     public void MakeUpgrade(Upgrade selectedUpgrade, string weaponName)
