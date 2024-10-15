@@ -45,10 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e074a228b52cdb4d8363decead548f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastFireTime: 0
-  hasLineOfSight: 0
-  rb: {fileID: 0}
-  Level: 0
   Shoot_soundEvent:
     Guid:
       Data1: 1056941103
@@ -56,11 +52,17 @@ MonoBehaviour:
       Data3: -448847
       Data4: -1212864075
     Path: event:/Guns/flak
-  bulletPrefab: {fileID: 7277215954410707442, guid: 19d4d53597e2c1d488cde7832d393708, type: 3}
   fireCooldown: 4
-  fireForce: 10
-  firepoint1: {fileID: 4073449579218811560}
+  fireForce: 20
+  bulletPrefab: {fileID: 7277215954410707442, guid: 19d4d53597e2c1d488cde7832d393708, type: 3}
+  lastFireTime: 0
+  hasLineOfSight: 0
+  rb: {fileID: 0}
+  Level: 0
+  availableUpgrades: []
+  TierUpgrades: []
   bulletNumber: 15
+  firepoint1: {fileID: 4073449579218811560}
 --- !u!1 &7872786655625266869
 GameObject:
   m_ObjectHideFlags: 0

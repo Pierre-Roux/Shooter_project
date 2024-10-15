@@ -11,6 +11,9 @@ public class LightBlaster : WeaponBase
     [SerializeField] public Transform firepoint1;
     [SerializeField] public Transform firepoint2;
 
+    [HideInInspector] public int SplitShot;
+    [HideInInspector] public int HomingShot;
+
     [HideInInspector] private Boolean ShootedRight;
     [HideInInspector] private Color addColor;
     [HideInInspector] private int addIntensity;
@@ -28,14 +31,18 @@ public class LightBlaster : WeaponBase
         addIntensity = 0;
         addDamage = 0;
         NBShot = 1;
+        SplitShot = 0;
+        HomingShot = 0;
 
         // Initialisation des upgrades possibles
         // string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
-            new Upgrade("LBFireRateT1","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
-            new Upgrade("LBDamageT1","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("LBDoubleShotT1","LightBlaster","Double Shot", 0f, new Color(0,0,0), 0, 0, 1, 0,"2 times harder")
+            //new Upgrade("LBFireRateT1","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
+            //new Upgrade("LBDamageT1","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("LBDoubleShotT1","LightBlaster","Double Shot", 0f, new Color(0,0,0), 0, 0, 1, 0,"2 times harder"),
+            new Upgrade("LBSpliShotT1","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"2 shards"),
+            new Upgrade("LBHomingShotT1","LightBlaster","Homing Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Low Following bullets")
         };
 
         TierUpgrades = new List<Upgrade>
@@ -43,7 +50,11 @@ public class LightBlaster : WeaponBase
             new Upgrade("LBFireRateT2","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
             new Upgrade("LBDamageT2","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
             new Upgrade("LBDoubleShotT2","LightBlaster","Triple Shot", 0f, new Color(0,0,0), 0, 0, 2, 0,"3 times harder"),
-            new Upgrade("LBDoubleShotT3","LightBlaster","Quad Shot", 0f, new Color(0,0,0), 0, 0, 3, 0,"4 times harder")
+            new Upgrade("LBDoubleShotT3","LightBlaster","Quad Shot", 0f, new Color(0,0,0), 0, 0, 3, 0,"4 times harder"),
+            new Upgrade("LBSpliShotT2","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"3 shards"),
+            new Upgrade("LBSpliShotT3","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"4 shards"),
+            new Upgrade("LBHomingShotT2","LightBlaster","Homing Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Medium Following bullets"),
+            new Upgrade("LBHomingShotT3","LightBlaster","Homing Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Hard Following bullets")
         };
     }
 
@@ -103,6 +114,9 @@ public class LightBlaster : WeaponBase
         bullet.GetComponent<Light2D>().color += addColor;
         bullet.GetComponent<Light2D>().intensity += addIntensity;
         bullet.GetComponent<PlayerBulletBase>().damage += addDamage;
+        B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
+        BulletBehavior.SplitShot = SplitShot;
+        BulletBehavior.HomingShot = HomingShot;
     }
 
     // Appliquer l'upgrade
@@ -116,6 +130,32 @@ public class LightBlaster : WeaponBase
         if (upgrade.BulletNumber != 0)
         {
             NBShot = upgrade.BulletNumber + 1;
+        }
+
+        if (upgrade.ID == "LBSpliShotT1")
+        {
+            SplitShot = 1;
+        }
+        else if (upgrade.ID == "LBSpliShotT2")
+        {
+            SplitShot = 2;
+        }
+        else if (upgrade.ID == "LBSpliShotT3")
+        {
+            SplitShot = 3;
+        }
+
+        if (upgrade.ID == "LBHomingShotT1")
+        {
+            HomingShot = 1;
+        }
+        else if (upgrade.ID == "LBHomingShotT2")
+        {
+            HomingShot = 2;
+        }
+        else if (upgrade.ID == "LBHomingShotT3")
+        {
+            HomingShot = 3;
         }
 
         bool foundUpgrade = false;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletBase : MonoBehaviour
+public class EBulletBase : MonoBehaviour
 {
 [Header("Base_Param")] 
     [SerializeField] public int damage;

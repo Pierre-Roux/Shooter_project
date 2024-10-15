@@ -301,18 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96820e4c179f9e546b76371a24dcbca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalSpeed: 1.5
-  weapon: {fileID: 0}
-  particlePrefab: {fileID: 6920372984886411168, guid: 6ea5c27a5d6d8714d85eee2bed0df350, type: 3}
-  Particle_spawn_point: {fileID: 597433960201613068}
-  health: 50
-  maxHealth: 50
-  XP: 0
-  maxXP: 10
-  playerMort: 0
-  weapons: []
-  GlowIntensity: 10
-  upgraded: 0
   engine_soundEvent:
     Guid:
       Data1: -1191421496
@@ -327,6 +315,17 @@ MonoBehaviour:
       Data3: -666373990
       Data4: 972770947
     Path: event:/Engine
+  globalSpeed: 2
+  GlowIntensity: 10
+  maxHealth: 50
+  maxXP: 10
+  particlePrefab: {fileID: 6920372984886411168, guid: 6ea5c27a5d6d8714d85eee2bed0df350, type: 3}
+  Particle_spawn_point: {fileID: 597433960201613068}
+  health: 50
+  XP: 0
+  weapons: []
+  playerMort: 0
+  upgraded: 0
 --- !u!212 &808367282721455904
 SpriteRenderer:
   m_ObjectHideFlags: 0

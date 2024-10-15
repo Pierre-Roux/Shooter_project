@@ -35,4 +35,6 @@ public class PlayerBulletBase : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 }
