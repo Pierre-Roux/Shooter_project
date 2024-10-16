@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class B_LightBlaster_Behavior : MonoBehaviour
 {
-
+    [SerializeField] public float Speed;
+    [SerializeField] public float steerForce;
     [SerializeField] public float fireForce;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public Transform firepoint;
@@ -15,49 +17,42 @@ public class B_LightBlaster_Behavior : MonoBehaviour
 
     [HideInInspector] private EnemyBase HomingtargetEnemy;  // Ennemi ciblé
     [HideInInspector] private Rigidbody2D rb;
-    [HideInInspector] private Vector2 moveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();  // Récupérer le Rigidbody2D du projectile
-        fireForce = 10;
+        steerForce = 0f;
+        fireForce = 10f;
+
+        switch (HomingShot)
+        {
+        case 1:
+            HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 15f;
+            steerForce = 100f;
+        break;
+        case 2:
+            HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 30f;
+            steerForce = 200f;
+        break;
+        case 3:
+            HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 50f;
+            steerForce = 250f;
+        break;
+        default:
+        break;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HomingtargetEnemy != null && HomingShot > 0 && HomingShot < 4)
-        {
-            switch (HomingShot)
-            {
-            case 1:
-                HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 10f;
-            break;
-            case 2:
-                HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 15f;
-            break;
-            case 3:
-                HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 20f;
-            break;
-            }
-
-        }
-
         if (HomingtargetEnemy != null && HomingShot > 0)
         {
-            Debug.Log("coucou");
+            rb.velocity = transform.up * Speed;
             Vector2 direction = (HomingtargetEnemy.transform.position - transform.position).normalized;
-            moveDirection = direction;
-
-            float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle - 90);
-            float rotationSpeed = 2f;
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-            // Appliquer une force constante dans la direction du mouvement
-            rb.velocity = moveDirection * fireForce;
-        
+            float rotationSteer = Vector3.Cross(transform.up, direction).z;
+            rb.angularVelocity = rotationSteer * steerForce;
         }
     }
 

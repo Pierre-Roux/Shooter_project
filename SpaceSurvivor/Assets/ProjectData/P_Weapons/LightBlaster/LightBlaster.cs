@@ -115,6 +115,7 @@ public class LightBlaster : WeaponBase
         bullet.GetComponent<Light2D>().intensity += addIntensity;
         bullet.GetComponent<PlayerBulletBase>().damage += addDamage;
         B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
+        BulletBehavior.Speed = fireForce;
         BulletBehavior.SplitShot = SplitShot;
         BulletBehavior.HomingShot = HomingShot;
     }
