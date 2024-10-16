@@ -26,10 +26,13 @@ public abstract class EnemyBase : MonoBehaviour
     [HideInInspector] public GameObject target;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public WeaponBase[] weapons;
+    [HideInInspector] public float checkInterval = 0.2f;  // Temps entre chaque appel du calcul du lign of sight
+    [HideInInspector] public float checkTimer = 0;
+    [HideInInspector] public float DistanceCheck = 500f; // Distance de check du lign of sight
     
     [HideInInspector] private float GlowDuration = 0.1f;
     [HideInInspector] private float initialIntensity;
-    [HideInInspector] private float initialRadius;
+
     
     public virtual void TakeDamage(int damageAmount)
     {
@@ -69,7 +72,6 @@ public abstract class EnemyBase : MonoBehaviour
         target = Player_controler.Instance.gameObject; 
         weapons = GetComponentsInChildren<WeaponBase>();
         initialIntensity = GetComponent<Light2D>().intensity;
-        initialRadius = GetComponent<Light2D>().pointLightOuterRadius;
     }
 
     public virtual void CalculateLineOfSight(float large)
@@ -96,7 +98,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         //For debug
-        
+        /*
         if (hasLineOfSight)
         {
             Debug.DrawLine(transform.position, target.transform.position, Color.green);
@@ -105,6 +107,7 @@ public abstract class EnemyBase : MonoBehaviour
         {
             Debug.DrawLine(transform.position, target.transform.position,Color.red);
         }
+        */
     }
 
     public virtual void LookPlayer()

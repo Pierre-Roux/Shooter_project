@@ -45,7 +45,7 @@ public class B_LightBlaster_Behavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (HomingtargetEnemy != null && HomingShot > 0)
         {
@@ -63,6 +63,7 @@ public class B_LightBlaster_Behavior : MonoBehaviour
             if (HomingtargetEnemy == null)
             {
                 HomingtargetEnemy = coll.GetComponent<EnemyBase>();  // Détecter et stocker la cible
+                //HomingColliderGameObject.GetComponent<CircleCollider2D>().enabled = false;
             }
         }
     }

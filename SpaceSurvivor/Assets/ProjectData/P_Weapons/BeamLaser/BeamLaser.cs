@@ -46,7 +46,7 @@ public class BeamLaser : WeaponBase
         };
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // Continuously update the laser position if firing
         if (isFiring)

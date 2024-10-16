@@ -22,7 +22,7 @@ public class WormScript : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         path.maxSpeed = speed;
 

@@ -21,7 +21,7 @@ public class Light_Rusher : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         path.maxSpeed = speed;
 

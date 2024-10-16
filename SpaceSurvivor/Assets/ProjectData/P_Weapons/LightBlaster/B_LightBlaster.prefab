@@ -44,7 +44,7 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2304
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -57,7 +57,7 @@ CircleCollider2D:
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2304
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -215,6 +215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6d574e68b3dbb4b8935b81e56522be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
+  steerForce: 0
   fireForce: 10
   bulletPrefab: {fileID: 7751217143057044998, guid: 25dfa92a28b052543822ec419430542d, type: 3}
   firepoint: {fileID: 8098649709499128912}
@@ -260,17 +262,17 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2304
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 5768
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 2047
+    m_Bits: 384
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 1791
+    m_Bits: 0
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295

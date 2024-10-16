@@ -39,9 +39,9 @@ public class LightBlaster : WeaponBase
         availableUpgrades = new List<Upgrade>
         {
             new Upgrade("LBFireRateT1","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
-            new Upgrade("LBDamageT1","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            //new Upgrade("LBDamageT1","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
             new Upgrade("LBDoubleShotT1","LightBlaster","Double Shot", 0f, new Color(0,0,0), 0, 0, 1, 0,"2 times harder"),
-            new Upgrade("LBSpliShotT1","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"2 shards"),
+            //new Upgrade("LBSpliShotT1","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"2 shards"),
             new Upgrade("LBHomingShotT1","LightBlaster","Homing Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Low Following bullets")
         };
 
@@ -176,7 +176,6 @@ public class LightBlaster : WeaponBase
         if (foundUpgrade == true)
         {
             availableUpgrades.Add(upgradeTierToAdd);
-            Debug.Log("New upgrade added to pool : " + upgradeTierToAdd.ID);
         }
 
         availableUpgrades.RemoveAll(u => u.ID == upgrade.ID);

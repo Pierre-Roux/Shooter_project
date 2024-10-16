@@ -15,9 +15,17 @@ public class BodyPartScript : EnemyBase
         lastAttackTime = -attackCooldown; 
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        CalculateLineOfSight(1f);
+        //if (Vector2.Distance(transform.position, target.transform.position) < DistanceCheck)  // Seulement si à portée
+        {
+            checkTimer += Time.fixedDeltaTime;
+            if (checkTimer >= checkInterval)
+            {
+                checkTimer = 0;
+                CalculateLineOfSight(1f);
+            }
+        }
 
         // Weapon block if ligneofsight
         if (hasLineOfSight)

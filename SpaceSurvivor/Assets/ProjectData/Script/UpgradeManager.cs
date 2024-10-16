@@ -30,7 +30,7 @@ public class UpgradeManager : MonoBehaviour
         Player = Player_controler.Instance.gameObject; 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Player.GetComponent<Player_controler>().upgraded)
         {

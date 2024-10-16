@@ -27,7 +27,7 @@ public class Burst_Spawner : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         spawn();
     }

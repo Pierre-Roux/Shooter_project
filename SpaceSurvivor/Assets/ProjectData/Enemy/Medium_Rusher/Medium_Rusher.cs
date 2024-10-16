@@ -34,11 +34,19 @@ public class Medium_Rusher : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Etat == "Following")
         {
-            CalculateLineOfSight(0.5f);
+            //if (Vector2.Distance(transform.position, target.transform.position) < DistanceCheck)  // Seulement si à portée
+            {
+                checkTimer += Time.fixedDeltaTime;
+                if (checkTimer >= checkInterval)
+                {
+                    checkTimer = 0;
+                    CalculateLineOfSight(0.5f);
+                }
+            }
 
             path.maxSpeed = speed;
 

@@ -21,7 +21,7 @@ public class Contnuous_Spawner : EnemyBase
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         spawn();
     }

@@ -19,12 +19,21 @@ public class Light_Fighter : EnemyBase
     void Start()
     {
         path = GetComponent<AIPath>();
+        hasLineOfSight = false;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        CalculateLineOfSight(1f);
+        //if (Vector2.Distance(transform.position, target.transform.position) < DistanceCheck)  // Seulement si à portée
+        {
+            checkTimer += Time.fixedDeltaTime;
+            if (checkTimer >= checkInterval)
+            {
+                checkTimer = 0;
+                CalculateLineOfSight(1.5f);
+            }
+        }
 
         // Weapon block if ligneofsight
         if (hasLineOfSight)
