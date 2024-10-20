@@ -9,6 +9,7 @@ TagManager:
   - EnemyBullet
   - Obstacle
   - XP
+  - ReactivationCollider
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - EnemyBullets
   - FixEnemy
   - XP
-  - 
-  - 
+  - Reactivation unit
+  - Reactivation Collide
   - 
   - 
   - 
@@ -43,6 +44,27 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2873484669
+    locked: 0
+  - name: Obstacles
+    uniqueID: 788132627
+    locked: 0
+  - name: Player
+    uniqueID: 2869937269
+    locked: 0
+  - name: Enemy
+    uniqueID: 1019605833
+    locked: 0
+  - name: Parts
+    uniqueID: 1279799963
+    locked: 0
+  - name: Bullets
+    uniqueID: 2367326323
+    locked: 0
+  - name: Loot
+    uniqueID: 1769523981
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
