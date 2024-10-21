@@ -35,20 +35,6 @@ public abstract class EnemyBase : MonoBehaviour
     [HideInInspector] private float GlowDuration = 0.1f;
     [HideInInspector] private float initialIntensity;
 
-    public virtual void TakeDamage(int damageAmount)
-    {
-        health -= damageAmount;
-        if (health <= 0)
-        {
-            IsDead = true;
-            Die();
-        }
-        else
-        {
-            StartCoroutine(GlowOnHit());
-        }
-    }
-
     public virtual void Die()
     {
         for (int i = 0; i < small_XP_Reward; i++)
@@ -93,6 +79,25 @@ public abstract class EnemyBase : MonoBehaviour
     {
         // Instancier une ReactivationUnit à la position actuelle de l'ennemi
         Instantiate(reactivationUnitPrefab, transform.position, Quaternion.identity).GetComponent<ReactivationUnit>().enemyToReactivate = this;
+    }
+
+    public virtual void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        if (health <= 0)
+        {
+            IsDead = true;
+            Die();
+        }
+        else
+        {
+            StartCoroutine(GlowOnHit());
+        }
+    }
+
+    public virtual void TakeSlow(int SlowAmount)
+    {
+        StartCoroutine(SlowEffect(SlowAmount));
     }
 
     public virtual void CalculateLineOfSight(float large)
@@ -156,5 +161,13 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity + " Objective : " + GetComponent<Light2D>().pointLightOuterRadius);
+    }
+
+    IEnumerator SlowEffect(int SlowAmount)
+    {
+        float oldspeed = speed;
+        speed = speed * SlowAmount /100;
+        yield return new WaitForSeconds(2.00f);
+        speed = oldspeed;
     }
 }

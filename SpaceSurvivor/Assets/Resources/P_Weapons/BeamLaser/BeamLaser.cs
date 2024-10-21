@@ -10,6 +10,7 @@ public class BeamLaser : WeaponBase
     [SerializeField] public float maxLaserDistance;
     [SerializeField] public float hitCooldown;
     [SerializeField] public int damage;
+    [SerializeField] public int SlowAmount;
 [Header("Other")] 
     [SerializeField] public Transform firepoint;
     [SerializeField] public LineRenderer lineRenderer; 
@@ -36,13 +37,25 @@ public class BeamLaser : WeaponBase
         addIntensity = 8;
         addColor = new Color(191,47,7);
         ShootSoundInstance = RuntimeManager.CreateInstance(Shoot_soundEvent);
+        SlowAmount = 0;
 
         // Initialisation des upgrades possibles
         // string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
             new Upgrade("BLRangeT1","BeamLaser","Range Boost", 0f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
-            new Upgrade("BLDamageT1","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2")
+            new Upgrade("BLDamageT1","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("BLSlowT1","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 2, 0, 0,"Slow 30%")
+        };
+
+        TierUpgrades = new List<Upgrade>
+        {
+            new Upgrade("BLRangeT2","BeamLaser","Range Boost", 0.05f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
+            new Upgrade("BLDamageT2","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("BLSlowT2","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 0, 0, 0,"Slow 50%"),
+            new Upgrade("BLRangeT3","BeamLaser","Range Boost", 0.05f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
+            new Upgrade("BLDamageT3","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
+            new Upgrade("BLSlowT3","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 0, 0, 0,"Slow 80%"),
         };
     }
 
@@ -118,6 +131,10 @@ public class BeamLaser : WeaponBase
                         if (Enemy != null)
                         {
                             Enemy.TakeDamage(damage);
+                            if (SlowAmount > 0)
+                            {
+                                Enemy.TakeSlow(SlowAmount);
+                            }
                             lastFireTime = Time.time;
                         }
                     }
@@ -182,6 +199,20 @@ public class BeamLaser : WeaponBase
     {
         fireCooldown -= upgrade.fireCooldownReduction;
         maxLaserDistance +=  upgrade.Range;
+
+        if (upgrade.ID == "BLSlowT1")
+        {
+            SlowAmount = 70;
+        }
+        else if (upgrade.ID == "BLSlowT2")
+        {
+            SlowAmount = 50;
+        }
+        else if (upgrade.ID == "BLSlowT3")
+        {
+            SlowAmount = 20;
+        }
+
 
         bool foundUpgrade = false;
         string nextTierID = upgrade.ID.Substring(0, upgrade.ID.Length - 2) + "T" + (int.Parse(upgrade.ID.Substring(upgrade.ID.Length - 1)) + 1);
