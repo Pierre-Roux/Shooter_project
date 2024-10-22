@@ -21,6 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] public int Medium_XP_Reward;
     [SerializeField] public int Large_XP_Reward;
 [Header("Other")]
+    [SerializeField] public int unitPowerMesure;
     [SerializeField] public GameObject reactivationUnitPrefab;
     [SerializeField] public float deactivationDistance;
     [HideInInspector] public bool IsDead;
@@ -67,7 +68,7 @@ public abstract class EnemyBase : MonoBehaviour
             target = Player_controler.Instance.gameObject; 
         }
 
-        deactivationDistance = 80f; // Variable de distance de disparition de l'ennemi, obligatoirement 80 ou plus
+        deactivationDistance = 160f; // Variable de distance de disparition de l'ennemi, obligatoirement 160 ou plus
         if (Vector2.Distance(transform.position, target.transform.position) > deactivationDistance)
         {
             CreateReactivationUnit();

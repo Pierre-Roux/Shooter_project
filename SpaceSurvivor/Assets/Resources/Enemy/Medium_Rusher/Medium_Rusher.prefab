@@ -61,7 +61,9 @@ MonoBehaviour:
   small_XP_Reward: 0
   Medium_XP_Reward: 1
   Large_XP_Reward: 0
+  unitPowerMesure: 4
   reactivationUnitPrefab: {fileID: 2172597101631556622, guid: bcddcd6f83adc05438caef76817ac2ce, type: 3}
+  deactivationDistance: 0
   IsDead: 0
   hasLineOfSight: 0
   target: {fileID: 0}
