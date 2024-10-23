@@ -20,6 +20,7 @@ public class PlayerBulletBase : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
+            Debug.Log("Contact");
             enemy = coll.gameObject.GetComponent<EnemyBase>();
             if (enemy != null)
             {

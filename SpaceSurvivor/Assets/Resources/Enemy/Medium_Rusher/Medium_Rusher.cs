@@ -136,6 +136,9 @@ public class Medium_Rusher : EnemyBase
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         dashDirection = (target.transform.position - transform.position).normalized;
 
+        int layerMask = LayerMask.GetMask("Enemy", "Obstacle");
+        GetComponent<CapsuleCollider2D>().forceReceiveLayers = layerMask;
+
         // 2ème partie : Appliquer une force pour le dash
         rb.velocity = Vector2.zero;
         rb.AddForce(dashDirection * dashSpeed, ForceMode2D.Impulse);

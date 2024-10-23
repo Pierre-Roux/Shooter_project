@@ -287,7 +287,7 @@ MonoBehaviour:
     mode: 2
     period: NaN
     sensitivity: 10
-    maximumPeriod: 5
+    maximumPeriod: 2
     visualizeSensitivity: 0
   targetCompatibility: {fileID: 0}
   maxAcceleration: -2.5

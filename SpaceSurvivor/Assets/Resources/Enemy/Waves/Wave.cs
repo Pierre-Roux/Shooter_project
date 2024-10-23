@@ -78,4 +78,12 @@ public class Wave : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos()
+    {
+        // Configure la couleur du Gizmo
+        Gizmos.color = Color.cyan;
+        // Dessine un cercle pour représenter la distance de spawn
+        Gizmos.DrawWireSphere(transform.position, GetComponent<CircleCollider2D>().radius);
+    }
+
 }

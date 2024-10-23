@@ -101,6 +101,8 @@ public class Player_controler : MonoBehaviour
             {
                 weapon.CancelFire();
             }
+            StopTurboSound();
+            StopEngineSound();
             playerMort = true;
             rb.constraints = RigidbodyConstraints2D.None;
         }
