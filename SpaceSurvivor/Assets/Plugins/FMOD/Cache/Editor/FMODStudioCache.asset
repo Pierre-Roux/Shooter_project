@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8530243772896321577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Spaceship.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Resources/Audio/Desktop/Spaceship.bank
+  Name: Spaceship
+  StudioPath: bank:/Spaceship
+  lastModified: 638653802625364085
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-8259330758710388420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19,7 +37,7 @@ MonoBehaviour:
     Data3: 1193924746
     Data4: 485612282
   Banks:
-  - {fileID: -4992985335893082689}
+  - {fileID: -7718702125398022233}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -27,27 +45,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 351
---- !u!114 &-7369482969482144568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/ProjectData/Audio/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638614040258687672
-  FileSizes:
-  - Name: 
-    Value: 1162
-  Exists: 1
---- !u!114 &-4992985335893082689
+--- !u!114 &-7718702125398022233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,12 +57,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Experience.bank
   m_EditorClassIdentifier: 
-  Path: Assets/ProjectData/Audio/Desktop/Experience.bank
+  Path: Assets/Resources/Audio/Desktop/Experience.bank
   Name: Experience
   StudioPath: bank:/Experience
-  lastModified: 638614040258212132
+  lastModified: 638653802624571966
   FileSizes: []
   Exists: 1
+--- !u!114 &-7631102742811644854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Turbo
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Turbo
+  Guid:
+    Data1: -2053462548
+    Data2: 1326039848
+    Data3: 554097855
+    Data4: -1649593554
+  Banks:
+  - {fileID: -8530243772896321577}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 23000
 --- !u!114 &-4289659103439482139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,14 +109,14 @@ MonoBehaviour:
     Data3: -448847
     Data4: -1212864075
   Banks:
-  - {fileID: 3915666981828921394}
+  - {fileID: -3995641306782106142}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 1531
+  Length: 3000
 --- !u!114 &-4172183429488175569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +136,7 @@ MonoBehaviour:
     Data3: 671740320
     Data4: -1854989956
   Banks:
-  - {fileID: 8625540417541387101}
+  - {fileID: -2893109901096936365}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -119,6 +144,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 48000
+--- !u!114 &-3995641306782106142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Guns.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Resources/Audio/Desktop/Guns.bank
+  Name: Guns
+  StudioPath: bank:/Guns
+  lastModified: 638653802624827799
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-3810428994750509117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,14 +181,32 @@ MonoBehaviour:
     Data3: 880144301
     Data4: 1403310707
   Banks:
-  - {fileID: 3915666981828921394}
+  - {fileID: -3995641306782106142}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 625
+  Length: 2937
+--- !u!114 &-2893109901096936365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Soundscape.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Resources/Audio/Desktop/Soundscape.bank
+  Name: Soundscape
+  StudioPath: bank:/Soundscape
+  lastModified: 638653802625127696
+  FileSizes: []
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,27 +220,31 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -7369482969482144568}
-  - {fileID: 2537156540187955060}
-  - {fileID: 8625540417541387101}
-  - {fileID: -4992985335893082689}
-  - {fileID: 3915666981828921394}
-  - {fileID: 6172018955281992447}
+  - {fileID: 349403215437032067}
+  - {fileID: -7718702125398022233}
+  - {fileID: -3995641306782106142}
+  - {fileID: 6855856730563318341}
+  - {fileID: -2893109901096936365}
+  - {fileID: -8530243772896321577}
+  - {fileID: 3390285023757171070}
   EditorEvents:
   - {fileID: -4172183429488175569}
   - {fileID: -8259330758710388420}
   - {fileID: 4070027012351181979}
   - {fileID: -4289659103439482139}
   - {fileID: -3810428994750509117}
-  - {fileID: 6265836893832904026}
+  - {fileID: 3257996825312907622}
+  - {fileID: 6375925508574907272}
+  - {fileID: 5080022986462425374}
+  - {fileID: -7631102742811644854}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 2537156540187955060}
+  - {fileID: 6855856730563318341}
   StringsBanks:
-  - {fileID: -7369482969482144568}
-  cacheTime: 638614040259157512
+  - {fileID: 349403215437032067}
+  cacheTime: 638653802625364085
   cacheVersion: 131619
---- !u!114 &2537156540187955060
+--- !u!114 &349403215437032067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -189,15 +254,70 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: Assets/ProjectData/Audio/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638614040258677678
-  FileSizes: []
+  Path: Assets/Resources/Audio/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638653802624867791
+  FileSizes:
+  - Name: 
+    Value: 1456
   Exists: 1
---- !u!114 &3915666981828921394
+--- !u!114 &904155619072954056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Engine/Engine On Off
+  m_EditorClassIdentifier: 
+  Name: Engine On Off
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2799015462
+    data2: 567982808
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - On
+  - Off
+  Exists: 1
+--- !u!114 &3257996825312907622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Ennemies/Death
+  m_EditorClassIdentifier: 
+  Path: event:/Ennemies/Death
+  Guid:
+    Data1: -1532816874
+    Data2: 1210096676
+    Data3: 333388672
+    Data4: 788356013
+  Banks:
+  - {fileID: 3390285023757171070}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1593
+--- !u!114 &3390285023757171070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,12 +327,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Guns.bank
+  m_Name: bank:/Ennemies.bank
   m_EditorClassIdentifier: 
-  Path: Assets/ProjectData/Audio/Desktop/Guns.bank
-  Name: Guns
-  StudioPath: bank:/Guns
-  lastModified: 638614040258657678
+  Path: Assets/Resources/Audio/Desktop/Ennemies.bank
+  Name: Ennemies
+  StudioPath: bank:/Ennemies
+  lastModified: 638653802624391334
   FileSizes: []
   Exists: 1
 --- !u!114 &4070027012351181979
@@ -234,33 +354,16 @@ MonoBehaviour:
     Data3: -1338198140
     Data4: -659009235
   Banks:
-  - {fileID: 3915666981828921394}
+  - {fileID: -3995641306782106142}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 8615399399492351435}
   MinDistance: 1
   MaxDistance: 20
-  Length: 4453
---- !u!114 &6172018955281992447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Spaceship.bank
-  m_EditorClassIdentifier: 
-  Path: Assets/ProjectData/Audio/Desktop/Spaceship.bank
-  Name: Spaceship
-  StudioPath: bank:/Spaceship
-  lastModified: 638614040259157512
-  FileSizes: []
-  Exists: 1
---- !u!114 &6265836893832904026
+  Length: 4375
+--- !u!114 &5080022986462425374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,24 +373,52 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Engine
+  m_Name: event:/Player/Hit
   m_EditorClassIdentifier: 
-  Path: event:/Engine
+  Path: event:/Player/Hit
+  Guid:
+    Data1: 2063451351
+    Data2: 1312906104
+    Data3: -1041080923
+    Data4: 826938041
+  Banks:
+  - {fileID: -8530243772896321577}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 539
+--- !u!114 &6375925508574907272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Player/Engine
+  m_EditorClassIdentifier: 
+  Path: event:/Player/Engine
   Guid:
     Data1: -1191421496
     Data2: 1258092150
     Data3: -666373990
     Data4: 972770947
   Banks:
-  - {fileID: 6172018955281992447}
-  IsStream: 0
+  - {fileID: -8530243772896321577}
+  IsStream: 1
   Is3D: 0
   IsOneShot: 0
-  Parameters: []
+  Parameters:
+  - {fileID: 904155619072954056}
   MinDistance: 1
   MaxDistance: 20
-  Length: 4000
---- !u!114 &8625540417541387101
+  Length: 18000
+--- !u!114 &6855856730563318341
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,11 +428,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Soundscape.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: Assets/ProjectData/Audio/Desktop/Soundscape.bank
-  Name: Soundscape
-  StudioPath: bank:/Soundscape
-  lastModified: 638614040258977572
+  Path: Assets/Resources/Audio/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638653802624847791
   FileSizes: []
+  Exists: 1
+--- !u!114 &8615399399492351435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/gauss/Lazer On Off
+  m_EditorClassIdentifier: 
+  Name: Lazer On Off
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 2132277187
+    data2: 1360758973
+  Type: 2
+  IsGlobal: 0
+  Labels:
+  - On
+  - Off
   Exists: 1
