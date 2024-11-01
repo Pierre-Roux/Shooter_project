@@ -120,7 +120,7 @@ public class LightBlaster : WeaponBase
             BulletBehavior.Speed = fireForce;
             BulletBehavior.SplitShot = SplitShot;
         }
-        if (SplitShot > 0)
+        if (HomingShot > 0)
         {
             B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
             BulletBehavior.HomingShot = HomingShot;

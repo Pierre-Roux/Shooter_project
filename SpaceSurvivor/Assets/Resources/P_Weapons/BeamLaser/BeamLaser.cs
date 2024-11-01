@@ -21,7 +21,7 @@ public class BeamLaser : WeaponBase
 
     [HideInInspector] private List<ParticleSystem> particles = new List<ParticleSystem>();
     [HideInInspector] private bool Activated;
-    [HideInInspector] private float addSpeed;
+    //[HideInInspector] private float addSpeed;
     [HideInInspector] private float addIntensity;
     [HideInInspector] private Color addColor;
     [HideInInspector] private bool isFiring;
@@ -33,7 +33,7 @@ public class BeamLaser : WeaponBase
         lastFireTime = -fireCooldown; 
         Activated = true;
         Level = 0;
-        addSpeed = -1;
+        //addSpeed = -1;
         addIntensity = 8;
         addColor = new Color(191,47,7);
         ShootSoundInstance = RuntimeManager.CreateInstance(Shoot_soundEvent);

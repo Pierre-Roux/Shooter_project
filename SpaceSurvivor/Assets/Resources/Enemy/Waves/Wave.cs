@@ -31,8 +31,6 @@ public class Wave : MonoBehaviour
         while (power > 0)
         {
             int randomSelection = UnityEngine.Random.Range(0, dispoEnemy.Count);
-            Debug.Log("rd selection : " + randomSelection);
-            Debug.Log("NB Enemy type dispo : " + dispoEnemy.Count);
             
             if (power - dispoEnemy[randomSelection].GetComponent<EnemyBase>().unitPowerMesure >= 0)
             {
@@ -43,7 +41,6 @@ public class Wave : MonoBehaviour
             {
                 break; // Si aucun ennemi ne peut être ajouté, sortir de la boucle
             }
-            Debug.Log(EnemyToSpawn.Count);
         }
     }
 

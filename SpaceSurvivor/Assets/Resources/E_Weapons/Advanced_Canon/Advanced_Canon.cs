@@ -22,35 +22,38 @@ public class Advanced_Canon : WeaponBase
 
     void Update()
     {
-        // Prédiction de la position future du joueur
-        Vector2 playerVelocity = target.GetComponent<Rigidbody2D>().velocity;
-        float timeToReachTarget = Vector2.Distance(transform.position, target.position) / fireForce;
-        Vector2 futurePosition = (Vector2)target.position + playerVelocity * timeToReachTarget;
-
-        if (Vector2.Distance(futurePosition, transform.position) <= closeDistanceThreshold)
+        if (target != null && transform != null)
         {
-            Vector2 aimDirection = (Vector2)(target.position - transform.position);
-            float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg -90f;
-            transform.DORotateQuaternion(Quaternion.Euler(0, 0, aimAngle), rotationSpeed);
+            // Prédiction de la position future du joueur
+            Vector2 playerVelocity = target.GetComponent<Rigidbody2D>().velocity;
+            float timeToReachTarget = Vector2.Distance(transform.position, target.position) / fireForce;
+            Vector2 futurePosition = (Vector2)target.position + playerVelocity * timeToReachTarget;
+
+            if (Vector2.Distance(futurePosition, transform.position) <= closeDistanceThreshold)
+            {
+                Vector2 aimDirection = (Vector2)(target.position - transform.position);
+                float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg -90f;
+                transform.DORotateQuaternion(Quaternion.Euler(0, 0, aimAngle), rotationSpeed);
+
+                if (hasLineOfSight)
+                {
+                    if (Time.time >= lastFireTime + fireCooldown)
+                    {
+                        StartCoroutine(ShortDelayFire());
+                    }
+                }
+            }
+            else
+            {
+                Vector2 aimDirection = futurePosition - (Vector2)transform.position;
+                float targetAimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
+                transform.DORotateQuaternion(Quaternion.Euler(0, 0, targetAimAngle), rotationSpeed);
+            }
 
             if (hasLineOfSight)
             {
-                if (Time.time >= lastFireTime + fireCooldown)
-                {
-                    StartCoroutine(ShortDelayFire());
-                }
+                StartCoroutine(ShortDelayFire());
             }
-        }
-        else
-        {
-            Vector2 aimDirection = futurePosition - (Vector2)transform.position;
-            float targetAimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg - 90f;
-            transform.DORotateQuaternion(Quaternion.Euler(0, 0, targetAimAngle), rotationSpeed);
-        }
-
-        if (hasLineOfSight)
-        {
-            StartCoroutine(ShortDelayFire());
         }
     }
 
