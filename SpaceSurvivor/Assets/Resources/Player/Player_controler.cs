@@ -19,17 +19,26 @@ public class Player_controler : MonoBehaviour
 [Header("Audio")]
     [SerializeField] private EventReference engine_soundEvent;    
     [SerializeField] private EventReference turboEngine_soundEvent;
+    [SerializeField] private EventReference ShieldBreak_soundEvent;
 [Header("Param")] 
     [Tooltip("")] 
     [SerializeField] public float globalSpeed;
     [SerializeField] public float GlowIntensity;
     [SerializeField] public float maxHealth;
     [SerializeField] public float maxXP;
+    [SerializeField] public float maxShield;
+    [SerializeField] public float shieldRegen;
+    [SerializeField] public float shieldRegenDelay;
+    [SerializeField] public float maxTurbo;
+    [SerializeField] public float turboRegen;
+    [SerializeField] public float turboRegenDelay;
 [Header("Other")] 
     [SerializeField] public ParticleSystem particlePrefab; 
     [SerializeField] public GameObject Particle_spawn_point;
 
     [HideInInspector] public float health;
+    [HideInInspector] public float shield;
+    [HideInInspector] public float turbo;
     [HideInInspector] public float XP;
     [HideInInspector] public WeaponBase[] weapons;
     [HideInInspector] public Boolean playerMort;
@@ -50,8 +59,13 @@ public class Player_controler : MonoBehaviour
     [HideInInspector] private float aimAngle;
     [HideInInspector] private float GlowDuration = 0.1f;
     [HideInInspector] private float initialIntensity;
+    [HideInInspector] private float lastDamageTime;
+    [HideInInspector] private float lastTurboTime;
+    [HideInInspector] private Coroutine shieldRegenCoroutine = null;
+    [HideInInspector] private Coroutine turboRegenCoroutine = null;
     [HideInInspector] private FMOD.Studio.EventInstance engineSoundInstance;
     [HideInInspector] private FMOD.Studio.EventInstance turboEngineSoundInstance;
+    [HideInInspector] private FMOD.Studio.EventInstance ShieldBreakSound;
     
 
     void Awake() {
@@ -74,12 +88,16 @@ public class Player_controler : MonoBehaviour
         playerMort = false;
         UpdateWeapon();
         health = maxHealth;
+        shield = maxShield;
+        turbo = maxTurbo;
         XP = 0;
         initialIntensity = GetComponent<Light2D>().intensity;
+        ShieldBreakSound = RuntimeManager.CreateInstance(ShieldBreak_soundEvent);
         engineSoundInstance = RuntimeManager.CreateInstance(engine_soundEvent);
         OnMove = false;
         turboEngineSoundInstance = RuntimeManager.CreateInstance(turboEngine_soundEvent);
         OnTurbo = false;
+        lastDamageTime = Time.time;
     }
 
     public void UpdateWeapon()
@@ -143,8 +161,9 @@ public class Player_controler : MonoBehaviour
             // Déplacements
             if (moveDirection != Vector2.zero)
             {
-                if (Input.GetKey(KeyCode.LeftShift)) 
+                if (Input.GetKey(KeyCode.LeftShift) && turbo > 0) 
                 {
+                    lastTurboTime = Time.time;
                     StopEngineSound();
                     PlayTurboSound();
                     rb.AddForce(moveDirection * sprintSpeed);
@@ -152,6 +171,12 @@ public class Player_controler : MonoBehaviour
                     {
                         rb.velocity = rb.velocity.normalized * maxVelocity;
                     }
+                    if (turboRegenCoroutine != null)
+                    {
+                        StopCoroutine(turboRegenCoroutine);
+                        turboRegenCoroutine = null;
+                    }
+                    turbo -= 1;
                 }
                 else
                 {
@@ -182,20 +207,52 @@ public class Player_controler : MonoBehaviour
                     weapon.CancelFire();
                 }
             }
+
+            //RegenShield
+            if (Time.time - lastDamageTime >= shieldRegenDelay && shield < maxShield && shieldRegenCoroutine == null)
+            {
+                shieldRegenCoroutine = StartCoroutine(StartShieldRegen());
+            }
+
+            //RegenTurbo
+            if (Time.time - lastTurboTime >= turboRegenDelay && !Input.GetKey(KeyCode.LeftShift) && turbo < maxTurbo && turboRegenCoroutine == null)
+            {
+                turboRegenCoroutine = StartCoroutine(StartTurboRegen());
+            }
         }
     }
 
     public virtual void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
-        health = Mathf.Clamp(health, 0, maxHealth);
-        if (health <= 0)
+        lastDamageTime = Time.time;
+
+        if (shield == 0)
         {
-            playerMort = true;
+            health -= damageAmount;
+            health = Mathf.Clamp(health, 0, maxHealth);
+            if (health <= 0)
+            {
+                playerMort = true;
+            }
+            else
+            {
+                StartCoroutine(GlowOnHit());
+            }
         }
         else
         {
-            StartCoroutine(GlowOnHit());
+            shield -= damageAmount;
+            shield = Mathf.Clamp(shield, 0, maxShield);
+            if (shield <= 0) 
+            {
+                PlayShieldBreakSound();
+            }
+        }
+
+        if (shieldRegenCoroutine != null)
+        {
+            StopCoroutine(shieldRegenCoroutine);
+            shieldRegenCoroutine = null;
         }
     }
 
@@ -302,5 +359,40 @@ public class Player_controler : MonoBehaviour
         {
             turboEngineSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         }*/
+    }
+
+    public void PlayShieldBreakSound()
+    {
+        ShieldBreakSound.start(); // Démarre la lecture du son
+    }
+
+    IEnumerator StartShieldRegen()
+    {
+        while (shield != maxShield)
+        {
+            shield += 1;
+
+            if (shield > maxShield)
+            {
+                shield = maxShield;
+            }
+            yield return new WaitForSeconds(shieldRegen);
+        }
+        shieldRegenCoroutine = null; 
+    }
+
+    IEnumerator StartTurboRegen()
+    {
+        while (turbo != maxTurbo)
+        {
+            turbo += 1;
+
+            if (turbo > maxTurbo)
+            {
+                turbo = maxTurbo;
+            }
+            yield return new WaitForSeconds(turboRegen);
+        }
+        turboRegenCoroutine = null; 
     }
 }

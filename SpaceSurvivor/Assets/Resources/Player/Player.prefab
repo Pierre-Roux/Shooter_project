@@ -316,13 +316,28 @@ MonoBehaviour:
       Data3: -666373990
       Data4: 972770947
     Path: event:/Engine
+  ShieldBreak_soundEvent:
+    Guid:
+      Data1: 652696880
+      Data2: 1136217614
+      Data3: 880144301
+      Data4: 1403310707
+    Path: event:/Guns/double barrels
   globalSpeed: 2
   GlowIntensity: 10
-  maxHealth: 50
+  maxHealth: 10
   maxXP: 10
+  maxShield: 20
+  shieldRegen: 1
+  shieldRegenDelay: 5
+  maxTurbo: 200
+  turboRegen: 0.1
+  turboRegenDelay: 2
   particlePrefab: {fileID: 6920372984886411168, guid: 6ea5c27a5d6d8714d85eee2bed0df350, type: 3}
   Particle_spawn_point: {fileID: 597433960201613068}
   health: 50
+  shield: 0
+  turbo: 0
   XP: 0
   weapons: []
   playerMort: 0
@@ -425,8 +440,8 @@ MonoBehaviour:
   m_Color: {r: 1, g: 0.26194984, b: 0, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
-  m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_LightVolumeIntensityEnabled: 1
+  m_ApplyToSortingLayers: 75c40fab
   m_LightCookieSprite: {fileID: 21300000, guid: f5a052b6b29ff424e8f93488068648c5, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

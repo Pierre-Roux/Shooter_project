@@ -124,6 +124,7 @@ public class LightBlaster : WeaponBase
         {
             B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
             BulletBehavior.HomingShot = HomingShot;
+            BulletBehavior.Speed = fireForce;
         }
         
     }
