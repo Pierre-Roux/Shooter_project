@@ -84,3 +84,6 @@ SpaceSurvivor/Build
 /SpaceSurvivor/Assets/Plugins/FMOD/Cache
 SpaceSurvivor/fmod_editor.log
 /SpaceSurvivor/UserSettings
+SpaceSurvivor/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudio.bundle/Contents/Info.plist
+SpaceSurvivor/Assets/Plugins/FMOD/platforms/mac/lib/fmodstudioL.bundle/Contents/Info.plist
+SpaceSurvivor/Assets/Plugins/FMOD/platforms/mac/lib/resonanceaudio.bundle/Contents/Info.plist
