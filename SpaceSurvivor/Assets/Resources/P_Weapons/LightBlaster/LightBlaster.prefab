@@ -83,7 +83,7 @@ MonoBehaviour:
       Data2: 1136217614
       Data3: 880144301
       Data4: 1403310707
-    Path: event:/Guns/double barrels
+    Path: event:/Guns/light balster
   fireCooldown: 0.3
   fireForce: 30
   bulletPrefab: {fileID: 7751217143057044998, guid: 303e891fe56a4164bb11d1321e8fb920, type: 3}

@@ -51,7 +51,7 @@ MonoBehaviour:
       Data2: 1330867405
       Data3: -448847
       Data4: -1212864075
-    Path: event:/Guns/flak
+    Path: event:/Guns/flak canon
   fireCooldown: 4
   fireForce: 20
   bulletPrefab: {fileID: 7277215954410707442, guid: 19d4d53597e2c1d488cde7832d393708, type: 3}

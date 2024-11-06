@@ -3143,11 +3143,11 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: 865322886
-      Data2: 1340268166
-      Data3: 671740320
-      Data4: -1854989956
-    Path: event:/Soundscape
+      Data1: -739438295
+      Data2: 1339624542
+      Data3: 1411929736
+      Data4: -558896800
+    Path: event:/Music/Music
   Event: 
   PlayEvent: 1
   StopEvent: 0
