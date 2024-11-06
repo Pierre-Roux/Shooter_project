@@ -262,7 +262,6 @@ GameObject:
   - component: {fileID: 808367282721455904}
   - component: {fileID: 1546929458826437668}
   - component: {fileID: 3401652810469319953}
-  - component: {fileID: 5692779364478336935}
   - component: {fileID: 156794080731416651}
   m_Layer: 3
   m_Name: Player
@@ -308,21 +307,21 @@ MonoBehaviour:
       Data2: 1258092150
       Data3: -666373990
       Data4: 972770947
-    Path: event:/Engine
+    Path: event:/Player/Engine
   turboEngine_soundEvent:
     Guid:
-      Data1: -1191421496
-      Data2: 1258092150
-      Data3: -666373990
-      Data4: 972770947
-    Path: event:/Engine
+      Data1: -2053462548
+      Data2: 1326039848
+      Data3: 554097855
+      Data4: -1649593554
+    Path: event:/Player/Turbo
   ShieldBreak_soundEvent:
     Guid:
-      Data1: 652696880
-      Data2: 1136217614
-      Data3: 880144301
-      Data4: 1403310707
-    Path: event:/Guns/double barrels
+      Data1: -1532816874
+      Data2: 1210096676
+      Data3: 333388672
+      Data4: 788356013
+    Path: event:/Ennemies/Death
   globalSpeed: 2
   GlowIntensity: 10
   maxHealth: 10
@@ -471,37 +470,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &5692779364478336935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7741124011829069023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -1191421496
-      Data2: 1258092150
-      Data3: -666373990
-      Data4: 972770947
-    Path: event:/Engine
-  Event: 
-  PlayEvent: 0
-  StopEvent: 0
-  AllowFadeout: 0
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!70 &156794080731416651
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
