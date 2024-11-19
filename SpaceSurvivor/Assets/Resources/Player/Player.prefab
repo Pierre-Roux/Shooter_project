@@ -329,8 +329,8 @@ MonoBehaviour:
   maxShield: 20
   shieldRegen: 1
   shieldRegenDelay: 5
-  maxTurbo: 200
-  turboRegen: 0.1
+  maxTurbo: 75
+  turboRegen: 0.05
   turboRegenDelay: 2
   particlePrefab: {fileID: 6920372984886411168, guid: 6ea5c27a5d6d8714d85eee2bed0df350, type: 3}
   Particle_spawn_point: {fileID: 597433960201613068}

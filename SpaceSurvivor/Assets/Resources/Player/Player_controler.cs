@@ -81,7 +81,7 @@ public class Player_controler : MonoBehaviour
         rb = GetComponent<Rigidbody2D> ();
         speed = 10000f * Time.fixedDeltaTime * globalSpeed;
         maxVelocity = 250f * Time.fixedDeltaTime * globalSpeed;
-        sprintSpeed = 20000f * Time.fixedDeltaTime * globalSpeed;
+        sprintSpeed = 30000f * Time.fixedDeltaTime * globalSpeed;
         maxSprintVelocity = 500f * Time.fixedDeltaTime * globalSpeed;
         breakForce = 1000f * Time.fixedDeltaTime;
         rotationSpeed = 10f * Time.fixedDeltaTime;

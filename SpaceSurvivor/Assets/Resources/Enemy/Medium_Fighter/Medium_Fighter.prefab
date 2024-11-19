@@ -40,6 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3517167288133412763}
+  - component: {fileID: 7507682658144428474}
   - component: {fileID: 4618520406495036483}
   - component: {fileID: 5864336693150189230}
   - component: {fileID: 5595605534174831669}
@@ -49,7 +50,7 @@ GameObject:
   - component: {fileID: 7506921077911464307}
   - component: {fileID: 6378656644337934403}
   m_Layer: 8
-  m_Name: Light_Fighter
+  m_Name: Medium_Fighter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,6 +73,41 @@ Transform:
   - {fileID: 2641088462773247022}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7507682658144428474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689253406226250357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0dbc28612cc3f8408da6330fefcc9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  damage: 1
+  speed: 5
+  GlowIntensity: 10
+  small_XP: {fileID: 9198873428497900977, guid: 918fb977b6628174c8a9aeaa69a86a6a, type: 3}
+  Medium_XP: {fileID: 9198873428497900977, guid: 8d3e5fba66020d04ca3b9dde592cf8c9, type: 3}
+  Large_XP: {fileID: 9198873428497900977, guid: d71560468d1e85346a93e1daf82ea99a, type: 3}
+  small_XP_Reward: 0
+  Medium_XP_Reward: 1
+  Large_XP_Reward: 0
+  unitPowerMesure: 5
+  reactivationUnitPrefab: {fileID: 2172597101631556622, guid: bcddcd6f83adc05438caef76817ac2ce, type: 3}
+  deactivationDistance: 0
+  IsDead: 0
+  hasLineOfSight: 0
+  target: {fileID: 0}
+  rb: {fileID: 0}
+  weapons: []
+  checkInterval: 0.2
+  checkTimer: 0
+  DistanceCheck: 100
+  stopDistance: 8
+  attackCooldown: 0.5
 --- !u!114 &4618520406495036483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +184,7 @@ SpriteRenderer:
   m_SortingLayerID: 1019605833
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: bbddb388b09b3b743a043c4746675e2d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf6acd622fb932f4ba4eeba4ceb72823, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -262,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1073741824
-  radius: 6
+  radius: 8.8
   height: 2
   canMove: 1
   maxSpeed: 1
@@ -319,7 +355,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 49f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: bbddb388b09b3b743a043c4746675e2d, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: cf6acd622fb932f4ba4eeba4ceb72823, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -332,8 +368,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0.06999993, z: 0}
-    m_Extent: {x: 3.855, y: 5.4049997, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 5.87, y: 8.46, z: 0}
   m_PointLightInnerAngle: 360.00003
   m_PointLightOuterAngle: 360.00003
   m_PointLightInnerRadius: 0
@@ -369,7 +405,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5b68849a0c79492488aedc01fbd68f91, type: 2}
+  - {fileID: 2100000, guid: a6fcbac1efb6d99458708ebc5574292f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

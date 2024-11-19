@@ -49,6 +49,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: Small
+  Value: 2
+  DecayTime: 5
+  DecayTime2: 15
+  startColor: {r: 0, g: 0.003921569, b: 1, a: 1}
+  endColor: {r: 1, g: 0, b: 0.98039216, a: 1}
 --- !u!212 &544627653367595674
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -118,7 +123,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 0.023529412, g: 0.99215686, b: 0.8156863, a: 1}
-  m_Intensity: 3
+  m_Intensity: 5
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
