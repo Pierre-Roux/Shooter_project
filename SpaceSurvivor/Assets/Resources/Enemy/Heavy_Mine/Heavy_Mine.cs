@@ -97,8 +97,6 @@ public class Heavy_Mine : EnemyBase
         if (hasExploded) return; // Empêche l'explosion multiple
         hasExploded = true;
 
-        Debug.Log("Boom");
-
         // Créer un effet de particules
         if (explosionEffect != null)
         {

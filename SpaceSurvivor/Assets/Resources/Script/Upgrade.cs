@@ -13,9 +13,9 @@ public class Upgrade : MonoBehaviour
     public int intensityBonus;
     public int damageBonus;
     public int BulletNumber;
-    public int Range;
+    public float Range;
 
-    public Upgrade(string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description)
+    public Upgrade(string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, float range, string description)
     {
         ID = Identifier;
         PieceName = pieceName;

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2282705515933801111}
   - component: {fileID: 7649547166262552342}
+  - component: {fileID: -7525939285746974239}
   - component: {fileID: -730912004019731384}
   - component: {fileID: 6422681307216424354}
   - component: {fileID: 9093198999638817019}
@@ -88,6 +89,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-7525939285746974239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277215954410707442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f9213117eba06741b903acebc9609c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosiveShot: 0
+  explosionEffect: {fileID: 0}
+  explosionRadius: 0
+  explosionDamage: 0
 --- !u!114 &-730912004019731384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  lifeTime: 5
+  lifeTime: 0.75
 --- !u!50 &6422681307216424354
 Rigidbody2D:
   serializedVersion: 4
