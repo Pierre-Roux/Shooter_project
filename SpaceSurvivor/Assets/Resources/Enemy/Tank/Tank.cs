@@ -1,6 +1,6 @@
 using UnityEngine;
 using Pathfinding;
-public class Light_Rusher : EnemyBase
+public class Tank : EnemyBase
 {
 [Header("Param")] 
     [SerializeField] public float stopDistance;

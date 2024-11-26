@@ -1,9 +1,5 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
-using Unity.Mathematics;
 
 public class Artillery : EnemyBase
 {
