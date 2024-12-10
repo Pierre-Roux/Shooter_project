@@ -23,6 +23,11 @@ public class Artillery : EnemyBase
         {
             AttackPlayer(collision.gameObject.GetComponent<Player_controler>());
         }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+            Destroy(collision.gameObject);
+        }
     }
     void OnCollisionStay2D(Collision2D collision)
     {

@@ -55,6 +55,15 @@ public class Burst_Spawner : EnemyBase
         }
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+            Destroy(collision.gameObject);
+        }
+    }
+
     void OnDrawGizmos()
     {
         // Configure la couleur du Gizmo
