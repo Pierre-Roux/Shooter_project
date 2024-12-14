@@ -74,11 +74,6 @@ public class MagnetMine : EnemyBase
         {
             Explode();
         }
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            TakeDamage(other.gameObject.GetComponent<PlayerBulletBase>().damage);
-            Destroy(other.gameObject);
-        }
     }
 
     private void Explode()
