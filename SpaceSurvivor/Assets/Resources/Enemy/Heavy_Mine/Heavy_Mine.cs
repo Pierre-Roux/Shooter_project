@@ -29,35 +29,43 @@ public class Heavy_Mine : EnemyBase
     {
         if (state == "MoveToPlayer")
         {
-            if(Vector3.Distance(transform.position, originPosition) <= followRange) 
-            {
-                MoveTowardsPlayer();
-            }
-            else
-            {
-                state = "MoveToOrigin";
-            }
-            
+            MoveTowardsPlayer();
         }
         else if (state == "MoveToOrigin")
         {
             MoveTowardsOrigin();
-            if (originPosition == transform.position)
+        }
+        else if (state == "Idle")
+        {
+            if (Vector3.Distance(transform.position, originPosition) > 0.1f)
             {
-                state = "Idle";
+                if (originPosition != transform.position)
+                {
+                    state = "MoveToOrigin";
+                }
             }
         }
     }
 
     private void MoveTowardsPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-
+        if(Vector3.Distance(transform.position, originPosition) <= followRange) 
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        }
+        else
+        {
+            state = "MoveToOrigin";
+        }
     }
 
     private void MoveTowardsOrigin()
     {
-        if (Vector3.Distance(transform.position, originPosition) > 0.1f)
+        if (Vector3.Distance(originPosition,target.transform.position) <= followRange)
+        {
+            state = "MoveToPlayer";
+        }
+        else if (Vector3.Distance(transform.position, originPosition) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, originPosition, speed * Time.deltaTime);
         }
@@ -88,6 +96,11 @@ public class Heavy_Mine : EnemyBase
         if (other.gameObject.CompareTag("Player"))
         {
             Explode();
+        }
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(other.gameObject.GetComponent<PlayerBulletBase>().damage);
+            Destroy(other.gameObject);
         }
     }
 

@@ -9796,7 +9796,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 1461646606429722491}
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 2368
+    m_Bits: 35136
   startVFX: {fileID: 5046962623307773251}
   endVFX: {fileID: 8330891774421173763}
 --- !u!120 &1461646606429722491
