@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Simple_Canon : WeaponBase
@@ -29,6 +26,7 @@ public class Simple_Canon : WeaponBase
 
             if (hasLineOfSight && Time.time >= lastFireTime + fireCooldown)
             {
+                lastFireTime = Time.time;
                 StartCoroutine(ShortDelayFire());
             }
     }
@@ -39,7 +37,6 @@ public class Simple_Canon : WeaponBase
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         GameObject bullet = Instantiate(bulletPrefab, firepoint.position, Quaternion.Euler(0, 0, angle+90f));
         bullet.GetComponent<Rigidbody2D>().AddForce(aimDirection * fireForce,ForceMode2D.Impulse);
-        lastFireTime = Time.time;   
     }
 
     IEnumerator ShortDelayFire()

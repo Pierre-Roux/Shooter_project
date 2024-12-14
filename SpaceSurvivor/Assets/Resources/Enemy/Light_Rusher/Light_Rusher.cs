@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 public class Light_Rusher : EnemyBase
@@ -44,6 +42,11 @@ public class Light_Rusher : EnemyBase
         if (collision.gameObject.CompareTag("Player"))
         {
             AttackPlayer(collision.gameObject.GetComponent<Player_controler>());
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+            Destroy(collision.gameObject);
         }
     }
     void OnCollisionStay2D(Collision2D collision)

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Sentry : EnemyBase
 {
@@ -56,6 +53,11 @@ public class Sentry : EnemyBase
         if (collision.gameObject.CompareTag("Player"))
         {
             AttackPlayer(collision.gameObject.GetComponent<Player_controler>());
+        }
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+            Destroy(collision.gameObject);
         }
     }
     void OnCollisionStay2D(Collision2D collision)

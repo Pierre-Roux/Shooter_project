@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 8574258823617672591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.4, z: 0}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103,9 +103,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1279799963
-  m_SortingLayer: 4
+  m_SortingLayer: -3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 05e6b0c10427e4746b2a2b9004f6e681, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 392b1521d5d3106489e13096bc3963ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 21300000, guid: 05e6b0c10427e4746b2a2b9004f6e681, type: 3}
+  m_ApplyToSortingLayers: 0000000049f3c53c73881a8d9b32484c75c40fab13f3f92e7de545ab
+  m_LightCookieSprite: {fileID: 21300000, guid: 392b1521d5d3106489e13096bc3963ed, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 4.56, y: 8.44, z: 0}
+    m_Extent: {x: 7.2, y: 9.74, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -175,9 +175,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1375468904044233000}
-  - component: {fileID: 5199218221501187238}
+  - component: {fileID: 7246453293192736573}
   m_Layer: 7
-  m_Name: Advanced_Canon
+  m_Name: Flak_Sentry_Canon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,14 +193,14 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4755155104480303911}
   - {fileID: 1994751807899935546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5199218221501187238
+--- !u!114 &7246453293192736573
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9085399047606047401}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7a8240beda09f4d86d3117e09a06a2, type: 3}
+  m_Script: {fileID: 11500000, guid: 09365378b2ea4e742a29994e113eaa62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Shoot_soundEvent:
@@ -221,7 +221,7 @@ MonoBehaviour:
     Path: 
   fireCooldown: 1
   fireForce: 20
-  bulletPrefab: {fileID: 7751217143057044998, guid: 5e9eaff63a5c34440b814266ccd7acde, type: 3}
+  bulletPrefab: {fileID: 7751217143057044998, guid: 23185529bf157f54f850605dc9f9d281, type: 3}
   lastFireTime: 0
   hasLineOfSight: 0
   rb: {fileID: 0}
@@ -229,5 +229,6 @@ MonoBehaviour:
   availableUpgrades: []
   TierUpgrades: []
   rotationSpeed: 1
+  bulletNumber: 8
   firepoint: {fileID: 4755155104480303911}
   WeaponPosition: {fileID: 0}

@@ -501,6 +501,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1605091179537209461, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
+      propertyPath: WeaponPosition
+      value: 
+      objectReference: {fileID: 2641088462773247022}
     - target: {fileID: 1765948478022943862, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -529,6 +533,10 @@ PrefabInstance:
       propertyPath: m_ExcludeLayers.m_Bits
       value: 128
       objectReference: {fileID: 0}
+    - target: {fileID: 7222348084064760917, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
+      propertyPath: WeaponPosition
+      value: 
+      objectReference: {fileID: 2641088462773247022}
     - target: {fileID: 9085399047606047401, guid: 6e8394c9d5a1cf040ad9a936980cb8cb, type: 3}
       propertyPath: m_Name
       value: Base

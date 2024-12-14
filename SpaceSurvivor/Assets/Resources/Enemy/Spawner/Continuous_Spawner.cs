@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Continuous_Spawner : EnemyBase
@@ -39,6 +36,15 @@ public class Continuous_Spawner : EnemyBase
                 }  
             }   
         }   
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+            Destroy(collision.gameObject);
+        }
     }
 
     void OnDrawGizmos()

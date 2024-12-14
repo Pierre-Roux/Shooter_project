@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1375468904044233000}
-  - component: {fileID: 1072437768298826672}
+  - component: {fileID: 7222348084064760917}
   m_Layer: 7
   m_Name: Simple_Canon
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   - {fileID: 4755155104480303911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1072437768298826672
+--- !u!114 &7222348084064760917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -76,11 +76,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b17ab374e1c39949ab6336287910011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shoot_soundEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  fireCooldown: 1
+  fireForce: 25
+  bulletPrefab: {fileID: 7751217143057044998, guid: 4f64e240a9c58df45b15a4c9cc389288, type: 3}
   lastFireTime: 0
   hasLineOfSight: 0
   rb: {fileID: 0}
-  bulletPrefab: {fileID: 7751217143057044998, guid: 4f64e240a9c58df45b15a4c9cc389288, type: 3}
-  fireCooldown: 1
-  fireForce: 25
+  Level: 0
+  availableUpgrades: []
+  TierUpgrades: []
   firepoint: {fileID: 4755155104480303911}
   WeaponPosition: {fileID: 0}

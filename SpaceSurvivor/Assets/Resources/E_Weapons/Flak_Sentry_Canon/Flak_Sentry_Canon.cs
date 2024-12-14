@@ -1,12 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Advanced_Canon : WeaponBase
+public class Flak_Sentry_Canon : WeaponBase
 {
 [Header("Param")] 
     [SerializeField] public float rotationSpeed;
+    [SerializeField] public float bulletNumber;
 [Header("Other")] 
     [SerializeField] public Transform firepoint;
     [SerializeField] public Transform WeaponPosition;
@@ -63,9 +63,18 @@ public class Advanced_Canon : WeaponBase
         {
             if (Time.time >= lastFireTime + fireCooldown)
             {
-                GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
-                bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce,ForceMode2D.Impulse);
                 lastFireTime = Time.time;
+                for (int i = 0; i < bulletNumber; i++)
+                {
+                    int randomAngle = UnityEngine.Random.Range(-30, 30);
+                    float randomForce = UnityEngine.Random.Range(-1f, 1f);
+                    GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
+                    Vector2 firingDirection = Quaternion.Euler(0, 0, randomAngle) * firepoint.up;
+                    bullet.GetComponent<Rigidbody2D>().AddForce(firingDirection * (fireForce + randomForce),ForceMode2D.Impulse);
+                    
+                    // Optionnel : ajuster la rotation du projectile pour qu'il corresponde à la direction de tir
+                    //bullet.transform.rotation = Quaternion.Euler(0, 0, randomAngle);             
+                }
             }        
         }
     }
