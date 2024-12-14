@@ -172,12 +172,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c43ae00aaf2a1a44a451d966c9aa180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Shoot_soundEvent:
+    Guid:
+      Data1: -1508532605
+      Data2: 1340717281
+      Data3: -67772752
+      Data4: 1913839264
+    Path: event:/Ennemies/Artillery Shoot
+  fireCooldown: 1
+  fireForce: 10
+  bulletPrefab: {fileID: 7751217143057044998, guid: 72fdde0decac51c4b87f56e5a88c315f, type: 3}
   lastFireTime: 0
   hasLineOfSight: 0
   rb: {fileID: 0}
-  bulletPrefab: {fileID: 7751217143057044998, guid: 72fdde0decac51c4b87f56e5a88c315f, type: 3}
-  fireCooldown: 1
-  fireForce: 10
+  Level: 0
+  availableUpgrades: []
+  TierUpgrades: []
   firepoint1: {fileID: 3406272968821379561}
   firepoint2: {fileID: 4841015419475822705}
   firepoint3: {fileID: 6331382276199306499}

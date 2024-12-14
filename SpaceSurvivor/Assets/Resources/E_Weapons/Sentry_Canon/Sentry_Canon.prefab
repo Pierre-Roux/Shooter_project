@@ -103,7 +103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1279799963
-  m_SortingLayer: 4
+  m_SortingLayer: -3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 05e6b0c10427e4746b2a2b9004f6e681, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -214,11 +214,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shoot_soundEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 182650046
+      Data2: 1109329979
+      Data3: 2030862769
+      Data4: 222007950
+    Path: event:/Ennemies/Sentry Shoot
   fireCooldown: 1
   fireForce: 20
   bulletPrefab: {fileID: 7751217143057044998, guid: 5e9eaff63a5c34440b814266ccd7acde, type: 3}
