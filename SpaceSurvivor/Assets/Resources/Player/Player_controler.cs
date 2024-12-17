@@ -13,6 +13,8 @@ public class Player_controler : MonoBehaviour
     [SerializeField] private EventReference engine_soundEvent;    
     [SerializeField] private EventReference turboEngine_soundEvent;
     [SerializeField] private EventReference ShieldBreak_soundEvent;
+    [SerializeField] private EventReference ShieldHit_soundEvent;
+    [SerializeField] private EventReference PlayerHit_soundEvent;
 [Header("Param")] 
     [Tooltip("")] 
     [SerializeField] public float globalSpeed;
@@ -59,6 +61,8 @@ public class Player_controler : MonoBehaviour
     [HideInInspector] private FMOD.Studio.EventInstance engineSoundInstance;
     [HideInInspector] private FMOD.Studio.EventInstance turboEngineSoundInstance;
     [HideInInspector] private FMOD.Studio.EventInstance ShieldBreakSound;
+    [HideInInspector] private FMOD.Studio.EventInstance ShieldHitSound;
+    [HideInInspector] private FMOD.Studio.EventInstance PlayerHitSound;
     
 
     void Awake() {
@@ -85,6 +89,8 @@ public class Player_controler : MonoBehaviour
         turbo = maxTurbo;
         XP = 0;
         initialIntensity = GetComponent<Light2D>().intensity;
+        ShieldHitSound = RuntimeManager.CreateInstance(ShieldHit_soundEvent);
+        PlayerHitSound = RuntimeManager.CreateInstance(PlayerHit_soundEvent);
         ShieldBreakSound = RuntimeManager.CreateInstance(ShieldBreak_soundEvent);
         engineSoundInstance = RuntimeManager.CreateInstance(engine_soundEvent);
         OnMove = false;
@@ -221,6 +227,7 @@ public class Player_controler : MonoBehaviour
 
         if (shield == 0)
         {
+            PlayPlayerHitSound();
             health -= damageAmount;
             health = Mathf.Clamp(health, 0, maxHealth);
             if (health <= 0)
@@ -234,6 +241,7 @@ public class Player_controler : MonoBehaviour
         }
         else
         {
+            PlayShieldHitSound();
             shield -= damageAmount;
             shield = Mathf.Clamp(shield, 0, maxShield);
             if (shield <= 0) 
@@ -357,6 +365,16 @@ public class Player_controler : MonoBehaviour
     public void PlayShieldBreakSound()
     {
         ShieldBreakSound.start(); // Démarre la lecture du son
+    }
+
+    public void PlayShieldHitSound()
+    {
+        ShieldHitSound.start(); // Démarre la lecture du son
+    }
+
+    public void PlayPlayerHitSound()
+    {
+        PlayerHitSound.start(); // Démarre la lecture du son
     }
 
     IEnumerator StartShieldRegen()
