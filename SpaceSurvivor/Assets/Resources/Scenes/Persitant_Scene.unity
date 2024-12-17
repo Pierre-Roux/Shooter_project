@@ -12553,43 +12553,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: PlayerHit_soundEvent.Path
-      value: event:/Player/Hit
+      value: event:/Player/Player Hit
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: ShieldHit_soundEvent.Path
-      value: event:/Player/Hit
+      value: event:/Shield/Shield Hit
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: PlayerHit_soundEvent.Guid.Data1
-      value: 2063451351
+      value: -1969358276
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: PlayerHit_soundEvent.Guid.Data2
-      value: 1312906104
+      value: 1293679867
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: PlayerHit_soundEvent.Guid.Data3
-      value: -1041080923
+      value: -2069903964
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: PlayerHit_soundEvent.Guid.Data4
-      value: 826938041
+      value: -1715551100
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: ShieldHit_soundEvent.Guid.Data1
-      value: 2063451351
+      value: 1336328069
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: ShieldHit_soundEvent.Guid.Data2
-      value: 1312906104
+      value: 1129015783
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: ShieldHit_soundEvent.Guid.Data3
-      value: -1041080923
+      value: -1553109116
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: ShieldHit_soundEvent.Guid.Data4
-      value: 826938041
+      value: -719928804
       objectReference: {fileID: 0}
     - target: {fileID: 4169925901085546933, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: m_LocalPosition.x
