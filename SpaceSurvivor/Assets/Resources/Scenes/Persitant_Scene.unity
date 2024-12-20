@@ -12560,6 +12560,10 @@ PrefabInstance:
       value: event:/Shield/Shield Hit
       objectReference: {fileID: 0}
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
+      propertyPath: ShieldBreak_soundEvent.Path
+      value: event:/Shield/Shiled Break
+      objectReference: {fileID: 0}
+    - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: PlayerHit_soundEvent.Guid.Data1
       value: -1969358276
       objectReference: {fileID: 0}
@@ -12590,6 +12594,22 @@ PrefabInstance:
     - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: ShieldHit_soundEvent.Guid.Data4
       value: -719928804
+      objectReference: {fileID: 0}
+    - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
+      propertyPath: ShieldBreak_soundEvent.Guid.Data1
+      value: 639297166
+      objectReference: {fileID: 0}
+    - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
+      propertyPath: ShieldBreak_soundEvent.Guid.Data2
+      value: 1132524140
+      objectReference: {fileID: 0}
+    - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
+      propertyPath: ShieldBreak_soundEvent.Guid.Data3
+      value: 1143009163
+      objectReference: {fileID: 0}
+    - target: {fileID: 969628519397640717, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
+      propertyPath: ShieldBreak_soundEvent.Guid.Data4
+      value: -1974284493
       objectReference: {fileID: 0}
     - target: {fileID: 4169925901085546933, guid: b0db1114804a3ef47be1c77640606ab7, type: 3}
       propertyPath: m_LocalPosition.x
