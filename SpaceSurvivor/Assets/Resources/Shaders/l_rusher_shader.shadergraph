@@ -44,6 +44,12 @@
         },
         {
             "m_Id": "d22845b22d3b4c29a1737f4f25117402"
+        },
+        {
+            "m_Id": "b8effa3532dc45febbe2f8fa18bd5427"
+        },
+        {
+            "m_Id": "b759418c79c649a4a63cce23bba00ad2"
         }
     ],
     "m_GroupDatas": [],
@@ -134,6 +140,12 @@
             },
             {
                 "m_Id": "959f1316e93545938a2837c1d0d9027f"
+            },
+            {
+                "m_Id": "b8effa3532dc45febbe2f8fa18bd5427"
+            },
+            {
+                "m_Id": "b759418c79c649a4a63cce23bba00ad2"
             }
         ]
     },
@@ -484,7 +496,7 @@
     "m_ObjectId": "52687fb618584279b70b1b29de6b2cd3",
     "m_Datas": [],
     "m_ActiveSubTarget": {
-        "m_Id": "ad409d76c1264041bd7ae5401e8aa31d"
+        "m_Id": "6f8caab0c6f2493bb1f1fb660ae67efd"
     },
     "m_AllowMaterialOverride": false,
     "m_SurfaceType": 0,
@@ -552,6 +564,12 @@
     },
     "m_Labels": [],
     "m_Space": 0
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteLitSubTarget",
+    "m_ObjectId": "6f8caab0c6f2493bb1f1fb660ae67efd"
 }
 
 {
@@ -709,8 +727,27 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.Universal.ShaderGraph.UniversalSpriteUnlitSubTarget",
-    "m_ObjectId": "ad409d76c1264041bd7ae5401e8aa31d"
+    "m_Type": "UnityEditor.ShaderGraph.ColorRGBAMaterialSlot",
+    "m_ObjectId": "ace9b3bb2038459c8c3a42a40d8d4eb1",
+    "m_Id": 0,
+    "m_DisplayName": "Sprite Mask",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "SpriteMask",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0,
+        "w": 1.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
 }
 
 {
@@ -765,6 +802,98 @@
     "m_Property": {
         "m_Id": "f43fff5b3a234e3197466838184252cf"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "b759418c79c649a4a63cce23bba00ad2",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.NormalTS",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "bf79f4d6e503466ca2d7a1aec924a2dd"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.NormalTS"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BlockNode",
+    "m_ObjectId": "b8effa3532dc45febbe2f8fa18bd5427",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "SurfaceDescription.SpriteMask",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 0.0,
+            "y": 0.0,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "ace9b3bb2038459c8c3a42a40d8d4eb1"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedDescriptor": "SurfaceDescription.SpriteMask"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.NormalMaterialSlot",
+    "m_ObjectId": "bf79f4d6e503466ca2d7a1aec924a2dd",
+    "m_Id": 0,
+    "m_DisplayName": "Normal (Tangent Space)",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "NormalTS",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": [],
+    "m_Space": 3
 }
 
 {

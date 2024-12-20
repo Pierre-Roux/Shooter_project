@@ -141,6 +141,8 @@ public abstract class EnemyBase : MonoBehaviour
             GetComponent<Light2D>().intensity = Mathf.Lerp(initialIntensity, initialIntensity + GlowIntensity, lerpFactor);
             //GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(initialRadius, initialRadius + GlowRadius, lerpFactor);
 
+            Debug.Log("Glow int :  " + GetComponent<Light2D>().intensity);
+
             yield return null;
         }
 

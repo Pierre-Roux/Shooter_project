@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4702858133499120507}
@@ -52,7 +52,7 @@ MonoBehaviour:
   health: 50
   damage: 1
   speed: 2
-  GlowIntensity: 1
+  GlowIntensity: 10
   small_XP: {fileID: 9198873428497900977, guid: d71560468d1e85346a93e1daf82ea99a, type: 3}
   Medium_XP: {fileID: 9198873428497900977, guid: 8d3e5fba66020d04ca3b9dde592cf8c9, type: 3}
   Large_XP: {fileID: 9198873428497900977, guid: 918fb977b6628174c8a9aeaa69a86a6a, type: 3}
@@ -94,7 +94,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 2c7cd68e295c108439f4343ab54668c0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,7 +115,7 @@ SpriteRenderer:
   m_SortingLayerID: 1019605833
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ea4d24c86fc8ea47aa16d5d656f2774, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fedc6027a543ba84a99c2722780eb8ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +187,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.8
+  m_Radius: 1.3
 --- !u!114 &4458990861222427839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 49f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: 4ea4d24c86fc8ea47aa16d5d656f2774, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: 977ddb9212ea0214d8fdce298831fb7d, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 4.05, y: 4.595, z: 0}
+    m_Extent: {x: 1.44, y: 1.36, z: 0}
   m_PointLightInnerAngle: 360.00003
   m_PointLightOuterAngle: 360.00003
   m_PointLightInnerRadius: 0
@@ -304,4 +304,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 22
+  m_Radius: 10

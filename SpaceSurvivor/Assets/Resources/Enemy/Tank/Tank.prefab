@@ -69,7 +69,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 7a08500d5210bea4e8072f33fe20c5b3, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,12 +90,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a89fd43b6dfefe444a2d4d744d2917d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34d800c432272cb4a990bfab4be9f601, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.84, y: 7.57}
+  m_Size: {x: 6.8, y: 7.41}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 49f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: a89fd43b6dfefe444a2d4d744d2917d9, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: d036e475c50c43543ac28d54c3a4a813, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.004999995, y: -0.004999995, z: 0}
-    m_Extent: {x: 2.1750002, y: 3.0700002, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 3.4, y: 3.705, z: 0}
   m_PointLightInnerAngle: 360.00003
   m_PointLightOuterAngle: 360.00003
   m_PointLightInnerRadius: 0
@@ -214,8 +214,8 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.84, y: 7.57}
-    newSize: {x: 8.84, y: 7.57}
+    oldSize: {x: 6.8, y: 7.41}
+    newSize: {x: 6.8, y: 7.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -286,7 +286,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5284375400925633260}
@@ -312,7 +312,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: f68cd308d7b981045badcaa82278e88d, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -333,12 +333,12 @@ SpriteRenderer:
   m_SortingLayerID: 1019605833
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 737078a48bf2e7841a9219ce71eae3b4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 323bec92c2480654db9a4c9e3d8dd6c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.85, y: 7.01}
+  m_Size: {x: 8.84, y: 7.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -416,7 +416,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 8.84, y: 7.57}
-    newSize: {x: 4.85, y: 7.01}
+    newSize: {x: 8.84, y: 7.57}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 49f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: 737078a48bf2e7841a9219ce71eae3b4, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: e33cdbae599a1d54f848d6e32cc4cab5, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0

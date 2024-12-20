@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -97,7 +97,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 3cb2e025a58713b41854365c8fbd4067, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,7 +118,7 @@ SpriteRenderer:
   m_SortingLayerID: 1019605833
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aa987ae610a228b428974ce76af0eae3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60b8f09a3459bbe418095de085e88d1f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -141,7 +141,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 3.0362577
+  m_Mass: 4.0696754
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -188,8 +188,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.33684888}
-  m_Size: {x: 2.8863556, y: 12.30758}
+  m_Offset: {x: 0.017327467, y: 0.07900913}
+  m_Size: {x: 2.3665316, y: 7.38658}
   m_Direction: 0
 --- !u!114 &5185739104336819258
 MonoBehaviour:
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 49f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: aa987ae610a228b428974ce76af0eae3, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: e8d28e24eb83e794eb6ba27317afd200, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 2.045, y: 6.7, z: 0}
+    m_Extent: {x: 1.34, y: 3.555, z: 0}
   m_PointLightInnerAngle: 360.00003
   m_PointLightOuterAngle: 360.00003
   m_PointLightInnerRadius: 0

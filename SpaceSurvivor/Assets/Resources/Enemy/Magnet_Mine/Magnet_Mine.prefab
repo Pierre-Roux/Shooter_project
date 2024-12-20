@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7800574371986389997}
@@ -53,7 +53,7 @@ MonoBehaviour:
   health: 30
   damage: 1
   speed: 10
-  GlowIntensity: 1
+  GlowIntensity: 10
   small_XP: {fileID: 9198873428497900977, guid: d71560468d1e85346a93e1daf82ea99a, type: 3}
   Medium_XP: {fileID: 9198873428497900977, guid: 8d3e5fba66020d04ca3b9dde592cf8c9, type: 3}
   Large_XP: {fileID: 9198873428497900977, guid: 918fb977b6628174c8a9aeaa69a86a6a, type: 3}
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: ba5d4d938525cfe4f945bb070a088975, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 1019605833
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7e61ee0bc9002914986d2c2627e4833e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e1663d81affc4cf468bc8d581331a834, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 49f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: 7e61ee0bc9002914986d2c2627e4833e, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: a93b822cd4bd52f4490c2524ccade1a1, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 3.075, y: 3.225, z: 0}
+    m_Extent: {x: 1.105, y: 1.09, z: 0}
   m_PointLightInnerAngle: 360.00003
   m_PointLightOuterAngle: 360.00003
   m_PointLightInnerRadius: 0
@@ -239,7 +239,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 3.2
+  m_Radius: 1.1027651
 --- !u!1 &1962248155049568583
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +320,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 60
+  m_Radius: 20
 --- !u!1 &7497611434472828471
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,4 +401,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 30
+  m_Radius: 15

@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2353824598851727969}
@@ -93,7 +93,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: f134337e0c54695418af5557997d2c18, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SortingLayerID: 1019605833
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b33b97cf09c42f742bcb13ea02e9c327, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4a17e4686d7ca245b433d5b4b7736b3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -184,9 +184,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.037157536, y: -0.13005376}
+  m_Offset: {x: 0.088078976, y: 0.1659602}
   serializedVersion: 2
-  m_Radius: 6.413146
+  m_Radius: 5.3770943
 --- !u!114 &-1130239795499856087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +208,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 49f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: b33b97cf09c42f742bcb13ea02e9c327, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: 53ac92be13e04064e88488d81681c973, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 7.235, y: 7.435, z: 0}
+    m_Extent: {x: 4.27, y: 4.25, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

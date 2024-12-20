@@ -62,7 +62,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 15.8, y: 1.614, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7053831566327347260}
@@ -83,14 +83,16 @@ MonoBehaviour:
   health: 20
   damage: 0
   speed: 0
-  GlowIntensity: 5
+  GlowIntensity: 10
   small_XP: {fileID: 9198873428497900977, guid: d71560468d1e85346a93e1daf82ea99a, type: 3}
   Medium_XP: {fileID: 9198873428497900977, guid: 8d3e5fba66020d04ca3b9dde592cf8c9, type: 3}
   Large_XP: {fileID: 9198873428497900977, guid: 918fb977b6628174c8a9aeaa69a86a6a, type: 3}
   small_XP_Reward: 0
   Medium_XP_Reward: 0
   Large_XP_Reward: 1
+  unitPowerMesure: 0
   reactivationUnitPrefab: {fileID: 2172597101631556622, guid: bcddcd6f83adc05438caef76817ac2ce, type: 3}
+  deactivationDistance: 0
   IsDead: 0
   hasLineOfSight: 0
   target: {fileID: 0}
@@ -126,7 +128,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: -876546973899608171, guid: 1bf5e9b0c423fbc438b758fde54c748e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,12 +149,12 @@ SpriteRenderer:
   m_SortingLayerID: 1019605833
   m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8e4b6a61f54638449bc7da3517c4dc2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 67cf6686fd274fc44826342282948f28, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.94, y: 6.69}
+  m_Size: {x: 4.11, y: 4.19}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -217,9 +219,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04865074, y: 0}
+  m_Offset: {x: -0.010439396, y: 0}
   serializedVersion: 2
-  m_Radius: 3.8085651
+  m_Radius: 2.1654315
 --- !u!114 &8575662261195329992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +243,7 @@ MonoBehaviour:
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 0000000049f3c53c
-  m_LightCookieSprite: {fileID: 21300000, guid: e8e4b6a61f54638449bc7da3517c4dc2, type: 3}
+  m_LightCookieSprite: {fileID: 21300000, guid: 31499c6c482ce6643a6e1789a2124936, type: 3}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -255,7 +257,7 @@ MonoBehaviour:
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 3.47, y: 3.345, z: 0}
+    m_Extent: {x: 2.055, y: 2.095, z: 0}
   m_PointLightInnerAngle: 360.00003
   m_PointLightOuterAngle: 360.00003
   m_PointLightInnerRadius: 0
