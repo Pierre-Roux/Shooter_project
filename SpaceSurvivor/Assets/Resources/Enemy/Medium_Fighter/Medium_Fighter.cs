@@ -99,7 +99,7 @@ public class Medium_Fighter : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            player.TakeDamage(damage);
+            player.TakeDamage(damage,"Range");
             lastAttackTime = Time.time;
         }
     }

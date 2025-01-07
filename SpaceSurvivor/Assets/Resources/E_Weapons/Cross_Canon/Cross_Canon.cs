@@ -14,6 +14,7 @@ public class Cross_Canon : WeaponBase
 
     public override void Fire()
     {
+        PlayShootSound();
         GameObject bullet = Instantiate(bulletPrefab, firepoint1.position, firepoint1.rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(firepoint1.up * fireForce,ForceMode2D.Impulse);
 

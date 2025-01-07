@@ -479,6 +479,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524554375}
   - component: {fileID: 524554378}
+  - component: {fileID: 524554379}
   - component: {fileID: 524554377}
   - component: {fileID: 524554376}
   m_Layer: 5
@@ -564,6 +565,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 524554379}
+        m_TargetAssemblyTypeName: UiBtnSound, Assembly-CSharp
+        m_MethodName: PlayBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &524554377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,6 +615,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524554374}
   m_CullTransparentMesh: 1
+--- !u!114 &524554379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524554374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cc1ca9c799a5c458abc5e9f90bff0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BtnClick_soundEvent:
+    Guid:
+      Data1: -1532816874
+      Data2: 1210096676
+      Data3: 333388672
+      Data4: 788356013
+    Path: event:/Ennemies/Death
 --- !u!1 &1144646631
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +861,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5537b005aa96e45b85fa6b3890c77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameState: 
   loadingBar: {fileID: 1877146642}
   loadingBarSlider: {fileID: 284027881}
   menuObjects:
@@ -849,6 +880,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1670803629}
   - component: {fileID: 1670803632}
+  - component: {fileID: 1670803633}
   - component: {fileID: 1670803631}
   - component: {fileID: 1670803630}
   m_Layer: 5
@@ -934,6 +966,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1670803633}
+        m_TargetAssemblyTypeName: UiBtnSound, Assembly-CSharp
+        m_MethodName: PlayBtnSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1670803631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -972,6 +1016,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670803628}
   m_CullTransparentMesh: 1
+--- !u!114 &1670803633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670803628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cc1ca9c799a5c458abc5e9f90bff0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BtnClick_soundEvent:
+    Guid:
+      Data1: -1532816874
+      Data2: 1210096676
+      Data3: 333388672
+      Data4: 788356013
+    Path: event:/Ennemies/Death
 --- !u!1 &1679673621
 GameObject:
   m_ObjectHideFlags: 0

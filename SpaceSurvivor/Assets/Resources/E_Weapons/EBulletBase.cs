@@ -20,7 +20,7 @@ public class EBulletBase : MonoBehaviour
             player = coll.gameObject.GetComponent<Player_controler>();
             if (player != null)
             {
-                player.TakeDamage(damage);
+                player.TakeDamage(damage,"Range");
             }
         }
         Destroy(gameObject);

@@ -84,6 +84,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dbc28612cc3f8408da6330fefcc9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Death_soundEvent:
+    Guid:
+      Data1: -1532816874
+      Data2: 1210096676
+      Data3: 333388672
+      Data4: 788356013
+    Path: event:/Ennemies/Death
+  Hit_soundEvent:
+    Guid:
+      Data1: 970887523
+      Data2: 1104475970
+      Data3: 1193924746
+      Data4: 485612282
+    Path: event:/XP loot
   health: 20
   damage: 1
   speed: 5

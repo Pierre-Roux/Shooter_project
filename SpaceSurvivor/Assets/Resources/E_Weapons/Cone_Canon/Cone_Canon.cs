@@ -43,6 +43,8 @@ public class Cone_Canon : WeaponBase
         float halfCone = coneAngle / 2f;
         float angleStep = coneAngle / (numberOfProjectiles - 1);
 
+        PlayShootSound();
+
         for (int i = 0; i < numberOfProjectiles; i++)
         {
             float offsetAngle = baseAngle - halfCone + (angleStep * i);

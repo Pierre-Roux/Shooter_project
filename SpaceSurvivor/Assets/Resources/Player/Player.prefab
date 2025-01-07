@@ -324,18 +324,39 @@ MonoBehaviour:
     Path: event:/Ennemies/Death
   ShieldHit_soundEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1336328069
+      Data2: 1129015783
+      Data3: -1553109116
+      Data4: -719928804
+    Path: event:/Shield/Shield Hit
   PlayerHit_soundEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1969358276
+      Data2: 1293679867
+      Data3: -2069903964
+      Data4: -1715551100
+    Path: event:/Player/Player Hit
+  ShieldHitCac_soundEvent:
+    Guid:
+      Data1: 1056941103
+      Data2: 1330867405
+      Data3: -448847
+      Data4: -1212864075
+    Path: event:/Guns/flak canon
+  PlayerHitCac_soundEvent:
+    Guid:
+      Data1: 1056941103
+      Data2: 1330867405
+      Data3: -448847
+      Data4: -1212864075
+    Path: event:/Guns/flak canon
+  PlayerShieldRecharge_soundEvent:
+    Guid:
+      Data1: 639297166
+      Data2: 1132524140
+      Data3: 1143009163
+      Data4: -1974284493
+    Path: event:/Shield/Shiled Break
   globalSpeed: 2
   GlowIntensity: 10
   maxHealth: 10

@@ -121,7 +121,7 @@ public class Heavy_Mine : EnemyBase
         {
             if (nearbyObject.CompareTag("Player"))
             {
-                nearbyObject.GetComponent<Player_controler>().TakeDamage(explosionDamage);
+                nearbyObject.GetComponent<Player_controler>().TakeDamage(explosionDamage,"Range");
             }
             else if (nearbyObject.CompareTag("Enemy"))
             {
