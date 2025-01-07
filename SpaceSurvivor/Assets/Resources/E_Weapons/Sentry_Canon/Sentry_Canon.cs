@@ -62,6 +62,7 @@ public class Sentry_Canon : WeaponBase
         {
             if (Time.time >= lastFireTime + fireCooldown)
             {
+                PlayShootSound();
                 GameObject bullet = Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
                 bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up * fireForce,ForceMode2D.Impulse);
                 lastFireTime = Time.time;

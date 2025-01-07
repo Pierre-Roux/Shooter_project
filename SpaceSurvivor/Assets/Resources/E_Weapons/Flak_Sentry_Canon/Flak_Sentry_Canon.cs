@@ -63,6 +63,7 @@ public class Flak_Sentry_Canon : WeaponBase
         {
             if (Time.time >= lastFireTime + fireCooldown)
             {
+                PlayShootSound();
                 lastFireTime = Time.time;
                 for (int i = 0; i < bulletNumber; i++)
                 {

@@ -15,6 +15,9 @@ public class Player_controler : MonoBehaviour
     [SerializeField] private EventReference ShieldBreak_soundEvent;
     [SerializeField] private EventReference ShieldHit_soundEvent;
     [SerializeField] private EventReference PlayerHit_soundEvent;
+    [SerializeField] private EventReference ShieldHitCac_soundEvent;
+    [SerializeField] private EventReference PlayerHitCac_soundEvent;
+    [SerializeField] private EventReference PlayerShieldRecharge_soundEvent;
 [Header("Param")] 
     [Tooltip("")] 
     [SerializeField] public float globalSpeed;
@@ -63,6 +66,9 @@ public class Player_controler : MonoBehaviour
     [HideInInspector] private FMOD.Studio.EventInstance ShieldBreakSound;
     [HideInInspector] private FMOD.Studio.EventInstance ShieldHitSound;
     [HideInInspector] private FMOD.Studio.EventInstance PlayerHitSound;
+    [HideInInspector] private FMOD.Studio.EventInstance PlayerShieldRechargeInstance;
+    [HideInInspector] private FMOD.Studio.EventInstance ShieldHitCacInstance;
+    [HideInInspector] private FMOD.Studio.EventInstance PlayerHitCacInstance;
     
 
     void Awake() {
@@ -210,6 +216,7 @@ public class Player_controler : MonoBehaviour
             //RegenShield
             if (Time.time - lastDamageTime >= shieldRegenDelay && shield < maxShield && shieldRegenCoroutine == null)
             {
+                PlayerShieldRechargeSound();
                 shieldRegenCoroutine = StartCoroutine(StartShieldRegen());
             }
 
@@ -221,13 +228,21 @@ public class Player_controler : MonoBehaviour
         }
     }
 
-    public virtual void TakeDamage(int damageAmount)
+    public virtual void TakeDamage(int damageAmount, String Nature)
     {
         lastDamageTime = Time.time;
 
         if (shield == 0)
         {
-            PlayPlayerHitSound();
+            if (Nature == "Cac")
+            {
+                PlayerHitCacSound();
+            }
+            else
+            {
+                PlayPlayerHitSound();
+            }
+            
             health -= damageAmount;
             health = Mathf.Clamp(health, 0, maxHealth);
             if (health <= 0)
@@ -241,7 +256,15 @@ public class Player_controler : MonoBehaviour
         }
         else
         {
-            PlayShieldHitSound();
+            if (Nature == "cac")
+            {
+                ShieldHitCacSound();
+            }
+            else
+            {
+                PlayShieldHitSound();
+            }
+            
             shield -= damageAmount;
             shield = Mathf.Clamp(shield, 0, maxShield);
             if (shield <= 0) 
@@ -375,6 +398,21 @@ public class Player_controler : MonoBehaviour
     public void PlayPlayerHitSound()
     {
         PlayerHitSound.start(); // Démarre la lecture du son
+    }
+    public virtual void PlayerShieldRechargeSound()
+    {
+        PlayerShieldRechargeInstance = RuntimeManager.CreateInstance(PlayerShieldRecharge_soundEvent);
+        PlayerShieldRechargeInstance.start();
+    }
+    public virtual void ShieldHitCacSound()
+    {
+        ShieldHitCacInstance = RuntimeManager.CreateInstance(ShieldHitCac_soundEvent);
+        ShieldHitCacInstance.start();
+    }
+    public virtual void PlayerHitCacSound()
+    {
+        PlayerHitCacInstance = RuntimeManager.CreateInstance(PlayerHitCac_soundEvent);
+        PlayerHitCacInstance.start();
     }
 
     IEnumerator StartShieldRegen()

@@ -56,7 +56,7 @@ public class WormScript : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            player.TakeDamage(damage);
+            player.TakeDamage(damage,"Cac");
             lastAttackTime = Time.time;
         }
     }

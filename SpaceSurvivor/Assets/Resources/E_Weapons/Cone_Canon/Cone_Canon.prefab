@@ -78,11 +78,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shoot_soundEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 182650046
+      Data2: 1109329979
+      Data3: 2030862769
+      Data4: 222007950
+    Path: event:/Ennemies/Sentry Shoot
   fireCooldown: 3
   fireForce: 25
   bulletPrefab: {fileID: 7751217143057044998, guid: 96d536499d33cff4d86cdf6b50a6ea8a, type: 3}

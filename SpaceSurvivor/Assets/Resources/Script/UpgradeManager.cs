@@ -4,9 +4,11 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class UpgradeManager : MonoBehaviour
 {
+    [SerializeField] public EventReference LevelUp_soundEvent;
     [SerializeField] public GameObject LevelUpPanel;
     [SerializeField] public Button Button1;               
     [SerializeField] public Button Button2;               
@@ -22,6 +24,7 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] public TMP_Text WeaponName3Text;   
     
     [HideInInspector] public GameObject Player;
+    [HideInInspector] public FMOD.Studio.EventInstance LevelUpInstance;
 
     [HideInInspector] private bool ChooseUpgrade;
 
@@ -79,6 +82,8 @@ public class UpgradeManager : MonoBehaviour
         RectTransform ButtonTransform1 = Button1.GetComponent<RectTransform>();
         RectTransform ButtonTransform2 = Button2.GetComponent<RectTransform>();
         RectTransform ButtonTransform3 = Button3.GetComponent<RectTransform>();
+
+        PlayLevelUpSound();
 
         int upgradeCount = upgrades.Count;
         switch (upgradeCount)
@@ -172,5 +177,11 @@ public class UpgradeManager : MonoBehaviour
         }
 
         ResumeGame();
+    }
+
+    public virtual void PlayLevelUpSound()
+    {
+        LevelUpInstance = RuntimeManager.CreateInstance(LevelUp_soundEvent);
+        LevelUpInstance.start();
     }
 }

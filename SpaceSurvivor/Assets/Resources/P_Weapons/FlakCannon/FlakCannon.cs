@@ -119,7 +119,6 @@ public class FlakCannon : WeaponBase
         if (foundUpgrade == true)
         {
             availableUpgrades.Add(upgradeTierToAdd);
-            Debug.Log("New upgrade added to pool : " + upgradeTierToAdd.ID);
         }
 
         availableUpgrades.RemoveAll(u => u.ID == upgrade.ID);

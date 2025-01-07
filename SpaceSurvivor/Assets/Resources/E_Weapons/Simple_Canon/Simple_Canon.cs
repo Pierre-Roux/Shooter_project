@@ -33,6 +33,7 @@ public class Simple_Canon : WeaponBase
 
     public override void Fire()
     {
+        PlayShootSound();
         // Calcule l'angle de rotation basé sur la direction vers le joueur
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         GameObject bullet = Instantiate(bulletPrefab, firepoint.position, Quaternion.Euler(0, 0, angle+90f));

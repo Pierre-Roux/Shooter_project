@@ -1,9 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using FMODUnity;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+[Header("Audio")]
+    [SerializeField] public EventReference Death_soundEvent;
+    [SerializeField] public EventReference Hit_soundEvent;
 [Header("Base_Param")]
     [SerializeField] public int health; 
     [SerializeField] public int damage; 
@@ -31,6 +35,9 @@ public abstract class EnemyBase : MonoBehaviour
     
     [HideInInspector] private float GlowDuration = 0.1f;
     [HideInInspector] private float initialIntensity;
+
+    [HideInInspector] public FMOD.Studio.EventInstance DeathInstance;
+    [HideInInspector] public FMOD.Studio.EventInstance HitInstance;
 
     public virtual void Die()
     {
@@ -84,11 +91,13 @@ public abstract class EnemyBase : MonoBehaviour
         if (health <= 0)
         {
             IsDead = true;
+            PlayDeathSound();
             Die();
         }
         else
         {
             StartCoroutine(GlowOnHit());
+            PlayHitSound();
         }
     }
 
@@ -168,5 +177,17 @@ public abstract class EnemyBase : MonoBehaviour
         speed = speed * SlowAmount /100;
         yield return new WaitForSeconds(2.00f);
         speed = oldspeed;
+    }
+
+    public virtual void PlayDeathSound()
+    {
+        DeathInstance = RuntimeManager.CreateInstance(Death_soundEvent);
+        DeathInstance.start();
+    }
+
+    public virtual void PlayHitSound()
+    {
+        HitInstance = RuntimeManager.CreateInstance(Hit_soundEvent);
+        HitInstance.start();
     }
 }
