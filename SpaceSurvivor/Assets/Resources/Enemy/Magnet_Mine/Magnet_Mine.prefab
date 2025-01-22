@@ -64,7 +64,7 @@ MonoBehaviour:
       Data3: 1193924746
       Data4: 485612282
     Path: event:/XP loot
-  health: 30
+  health: 4500
   damage: 1
   speed: 10
   GlowIntensity: 10
@@ -74,7 +74,7 @@ MonoBehaviour:
   small_XP_Reward: 1
   Medium_XP_Reward: 0
   Large_XP_Reward: 0
-  unitPowerMesure: 1
+  unitPowerMesure: 30
   reactivationUnitPrefab: {fileID: 2172597101631556622, guid: bcddcd6f83adc05438caef76817ac2ce, type: 3}
   deactivationDistance: 0
   IsDead: 0
@@ -88,8 +88,8 @@ MonoBehaviour:
   followRange: 10
   explosionEffect: {fileID: 0}
   explosionRadius: 6
-  explosionDamage: 5
-  launchForce: 50000
+  explosionDamage: 850
+  launchForce: 40000
 --- !u!212 &-6637333814595070956
 SpriteRenderer:
   m_ObjectHideFlags: 0

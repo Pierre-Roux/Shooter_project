@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -10,13 +11,18 @@ public class LightBlaster : WeaponBase
     [SerializeField] public Transform firepoint2;
 
     [HideInInspector] public int SplitShot;
-    [HideInInspector] public int HomingShot;
+    [HideInInspector] public int ExplosiveShot;
+
+    [HideInInspector] public float explosionDamage;
 
     [HideInInspector] private Boolean ShootedRight;
     [HideInInspector] private Color addColor;
     [HideInInspector] private int addIntensity;
-    [HideInInspector] private int addDamage;
+    [HideInInspector] private float addDamage;
     [HideInInspector] private int NBShot;
+    [HideInInspector] private float coneAngle;
+    [HideInInspector] private Vector2 mousePosition;
+    [HideInInspector] private float SubMunPercentDamage;
 
 
     // Start is called before the first frame update
@@ -27,32 +33,36 @@ public class LightBlaster : WeaponBase
         Level = 0;
         addColor = new Color(0,0,0);
         addIntensity = 0;
-        addDamage = 0;
         NBShot = 1;
         SplitShot = 0;
-        HomingShot = 0;
+        ExplosiveShot = 0;
+        coneAngle = 30;
+        addDamage = bulletPrefab.GetComponent<PlayerBulletBase>().damage;
 
         // Initialisation des upgrades possibles
         // string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
-            new Upgrade("LBFireRateT1","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
-            new Upgrade("LBDamageT1","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("LBDoubleShotT1","LightBlaster","Double Shot", 0f, new Color(0,0,0), 0, 0, 1, 0,"2 times harder"),
+            new Upgrade("LBFireRateT1","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction - 0.05"),
+            new Upgrade("LBDamageT1","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 50, 0, 0,"Damage boost + 50"),
+            new Upgrade("LBDoubleShotT1","LightBlaster","Double Shot", -0.1f, new Color(0,0,0), 0, 0, 1, 0,"2 times harder \n Cooldown + 0.1"),
             new Upgrade("LBSpliShotT1","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"2 shards"),
-            new Upgrade("LBHomingShotT1","LightBlaster","Homing Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Low Following bullets")
+            new Upgrade("LBExplosiveT1","LightBlaster","Explosive Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Baboum"),
         };
 
         TierUpgrades = new List<Upgrade>
         {
             new Upgrade("LBFireRateT2","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
-            new Upgrade("LBDamageT2","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("LBDoubleShotT2","LightBlaster","Triple Shot", 0f, new Color(0,0,0), 0, 0, 2, 0,"3 times harder"),
-            new Upgrade("LBDoubleShotT3","LightBlaster","Quad Shot", 0f, new Color(0,0,0), 0, 0, 3, 0,"4 times harder"),
+            new Upgrade("LBFireRateT3","LightBlaster","Cooldown Reduction", 0.05f, new Color(0,0,0), 0, 0, 0, 0,"Cooldown reduction -0.05"),
+            new Upgrade("LBDamageT2","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 50, 0, 0,"Damage boost + 50"),
+            new Upgrade("LBDamageT3","LightBlaster","Damage Boost", 0f, new Color(0,0,0), 0, 50, 0, 0,"Damage boost + 50"),
+            new Upgrade("LBDoubleShotT2","LightBlaster","Triple Shot", +0.1f, new Color(0,0,0), 0, 0, 2, 0,"3 times harder"),
+            new Upgrade("LBDoubleShotT3","LightBlaster","Quad Shot", -0.1f, new Color(0,0,0), 0, 0, 2, 0,"3 times harder but \nCooldown -0.1\nSpread -15°"),
             new Upgrade("LBSpliShotT2","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"3 shards"),
             new Upgrade("LBSpliShotT3","LightBlaster","Split Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"4 shards"),
-            new Upgrade("LBHomingShotT2","LightBlaster","Homing Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Medium Following bullets"),
-            new Upgrade("LBHomingShotT3","LightBlaster","Homing Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Hard Following bullets")
+            new Upgrade("LBExplosiveT2","LightBlaster","Explosive Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Baboum"),
+            new Upgrade("LBExplosiveT3","LightBlaster","Explosive Shot", 0f, new Color(0,0,0), 0, 0, 0, 0,"Baboum"),
+
         };
     }
 
@@ -79,52 +89,38 @@ public class LightBlaster : WeaponBase
 
     private void ShootBullets(Transform firepoint)
     {
-        float offsetAmount = 0.5f;
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 aimDirection = mousePosition - (Vector2)transform.position;
+        float baseAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg +15f;
 
-        if (NBShot == 4)
-        {
-            InstantiateBullet(firepoint, firepoint.right * offsetAmount);
-            InstantiateBullet(firepoint, -firepoint.right * offsetAmount);
-            InstantiateBullet(firepoint, firepoint.right * (offsetAmount /2.5f));
-            InstantiateBullet(firepoint, -firepoint.right *(offsetAmount /2.5f));
-        }
-        else if (NBShot == 3)
-        {
-            InstantiateBullet(firepoint, firepoint.right * offsetAmount);
-            InstantiateBullet(firepoint, -firepoint.right * offsetAmount);
-            InstantiateBullet(firepoint, Vector3.zero);
-        }
-        else if (NBShot == 2)
-        {
-            InstantiateBullet(firepoint, firepoint.right * offsetAmount);
-            InstantiateBullet(firepoint, -firepoint.right * offsetAmount);
-        }
-        else
-        {
-            InstantiateBullet(firepoint, Vector3.zero);
-        }
-    }
+        float halfCone = coneAngle / 2f;
+        float angleStep = coneAngle / NBShot;
 
-    public void InstantiateBullet(Transform firepoint, Vector3 offset)
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firepoint.position + offset, firepoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up  * fireForce,ForceMode2D.Impulse);
-        bullet.GetComponent<Light2D>().color += addColor;
-        bullet.GetComponent<Light2D>().intensity += addIntensity;
-        bullet.GetComponent<PlayerBulletBase>().damage += addDamage;
-        if (SplitShot > 0)
+        for (int i = 0; i < NBShot; i++)
         {
-            B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
-            BulletBehavior.Speed = fireForce;
-            BulletBehavior.SplitShot = SplitShot;
+            float offsetAngle = baseAngle - halfCone + (angleStep * i);
+            float radianAngle = offsetAngle * Mathf.Deg2Rad;
+
+            Vector2 projectileDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
+
+            GameObject bullet = Instantiate(bulletPrefab, firepoint.position, Quaternion.Euler(0, 0, offsetAngle+90f));
+            bullet.GetComponent<Rigidbody2D>().AddForce(projectileDirection * fireForce, ForceMode2D.Impulse);
+            bullet.GetComponent<Light2D>().color += addColor;
+            bullet.GetComponent<Light2D>().intensity += addIntensity;
+            bullet.GetComponent<PlayerBulletBase>().damage = addDamage;
+            if (SplitShot > 0)
+            {
+                B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
+                BulletBehavior.SplitShot = SplitShot;
+                BulletBehavior.SplitDamage = addDamage * SubMunPercentDamage;
+            }
+            if (ExplosiveShot > 0)
+            {
+                B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
+                BulletBehavior.ExplosiveShot = ExplosiveShot;
+                BulletBehavior.explosionDamage = addDamage * explosionDamage;
+            }
         }
-        if (HomingShot > 0)
-        {
-            B_LightBlaster_Behavior BulletBehavior = bullet.GetComponent<B_LightBlaster_Behavior>();
-            BulletBehavior.HomingShot = HomingShot;
-            BulletBehavior.Speed = fireForce;
-        }
-        
     }
 
     // Appliquer l'upgrade
@@ -143,27 +139,39 @@ public class LightBlaster : WeaponBase
         if (upgrade.ID == "LBSpliShotT1")
         {
             SplitShot = 1;
+            SubMunPercentDamage = 0.25f;
         }
         else if (upgrade.ID == "LBSpliShotT2")
         {
             SplitShot = 2;
+            SubMunPercentDamage = 0.35f;
         }
         else if (upgrade.ID == "LBSpliShotT3")
         {
             SplitShot = 3;
+            SubMunPercentDamage = 0.45f;
         }
 
-        if (upgrade.ID == "LBHomingShotT1")
+        if (upgrade.ID == "LBExplosiveT1")
         {
-            HomingShot = 1;
+            ExplosiveShot = 1;
+            explosionDamage = 0.3f;
         }
-        else if (upgrade.ID == "LBHomingShotT2")
+        else if (upgrade.ID == "LBExplosiveT2")
         {
-            HomingShot = 2;
+            ExplosiveShot = 2;
+            explosionDamage = 0.6f;
         }
-        else if (upgrade.ID == "LBHomingShotT3")
+        else if (upgrade.ID == "LBExplosiveT3")
         {
-            HomingShot = 3;
+            ExplosiveShot = 3;
+            explosionDamage = 0.9f;
+        }
+
+
+        if (upgrade.ID == "LBDoubleShotT3")
+        {
+            coneAngle -= 10;
         }
 
         bool foundUpgrade = false;

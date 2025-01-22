@@ -11,7 +11,7 @@ public class Cone_Canon : WeaponBase
     [SerializeField] public float coneAngle; // Angle total du cône en degrés
 
     [HideInInspector] private Transform target;
-    [HideInInspector] private Vector2 aimDirection ;
+    [HideInInspector] private Vector2 aimDirections ;
     
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class Cone_Canon : WeaponBase
             transform.position = WeaponPosition.position;
             
             // Calcule la direction vers le joueur
-            aimDirection = (target.position - transform.position).normalized;
+            aimDirections = (target.position - transform.position).normalized;
 
             if (hasLineOfSight && Time.time >= lastFireTime + fireCooldown)
             {
@@ -37,9 +37,8 @@ public class Cone_Canon : WeaponBase
     public override void Fire()
     {
         // Calcule l'angle central (direction vers le joueur)
-        float baseAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        float baseAngle = Mathf.Atan2(aimDirections.y, aimDirections.x) * Mathf.Rad2Deg;
 
-        // Calcul des offsets pour répartir les projectiles dans le cône
         float halfCone = coneAngle / 2f;
         float angleStep = coneAngle / (numberOfProjectiles - 1);
 
@@ -50,10 +49,8 @@ public class Cone_Canon : WeaponBase
             float offsetAngle = baseAngle - halfCone + (angleStep * i);
             float radianAngle = offsetAngle * Mathf.Deg2Rad;
 
-            // Direction du projectile
             Vector2 projectileDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
 
-            // Instancier et appliquer la force
             GameObject bullet = Instantiate(bulletPrefab, firepoint.position, Quaternion.Euler(0, 0, offsetAngle+90f));
             bullet.GetComponent<Rigidbody2D>().AddForce(projectileDirection * fireForce, ForceMode2D.Impulse);
         }
@@ -61,7 +58,7 @@ public class Cone_Canon : WeaponBase
 
     IEnumerator ShortDelayFire()
     {
-        // délai de 0.1 seconde
+        // délai de 0.02 seconde
         yield return new WaitForSeconds(0.02f);
         Fire();
     }

@@ -83,7 +83,7 @@ MonoBehaviour:
       Data3: 2030862769
       Data4: 222007950
     Path: event:/Ennemies/Sentry Shoot
-  fireCooldown: 3
+  fireCooldown: 1.5
   fireForce: 25
   bulletPrefab: {fileID: 7751217143057044998, guid: 96d536499d33cff4d86cdf6b50a6ea8a, type: 3}
   lastFireTime: 0
@@ -94,5 +94,5 @@ MonoBehaviour:
   TierUpgrades: []
   firepoint: {fileID: 4755155104480303911}
   WeaponPosition: {fileID: 0}
-  numberOfProjectiles: 6
-  coneAngle: 80
+  numberOfProjectiles: 5
+  coneAngle: 60

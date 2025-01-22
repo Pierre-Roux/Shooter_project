@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using FMODUnity;
+using Unity.VisualScripting;
 
 public abstract class EnemyBase : MonoBehaviour
 {
@@ -9,8 +10,8 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField] public EventReference Death_soundEvent;
     [SerializeField] public EventReference Hit_soundEvent;
 [Header("Base_Param")]
-    [SerializeField] public int health; 
-    [SerializeField] public int damage; 
+    [SerializeField] public float health; 
+    [SerializeField] public float damage; 
     [SerializeField] public float speed; 
     [SerializeField] public float GlowIntensity;
 [Header("XP")]
@@ -34,6 +35,11 @@ public abstract class EnemyBase : MonoBehaviour
     [HideInInspector] public float DistanceCheck = 100f; // Distance de check du lign of sight (modifié sur chaque ennemi)
     
     [HideInInspector] private float GlowDuration = 0.1f;
+    [HideInInspector] private float CurrentSlow;
+    [HideInInspector] private float TimeStopSlow;
+    [HideInInspector] private float SlowTime = 3;
+    [HideInInspector] private float StartSpeed;
+    [HideInInspector] private Coroutine SlowCoroutine;
     [HideInInspector] private float initialIntensity;
 
     [HideInInspector] public FMOD.Studio.EventInstance DeathInstance;
@@ -62,6 +68,7 @@ public abstract class EnemyBase : MonoBehaviour
         target = null;
         weapons = GetComponentsInChildren<WeaponBase>();
         initialIntensity = GetComponent<Light2D>().intensity;
+        StartSpeed = speed;
     }
 
     void Update()
@@ -72,10 +79,13 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         deactivationDistance = 160f; // Variable de distance de disparition de l'ennemi, obligatoirement 160 ou plus
-        if (Vector2.Distance(transform.position, target.transform.position) > deactivationDistance)
+        if (target != null)
         {
-            CreateReactivationUnit();
-            gameObject.SetActive(false);  // Désactiver l'ennemi
+            if (Vector2.Distance(transform.position, target.transform.position) > deactivationDistance)
+            {
+                CreateReactivationUnit();
+                gameObject.SetActive(false);  // Désactiver l'ennemi
+            }
         }
     }
 
@@ -85,7 +95,7 @@ public abstract class EnemyBase : MonoBehaviour
         Instantiate(reactivationUnitPrefab, transform.position, Quaternion.identity).GetComponent<ReactivationUnit>().enemyToReactivate = this;
     }
 
-    public virtual void TakeDamage(int damageAmount)
+    public virtual void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
         if (health <= 0)
@@ -101,9 +111,40 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    public virtual void TakeSlow(int SlowAmount)
+    public virtual void TakeSlow(float SlowAmount, float MaxAmount)
     {
-        StartCoroutine(SlowEffect(SlowAmount));
+        if (CurrentSlow + SlowAmount >= MaxAmount)
+        {
+            CurrentSlow = MaxAmount;
+            TimeStopSlow = Time.time + SlowTime;
+        }
+        else
+        {
+            CurrentSlow += SlowAmount;
+            TimeStopSlow = Time.time + SlowTime;
+        }
+
+        Debug.Log("SlowTaked : " + CurrentSlow);
+
+        if (SlowCoroutine == null)
+        {
+            SlowCoroutine = StartCoroutine(SlowEffect());
+        }
+    }
+
+    public IEnumerator SlowEffect()
+    {
+        while (Time.time < TimeStopSlow)
+        {
+            speed = StartSpeed - (StartSpeed * CurrentSlow /100);
+            yield return null;
+        }
+
+        CurrentSlow = 0;
+        speed = StartSpeed;
+        SlowCoroutine = null;
+        Debug.Log("SlowEnded");
+        yield return null;
     }
 
     public virtual void CalculateLineOfSight(float large)
@@ -150,8 +191,6 @@ public abstract class EnemyBase : MonoBehaviour
             GetComponent<Light2D>().intensity = Mathf.Lerp(initialIntensity, initialIntensity + GlowIntensity, lerpFactor);
             //GetComponent<Light2D>().pointLightOuterRadius = Mathf.Lerp(initialRadius, initialRadius + GlowRadius, lerpFactor);
 
-            Debug.Log("Glow int :  " + GetComponent<Light2D>().intensity);
-
             yield return null;
         }
 
@@ -169,14 +208,6 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity + " Objective : " + GetComponent<Light2D>().pointLightOuterRadius);
-    }
-
-    IEnumerator SlowEffect(int SlowAmount)
-    {
-        float oldspeed = speed;
-        speed = speed * SlowAmount /100;
-        yield return new WaitForSeconds(2.00f);
-        speed = oldspeed;
     }
 
     public virtual void PlayDeathSound()

@@ -9,6 +9,7 @@ public class BeamLaser : WeaponBase
     [SerializeField] public float hitCooldown;
     [SerializeField] public int damage;
     [SerializeField] public int SlowAmount;
+    [SerializeField] public float MaxSlow;
 [Header("Other")] 
     [SerializeField] public Transform firepoint;
     [SerializeField] public LineRenderer lineRenderer; 
@@ -41,19 +42,19 @@ public class BeamLaser : WeaponBase
         // string Identifier ,string pieceName, string name, float cooldown, Color color, int intensity, int damage, int bulletNumber, int range, string description
         availableUpgrades = new List<Upgrade>
         {
-            new Upgrade("BLRangeT1","BeamLaser","Range Boost", 0f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
-            new Upgrade("BLDamageT1","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("BLSlowT1","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 2, 0, 0,"Slow 30%")
+            new Upgrade("BLRangeT1","BeamLaser","Range Boost", 0f, new Color(0,0,0), 0, 0, 0, 4,"Range + 4"),
+            new Upgrade("BLDamageT1","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 30, 0, 0,"Damage boost + 30"),
+            new Upgrade("BLSlowT1","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 2, 0, 0,"SlowMax 30%\n SlowPerHit 5%")
         };
 
         TierUpgrades = new List<Upgrade>
         {
-            new Upgrade("BLRangeT2","BeamLaser","Range Boost", 0.05f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
-            new Upgrade("BLDamageT2","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("BLSlowT2","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 0, 0, 0,"Slow 50%"),
-            new Upgrade("BLRangeT3","BeamLaser","Range Boost", 0.05f, new Color(0,0,0), 0, 0, 0, 5,"Range +5"),
-            new Upgrade("BLDamageT3","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 2, 0, 0,"Damage boost +2"),
-            new Upgrade("BLSlowT3","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 0, 0, 0,"Slow 80%"),
+            new Upgrade("BLRangeT2","BeamLaser","Range Boost", 0.05f, new Color(0,0,0), 0, 0, 0, 4,"Range + 4"),
+            new Upgrade("BLDamageT2","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 30, 0, 0,"Damage boost + 30"),
+            new Upgrade("BLSlowT2","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 0, 0, 0,"SlowMax 50%\n SlowPerHit 10%"),
+            new Upgrade("BLRangeT3","BeamLaser","Range Boost", 0.05f, new Color(0,0,0), 0, 0, 0, 4,"Range + 4"),
+            new Upgrade("BLDamageT3","BeamLaser","Damage Boost", 0f, new Color(0,0,0), 0, 40, 0, 0,"Damage boost + 40"),
+            new Upgrade("BLSlowT3","BeamLaser","Slow", 0f, new Color(0,0,0), 0, 0, 0, 0,"SlowMax 70%\n SlowPerHit 12%"),
         };
     }
 
@@ -131,7 +132,7 @@ public class BeamLaser : WeaponBase
                             Enemy.TakeDamage(damage);
                             if (SlowAmount > 0)
                             {
-                                Enemy.TakeSlow(SlowAmount);
+                                Enemy.TakeSlow(SlowAmount,MaxSlow);
                             }
                             lastFireTime = Time.time;
                         }
@@ -200,15 +201,18 @@ public class BeamLaser : WeaponBase
 
         if (upgrade.ID == "BLSlowT1")
         {
-            SlowAmount = 70;
+            SlowAmount = 2;
+            MaxSlow = 30;
         }
         else if (upgrade.ID == "BLSlowT2")
         {
-            SlowAmount = 50;
+            SlowAmount = 4;
+            MaxSlow = 50;
         }
         else if (upgrade.ID == "BLSlowT3")
         {
-            SlowAmount = 20;
+            SlowAmount = 6;
+            MaxSlow = 70;
         }
 
 
@@ -229,7 +233,6 @@ public class BeamLaser : WeaponBase
         if (foundUpgrade == true)
         {
             availableUpgrades.Add(upgradeTierToAdd);
-            Debug.Log("New upgrade added to pool : " + upgradeTierToAdd.ID);
         }
 
         availableUpgrades.RemoveAll(u => u.ID == upgrade.ID);

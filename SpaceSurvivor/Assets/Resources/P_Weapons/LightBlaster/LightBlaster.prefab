@@ -84,7 +84,7 @@ MonoBehaviour:
       Data3: 880144301
       Data4: 1403310707
     Path: event:/Guns/light balster
-  fireCooldown: 0.3
+  fireCooldown: 0.4
   fireForce: 30
   bulletPrefab: {fileID: 7751217143057044998, guid: 303e891fe56a4164bb11d1321e8fb920, type: 3}
   lastFireTime: 0

@@ -21,6 +21,8 @@ public abstract class WeaponBase : MonoBehaviour
     [HideInInspector] public List<Upgrade> availableUpgrades;
     [HideInInspector] public List<Upgrade> TierUpgrades;
 
+    [HideInInspector] public Vector2 aimDirection;
+
     public abstract void Fire();
 
     public virtual void CancelFire(){}

@@ -3,9 +3,10 @@ using UnityEngine;
 public class PlayerBulletBase : MonoBehaviour
 {
 [Header("Param")] 
-    [SerializeField] public int damage;
+    [SerializeField] public float damage;
     [SerializeField] public float lifeTime;
 
+    [HideInInspector] public GameObject enemyToIgnore;
     [HideInInspector] private EnemyBase enemy;
 
     void Start()

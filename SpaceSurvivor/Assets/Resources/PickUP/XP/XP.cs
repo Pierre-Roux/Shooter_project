@@ -1,62 +1,83 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using DG.Tweening;
 
 public class XP : MonoBehaviour
 {
     [SerializeField] public string type; 
-    [SerializeField] public int Value; 
-    [SerializeField] public float DecayTime; // Durée pour le premier déclin
-    [SerializeField] private float DecayTime2; // Durée pour le second déclin
-    [SerializeField] private Color startColor = Color.yellow; // Couleur initiale de la lumière
-    [SerializeField] private Color endColor = Color.clear; // Couleur de fin (dissipation)
+    [SerializeField] public float Value; 
+    [SerializeField] public float LifeGain;
+    [SerializeField] private float BaseValue; 
+    [SerializeField] public float DecayTime1;
+    [SerializeField] public float DecayTime2;
+    [SerializeField] public float DecayTime3;
+    [SerializeField] public float DecayTime4;
+    [SerializeField] public Color ColorStadeFresh;
+    [SerializeField] public Color ColorStadeGood;
+    [SerializeField] public Color ColorStadeMedium;
+    [SerializeField] public Color ColorStadeMediocre;
+    [SerializeField] public Color ColorStadePoor;
+
+    [HideInInspector] private float startTime;
 
     private Light2D xpLight;
+    private SpriteRenderer spriteRenderer;
 
     public void Start()
     {
+        startTime = Time.time;
         xpLight = GetComponent<Light2D>();
-        if (xpLight == null)
-        {
-            Debug.LogWarning("Light2D non trouvée sur l'XP !");
-            return;
-        }
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Définir la valeur d'XP en fonction du type
-        Value = type == "Large" ? 45 : type == "Medium" ? 15 : 3;
-
-        // Déclencher l'animation de déclin
-        StartDecayEffects();
+        BaseValue = type == "Large" ? 1000 : type == "Medium" ? 500 : 100;
     }
 
-    private void StartDecayEffects()
+    public void Update()
     {
-        // Premier déclin : réduire l'intensité et la couleur de la lumière, diminuer la valeur de l'XP
-        DOTween.To(() => xpLight.intensity, x => xpLight.intensity = x, 3f, DecayTime)
-            .SetEase(Ease.OutQuad);
-        
-        DOTween.To(() => GetComponent<SpriteRenderer>().color, x => GetComponent<SpriteRenderer>().color = x, startColor, DecayTime)
-            .SetEase(Ease.OutQuad);
+        DefineValue();
+    }
 
-        DOTween.To(() => xpLight.color, x => xpLight.color = x, startColor * 0.5f, DecayTime)
-            .SetEase(Ease.OutQuad);
-        
-        DOTween.To(() => Value, x => Value = x, Mathf.CeilToInt(Value / 2), DecayTime)
-            .SetEase(Ease.Linear)
-            .OnComplete(() =>
-            {
-                // Deuxième phase de déclin après la première
-                DOTween.To(() => xpLight.intensity, x => xpLight.intensity = x, 1, DecayTime2)
-                    .SetEase(Ease.OutQuad);
-
-                DOTween.To(() => xpLight.color, x => xpLight.color = x, endColor, DecayTime2)
-                    .SetEase(Ease.OutQuad);
-
-                DOTween.To(() => GetComponent<SpriteRenderer>().color, x => GetComponent<SpriteRenderer>().color = x, endColor, DecayTime2)
-                    .SetEase(Ease.OutQuad);
-
-                DOTween.To(() => Value, x => Value = x, 1, DecayTime2)
-                    .SetEase(Ease.Linear);
-            });
+    private void DefineValue()
+    {
+        if (Time.time > DecayTime4)
+        {
+            Value = BaseValue * 0.3f;
+            xpLight.intensity = 1f;
+            xpLight.color = ColorStadePoor;
+            spriteRenderer.color = ColorStadePoor;
+            LifeGain = 0;
+        }
+        else if (Time.time > DecayTime3)
+        {
+            Value = BaseValue * 0.5f;
+            xpLight.intensity = 2f;
+            xpLight.color = ColorStadeMediocre;
+            spriteRenderer.color = ColorStadeMediocre;
+            LifeGain = 0;
+        }
+        else if (Time.time > DecayTime2)
+        {
+            Value = BaseValue * 0.75f;
+            xpLight.intensity = 3f;
+            xpLight.color = ColorStadeMedium;
+            spriteRenderer.color = ColorStadeMedium;
+            LifeGain = 0;
+        }
+        else if (Time.time > DecayTime1)
+        {
+            Value = BaseValue;
+            xpLight.intensity = 4f;
+            xpLight.color = ColorStadeGood;
+            spriteRenderer.color = ColorStadeGood;
+            LifeGain = 0;
+        }
+        else
+        {
+            Value = BaseValue * 1.2f;
+            xpLight.intensity = 5f;
+            xpLight.color = ColorStadeFresh;
+            spriteRenderer.color = ColorStadeFresh;
+            LifeGain = 1;
+        }
     }
 }

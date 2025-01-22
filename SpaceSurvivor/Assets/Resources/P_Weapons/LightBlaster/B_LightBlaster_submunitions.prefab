@@ -100,8 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8da67a483d81041b8d1be2988d0edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 0
   lifeTime: 1
+  enemyToIgnore: {fileID: 0}
 --- !u!50 &7783472549192014182
 Rigidbody2D:
   serializedVersion: 4
@@ -148,7 +149,7 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 2304
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 0

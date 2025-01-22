@@ -63,8 +63,8 @@ MonoBehaviour:
       Data3: 1193924746
       Data4: 485612282
     Path: event:/XP loot
-  health: 50
-  damage: 1
+  health: 6000
+  damage: 200
   speed: 800
   GlowIntensity: 10
   small_XP: {fileID: 9198873428497900977, guid: d71560468d1e85346a93e1daf82ea99a, type: 3}
@@ -73,7 +73,7 @@ MonoBehaviour:
   small_XP_Reward: 0
   Medium_XP_Reward: 2
   Large_XP_Reward: 0
-  unitPowerMesure: 4
+  unitPowerMesure: 100
   reactivationUnitPrefab: {fileID: 2172597101631556622, guid: bcddcd6f83adc05438caef76817ac2ce, type: 3}
   deactivationDistance: 0
   IsDead: 0
@@ -85,7 +85,7 @@ MonoBehaviour:
   checkTimer: 0
   DistanceCheck: 100
   rotationSpeed: 0.05
-  MeleAttackCooldown: 1
+  MeleAttackCooldown: 0.5
   turnDelay: 0
 --- !u!212 &6677973410677015094
 SpriteRenderer:

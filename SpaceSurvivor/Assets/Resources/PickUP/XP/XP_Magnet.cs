@@ -39,17 +39,17 @@ public class XP_Magnet : MonoBehaviour
     {
         if (xpObject.GetComponent<XP>().type == "Large")
         {
-            player.GetComponent<Player_controler>().GainXP(xpObject.GetComponent<XP>().Value);
+            player.GetComponent<Player_controler>().GainXP(xpObject.GetComponent<XP>().Value,xpObject.GetComponent<XP>().LifeGain);
             PlayLargeXPSound();
         }
         else if (xpObject.GetComponent<XP>().type == "Medium")
         {
-            player.GetComponent<Player_controler>().GainXP(xpObject.GetComponent<XP>().Value);
+            player.GetComponent<Player_controler>().GainXP(xpObject.GetComponent<XP>().Value,xpObject.GetComponent<XP>().LifeGain);
             PlayMediumXPSound();
         }
         else if (xpObject.GetComponent<XP>().type == "Small")
         {
-            player.GetComponent<Player_controler>().GainXP(xpObject.GetComponent<XP>().Value);
+            player.GetComponent<Player_controler>().GainXP(xpObject.GetComponent<XP>().Value,xpObject.GetComponent<XP>().LifeGain);
             PlaySmallXPSound();
         }
 

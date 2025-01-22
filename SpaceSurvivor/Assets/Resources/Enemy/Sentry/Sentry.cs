@@ -56,8 +56,11 @@ public class Sentry : EnemyBase
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
-            Destroy(collision.gameObject);
+            if (collision.gameObject.GetComponent<PlayerBulletBase>().enemyToIgnore != gameObject)
+            {
+                TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+                Destroy(collision.gameObject);
+            }
         }
     }
     void OnCollisionStay2D(Collision2D collision)

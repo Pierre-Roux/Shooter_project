@@ -4,85 +4,76 @@ using UnityEngine;
 public class B_FlakCannon_Behavior : MonoBehaviour
 {
 
-    [HideInInspector] public int ExplosiveShot;
-    [SerializeField] public GameObject explosionEffect; // Référence à l'effet de particule d'explosion
-    [SerializeField] public float explosionRadius; // Rayon de l'explosion
-    [SerializeField] public int explosionDamage; // Dégâts de l'explosion
-    [HideInInspector] private bool hasExploded;
+    [SerializeField] public float Speed;
+    [SerializeField] public CircleCollider2D HomingCollider;
+    [SerializeField] public float ActivationTime;
 
-    void OnDrawGizmos()
-    {
-        // Configure la couleur du Gizmo
-        Gizmos.color = Color.red;
-        // Dessine un cercle pour représenter la distance de spawn
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
-    }
+
+    [HideInInspector] public float steerForce;
+    [HideInInspector] public int HomingShot;
+
+    [HideInInspector] private float ActivationTimeTimer;
+    [HideInInspector] private EnemyBase HomingtargetEnemy;  // Ennemi ciblé
+    [HideInInspector] private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        hasExploded = false;
-        explosionRadius = 0;
-        explosionDamage = 0;
+        rb = GetComponent<Rigidbody2D>();  // Récupérer le Rigidbody2D du projectile
+        steerForce = 0f;
+        ActivationTimeTimer = Time.time + ActivationTime;
 
-        switch (ExplosiveShot)
+
+        switch (HomingShot)
         {
         case 1:
-            explosionRadius = 1;
-            explosionDamage = 1;
+            HomingCollider.GetComponent<CircleCollider2D>().radius = 20f;
+            steerForce = 100f;
         break;
         case 2:
-            explosionRadius = 2;
-            explosionDamage = 2;
+            HomingCollider.GetComponent<CircleCollider2D>().radius = 20f;
+            steerForce = 300f;
         break;
         case 3:
-            explosionRadius = 3;
-            explosionDamage = 3;
+            HomingCollider.GetComponent<CircleCollider2D>().radius = 20f;
+            steerForce = 500f;
         break;
         default:
         break;
         }
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    public void FixedUpdate()
     {
-        if (ExplosiveShot != 0)
+        if (Time.time > ActivationTimeTimer)
         {
-            Explode();
-        }
-    }
-
-    private void Explode()
-    {
-        if (hasExploded) return; // Empêche l'explosion multiple
-        hasExploded = true;
-
-        Debug.Log("explosionRadius : "+ explosionRadius);
-
-        // Créer un effet de particules
-        if (explosionEffect != null)
-        {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        }
-
-        // Infliger des dégâts aux objets proches dans le rayon de l'explosion
-        
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
-        foreach (Collider2D nearbyObject in colliders)
-        {
-            if (nearbyObject.CompareTag("Enemy"))
+            if (HomingtargetEnemy != null && HomingShot > 0)
             {
-                nearbyObject.GetComponent<EnemyBase>().TakeDamage(explosionDamage);
+                rb.velocity = transform.up * Speed;
+                Vector2 direction = (HomingtargetEnemy.transform.position - transform.position).normalized;
+                float rotationSteer = Vector3.Cross(transform.up, direction).z;
+                rb.angularVelocity = rotationSteer * steerForce;
             }
         }
-
-        // Après un délai, le projectil est détruit
-        StartCoroutine(DestroyAfterExplosion());
+    }
+    private void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.CompareTag("Enemy"))
+        {
+            if (HomingtargetEnemy == null)
+            {
+                Debug.Log("EnemyFound");
+                HomingtargetEnemy = coll.GetComponent<EnemyBase>();  // Détecter et stocker la cible
+            }
+        }
     }
 
-    private IEnumerator DestroyAfterExplosion()
+    private void OnTriggerExit2D(Collider2D coll)
     {
-        yield return new WaitForSeconds(0.1f); // Temps pour l'effet d'explosion        
-        Destroy(gameObject);
+        if (coll.CompareTag("Enemy") && coll.GetComponent<EnemyBase>() == HomingtargetEnemy)
+        {
+            // Réinitialiser la cible lorsqu'elle sort du rayon
+            HomingtargetEnemy = null;
+        }
     }
 }

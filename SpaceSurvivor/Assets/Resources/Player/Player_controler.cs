@@ -228,7 +228,7 @@ public class Player_controler : MonoBehaviour
         }
     }
 
-    public virtual void TakeDamage(int damageAmount, String Nature)
+    public virtual void TakeDamage(float damageAmount, String Nature)
     {
         lastDamageTime = Time.time;
 
@@ -295,6 +295,7 @@ public class Player_controler : MonoBehaviour
         yield return new WaitForSeconds(0.00f);
         foreach (WeaponBase weapon in weapons)
         {
+            weapon.aimDirection = mousePosition;
             weapon.Fire();
         }
     }
@@ -331,9 +332,20 @@ public class Player_controler : MonoBehaviour
         //Debug.Log("Intensity INIT" + GetComponent<Light2D>().intensity);
     }
 
-    public void GainXP(int Amount)
+    public void GainXP(float Amount, float AmountOfLife)
     {
         XP += Amount;
+        if (AmountOfLife!= 0) 
+        {
+            if (health * 1.01f <= maxHealth)
+            {
+                health += health * 1.01f ;
+            }
+            else
+            {
+                health = maxHealth;
+            }
+        }
     }
 
     public void LevelUp()
@@ -417,16 +429,54 @@ public class Player_controler : MonoBehaviour
 
     IEnumerator StartShieldRegen()
     {
-        while (shield != maxShield)
+
+        float TimeForFirstRegen;
+        TimeForFirstRegen = Time.time + 5;
+
+        while (Time.time > Time.time + TimeForFirstRegen)
         {
-            shield += 1;
+            shield += 5 * shieldRegen;
 
             if (shield > maxShield)
             {
                 shield = maxShield;
             }
-            yield return new WaitForSeconds(shieldRegen);
+            yield return new WaitForSeconds(1);
         }
+
+        if (shield < maxShield)
+        {
+            float TimeForSecondRegen;
+            TimeForSecondRegen = Time.time + 5;
+
+            while(Time.time > Time.time + TimeForSecondRegen)
+            {
+                shield += 10 * shieldRegen;
+
+                if (shield > maxShield)
+                {
+                    shield = maxShield;
+                }
+
+                yield return new WaitForSeconds(1);
+            }
+        }
+
+        if (shield < maxShield)
+        {
+            while(shield < maxShield)
+            {
+                shield += 15 * shieldRegen;
+
+                if (shield > maxShield)
+                {
+                    shield = maxShield;
+                }
+
+                yield return new WaitForSeconds(1);
+            }
+        }
+
         shieldRegenCoroutine = null; 
     }
 

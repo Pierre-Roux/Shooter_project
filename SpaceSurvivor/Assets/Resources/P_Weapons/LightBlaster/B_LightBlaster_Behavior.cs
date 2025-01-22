@@ -1,117 +1,133 @@
+using System.Collections;
 using UnityEngine;
 
 public class B_LightBlaster_Behavior : MonoBehaviour
 {
-    [SerializeField] public float Speed;
-    [SerializeField] public float steerForce;
     [SerializeField] public float fireForce;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public Transform firepoint;
-    [SerializeField] public GameObject HomingColliderGameObject;
+
+    [HideInInspector] public int ExplosiveShot;
+    [HideInInspector] public GameObject enemyToIgnore;
+    [SerializeField] public GameObject explosionEffect; // Référence à l'effet de particule d'explosion
+    [SerializeField] public float explosionRadius; // Rayon de l'explosion
+    [SerializeField] public float explosionDamage; // Dégâts de l'explosion
 
     [HideInInspector] public int SplitShot;
-    [HideInInspector] public int HomingShot;
-
-    [HideInInspector] private EnemyBase HomingtargetEnemy;  // Ennemi ciblé
-    [HideInInspector] private Rigidbody2D rb;
+    [HideInInspector] public float SplitDamage;
+    [HideInInspector] private bool hasExploded;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  // Récupérer le Rigidbody2D du projectile
-        steerForce = 0f;
-        fireForce = 10f;
+        hasExploded = false;
 
-        switch (HomingShot)
+        switch (ExplosiveShot)
         {
         case 1:
-            HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 15f;
-            steerForce = 100f;
+            explosionRadius = 1;
         break;
         case 2:
-            HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 30f;
-            steerForce = 200f;
+            explosionRadius = 1.5f;
         break;
         case 3:
-            HomingColliderGameObject.GetComponent<CircleCollider2D>().radius = 50f;
-            steerForce = 250f;
+            explosionRadius = 2;
         break;
         default:
         break;
         }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    void OnDrawGizmos()
     {
-        if (HomingtargetEnemy != null && HomingShot > 0)
-        {
-            rb.velocity = transform.up * Speed;
-            Vector2 direction = (HomingtargetEnemy.transform.position - transform.position).normalized;
-            float rotationSteer = Vector3.Cross(transform.up, direction).z;
-            rb.angularVelocity = rotationSteer * steerForce;
-        }
+        // Configure la couleur du Gizmo
+        Gizmos.color = Color.red;
+        // Dessine un cercle pour représenter la distance de spawn
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.CompareTag("Enemy"))
-        {
-            if (HomingtargetEnemy == null)
-            {
-                HomingtargetEnemy = coll.GetComponent<EnemyBase>();  // Détecter et stocker la cible
-                //HomingColliderGameObject.GetComponent<CircleCollider2D>().enabled = false;
-            }
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D coll)
-    {
-        if (coll.CompareTag("Enemy") && coll.GetComponent<EnemyBase>() == HomingtargetEnemy)
-        {
-            // Réinitialiser la cible lorsqu'elle sort du rayon
-            HomingtargetEnemy = null;
-        }
-    }
 
     public void OnCollisionEnter2D(Collision2D coll)
     {
+        enemyToIgnore = coll.gameObject;
+
        switch (SplitShot)
        {
         case 1:
-            InstantiateBulletWithRotation(firepoint, -90f);
-            InstantiateBulletWithRotation(firepoint, 90f);
+            InstantiateBulletWithRotation(firepoint, 0);
+            InstantiateBulletWithRotation(firepoint, -30f);
+            InstantiateBulletWithRotation(firepoint, 30f);
         break;
         case 2:
-            InstantiateBullet(firepoint, Vector3.zero);
-            InstantiateBulletWithRotation(firepoint, -90f);
-            InstantiateBulletWithRotation(firepoint, 90f);
+            InstantiateBulletWithRotation(firepoint, -15);
+            InstantiateBulletWithRotation(firepoint, -30);
+            InstantiateBulletWithRotation(firepoint, 15f);
+            InstantiateBulletWithRotation(firepoint, 30f);
+
         break;
         case 3:
-            InstantiateBullet(firepoint, Vector3.zero);
-            InstantiateBulletWithRotation(firepoint, -180);
-            InstantiateBulletWithRotation(firepoint, -90f);
-            InstantiateBulletWithRotation(firepoint, 90f);
+            InstantiateBulletWithRotation(firepoint, 0);
+            InstantiateBulletWithRotation(firepoint, -15);
+            InstantiateBulletWithRotation(firepoint, 15f);
+            InstantiateBulletWithRotation(firepoint, -30f);
+            InstantiateBulletWithRotation(firepoint, 30f);
         break;
 
         default:
         break;
        }
-    }
 
-    public void InstantiateBullet(Transform firepoint, Vector3 offset)
-    {
-        GameObject bullet = Instantiate(bulletPrefab, firepoint.position + offset, firepoint.rotation);
-        bullet.GetComponent<Rigidbody2D>().AddForce(firepoint.up  * fireForce,ForceMode2D.Impulse);
+        if (ExplosiveShot != 0)
+        {
+            Explode();
+        }
+
     }
 
     public void InstantiateBulletWithRotation(Transform firepoint, float angle)
     {
         // Calculer la rotation supplémentaire
-        Quaternion rotation = firepoint.rotation * Quaternion.Euler(0, 0, angle);
+        Quaternion rotation = firepoint.rotation * Quaternion.Euler(0, 0, angle + 180);
 
         // Instancier la balle avec la rotation modifiée
         GameObject bullet = Instantiate(bulletPrefab, firepoint.position, rotation);
         bullet.GetComponent<Rigidbody2D>().AddForce(rotation * Vector3.up * fireForce, ForceMode2D.Impulse);
+        bullet.GetComponent<PlayerBulletBase>().damage = SplitDamage;
+        bullet.GetComponent<PlayerBulletBase>().enemyToIgnore = enemyToIgnore;
+    }
+
+    private void Explode()
+    {
+        if (hasExploded) return; // Empêche l'explosion multiple
+        hasExploded = true;
+
+        Debug.Log("explosionRadius : "+ explosionRadius);
+
+        // Créer un effet de particules
+        if (explosionEffect != null)
+        {
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        }
+
+        // Infliger des dégâts aux objets proches dans le rayon de l'explosion
+        
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D nearbyObject in colliders)
+        {
+            if (nearbyObject.CompareTag("Enemy"))
+            {
+                nearbyObject.GetComponent<EnemyBase>().TakeDamage(explosionDamage);
+            }
+        }
+
+        // Après un délai, le projectil est détruit
+        StartCoroutine(DestroyAfterExplosion());
+    }
+
+    private IEnumerator DestroyAfterExplosion()
+    {
+        yield return new WaitForSeconds(0.1f); // Temps pour l'effet d'explosion        
+        Destroy(gameObject);
     }
 }

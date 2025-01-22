@@ -49,11 +49,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: Medium
-  Value: 5
-  DecayTime: 15
-  DecayTime2: 30
-  startColor: {r: 0, g: 0.003921569, b: 1, a: 1}
-  endColor: {r: 1, g: 0, b: 0.98039216, a: 1}
+  Value: 0
+  LifeGain: 0
+  BaseValue: 0
+  DecayTime1: 2
+  DecayTime2: 5
+  DecayTime3: 8
+  DecayTime4: 10
+  ColorStadeFresh: {r: 0, g: 1, b: 1, a: 1}
+  ColorStadeGood: {r: 0, g: 0.6862745, b: 1, a: 1}
+  ColorStadeMedium: {r: 0, g: 0.39607847, b: 1, a: 1}
+  ColorStadeMediocre: {r: 0, g: 0.14901961, b: 0.37647063, a: 1}
+  ColorStadePoor: {r: 0.27058825, g: 0, b: 0.3019608, a: 1}
 --- !u!212 &544627653367595674
 SpriteRenderer:
   m_ObjectHideFlags: 0

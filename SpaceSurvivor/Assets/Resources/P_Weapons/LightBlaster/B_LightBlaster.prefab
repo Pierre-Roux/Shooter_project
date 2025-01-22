@@ -1,72 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6320962463977329152
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6273260517300676125}
-  - component: {fileID: 1591217278142735892}
-  m_Layer: 9
-  m_Name: HomingCollider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6273260517300676125
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320962463977329152}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7531714015288742407}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1591217278142735892
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6320962463977329152}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 2304
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 2304
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 10
 --- !u!1 &6380176083759047814
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +67,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8098649709499128912}
-  - {fileID: 6273260517300676125}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1927032332023574917
@@ -201,8 +133,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a8da67a483d81041b8d1be2988d0edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 300
   lifeTime: 5
+  enemyToIgnore: {fileID: 0}
 --- !u!114 &6804906979934141234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,14 +148,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd6d574e68b3dbb4b8935b81e56522be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  steerForce: 0
   fireForce: 10
   bulletPrefab: {fileID: 7751217143057044998, guid: 25dfa92a28b052543822ec419430542d, type: 3}
   firepoint: {fileID: 8098649709499128912}
-  HomingColliderGameObject: {fileID: 6320962463977329152}
+  ExplosiveShot: 0
+  enemyToIgnore: {fileID: 0}
+  explosionEffect: {fileID: 0}
+  explosionRadius: 1
+  explosionDamage: 0
   SplitShot: 0
-  HomingShot: 0
+  SplitDamage: 0
 --- !u!50 &7783472549192014182
 Rigidbody2D:
   serializedVersion: 4

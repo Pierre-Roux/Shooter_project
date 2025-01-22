@@ -39,6 +39,33 @@ public class Wave : MonoBehaviour
                 break; // Si aucun ennemi ne peut être ajouté, sortir de la boucle
             }
         }
+
+        for (int i = 0; i < dispoEnemy.Count; i++)
+        {
+            if (power - dispoEnemy[i].GetComponent<EnemyBase>().unitPowerMesure >= 0)
+            {
+                power -= dispoEnemy[i].GetComponent<EnemyBase>().unitPowerMesure;
+                EnemyToSpawn.Add(dispoEnemy[i]);
+            }         
+        }
+
+        for (int i = 0; i < dispoEnemy.Count; i++)
+        {
+            if (power - dispoEnemy[i].GetComponent<EnemyBase>().unitPowerMesure >= 0)
+            {
+                power -= dispoEnemy[i].GetComponent<EnemyBase>().unitPowerMesure;
+                EnemyToSpawn.Add(dispoEnemy[i]);
+            }         
+        }
+
+        for (int i = 0; i < dispoEnemy.Count; i++)
+        {
+            if (power - dispoEnemy[i].GetComponent<EnemyBase>().unitPowerMesure >= 0)
+            {
+                power -= dispoEnemy[i].GetComponent<EnemyBase>().unitPowerMesure;
+                EnemyToSpawn.Add(dispoEnemy[i]);
+            }         
+        }
     }
 
     void spawnUnit()

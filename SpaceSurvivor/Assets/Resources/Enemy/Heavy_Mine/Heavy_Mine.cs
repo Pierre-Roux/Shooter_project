@@ -91,16 +91,19 @@ public class Heavy_Mine : EnemyBase
         }        
     }
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Explode();
         }
-        if (other.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(other.gameObject.GetComponent<PlayerBulletBase>().damage);
-            Destroy(other.gameObject);
+            if (collision.gameObject.GetComponent<PlayerBulletBase>().enemyToIgnore != gameObject)
+            {
+                TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+                Destroy(collision.gameObject);
+            }
         }
     }
 

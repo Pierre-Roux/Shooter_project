@@ -59,8 +59,11 @@ public class Burst_Spawner : EnemyBase
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
-            Destroy(collision.gameObject);
+            if (collision.gameObject.GetComponent<PlayerBulletBase>().enemyToIgnore != gameObject)
+            {
+                TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+                Destroy(collision.gameObject);
+            }
         }
     }
 

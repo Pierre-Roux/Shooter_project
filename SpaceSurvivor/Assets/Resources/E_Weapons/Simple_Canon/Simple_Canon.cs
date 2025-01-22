@@ -8,7 +8,7 @@ public class Simple_Canon : WeaponBase
     [SerializeField] public Transform WeaponPosition;
 
     [HideInInspector] private Transform target;
-    [HideInInspector] private Vector2 aimDirection ;
+    [HideInInspector] private Vector2 aimDirections ;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class Simple_Canon : WeaponBase
             transform.position = WeaponPosition.position;
             
             // Calcule la direction vers le joueur
-            aimDirection = (target.position - transform.position).normalized;
+            aimDirections = (target.position - transform.position).normalized;
 
             if (hasLineOfSight && Time.time >= lastFireTime + fireCooldown)
             {
@@ -35,9 +35,9 @@ public class Simple_Canon : WeaponBase
     {
         PlayShootSound();
         // Calcule l'angle de rotation basé sur la direction vers le joueur
-        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(aimDirections.y, aimDirections.x) * Mathf.Rad2Deg;
         GameObject bullet = Instantiate(bulletPrefab, firepoint.position, Quaternion.Euler(0, 0, angle+90f));
-        bullet.GetComponent<Rigidbody2D>().AddForce(aimDirection * fireForce,ForceMode2D.Impulse);
+        bullet.GetComponent<Rigidbody2D>().AddForce(aimDirections * fireForce,ForceMode2D.Impulse);
     }
 
     IEnumerator ShortDelayFire()

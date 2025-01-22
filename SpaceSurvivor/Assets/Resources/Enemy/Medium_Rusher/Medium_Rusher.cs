@@ -11,6 +11,7 @@ public class Medium_Rusher : EnemyBase
     [SerializeField] public float dashCooldown ; 
     [SerializeField] public float dashSpeed;
     [SerializeField] public float dashDuration;
+    [SerializeField] public int DashDamage;
 
     [HideInInspector] private AIPath path;
     [HideInInspector] private float ditanceToTarget;
@@ -100,8 +101,11 @@ public class Medium_Rusher : EnemyBase
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
-            Destroy(collision.gameObject);
+            if (collision.gameObject.GetComponent<PlayerBulletBase>().enemyToIgnore != gameObject)
+            {
+                TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+                Destroy(collision.gameObject);
+            }
         }
     }
     void OnCollisionStay2D(Collision2D collision)
@@ -116,12 +120,21 @@ public class Medium_Rusher : EnemyBase
         // Vérifie si le cooldown est terminé
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            player.TakeDamage(damage,"Cac");
-            lastAttackTime = Time.time;
+            if (Etat == "Dashing")
+            {
+                player.TakeDamage(DashDamage,"Cac");
+                lastAttackTime = Time.time;
+            }
+            else
+            {
+                player.TakeDamage(damage,"Cac");
+                lastAttackTime = Time.time;
+            }
         }
     }
     IEnumerator Dash()
     {            
+
         rb.velocity = Vector2.zero;
         rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
@@ -151,6 +164,7 @@ public class Medium_Rusher : EnemyBase
 
         rb.constraints = RigidbodyConstraints2D.None;
         rb.velocity = Vector2.zero;
+        damage -= 700;
         Etat = "Following";
         path.canMove = true;
     }

@@ -370,8 +370,8 @@ MonoBehaviour:
       Data3: 1193924746
       Data4: 485612282
     Path: event:/XP loot
-  health: 50
-  damage: 1
+  health: 15000
+  damage: 500
   speed: 1
   GlowIntensity: 10
   small_XP: {fileID: 9198873428497900977, guid: 918fb977b6628174c8a9aeaa69a86a6a, type: 3}
@@ -380,7 +380,7 @@ MonoBehaviour:
   small_XP_Reward: 1
   Medium_XP_Reward: 0
   Large_XP_Reward: 0
-  unitPowerMesure: 3
+  unitPowerMesure: 80
   reactivationUnitPrefab: {fileID: 2172597101631556622, guid: bcddcd6f83adc05438caef76817ac2ce, type: 3}
   deactivationDistance: 0
   IsDead: 0

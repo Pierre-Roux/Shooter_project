@@ -76,8 +76,11 @@ public class MagnetMine : EnemyBase
         }
         if (other.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(other.gameObject.GetComponent<PlayerBulletBase>().damage);
-            Destroy(other.gameObject);
+            if (other.gameObject.GetComponent<PlayerBulletBase>().enemyToIgnore != gameObject)
+            {
+                TakeDamage(other.gameObject.GetComponent<PlayerBulletBase>().damage);
+                Destroy(other.gameObject);  
+            }
         }
     }
 

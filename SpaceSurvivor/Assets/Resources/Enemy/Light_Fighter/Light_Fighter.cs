@@ -83,8 +83,11 @@ public class Light_Fighter : EnemyBase
         }
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
-            Destroy(collision.gameObject);
+            if (collision.gameObject.GetComponent<PlayerBulletBase>().enemyToIgnore != this)
+            {
+                TakeDamage(collision.gameObject.GetComponent<PlayerBulletBase>().damage);
+                Destroy(collision.gameObject);   
+            }
         }
     }
     void OnCollisionStay2D(Collision2D collision)

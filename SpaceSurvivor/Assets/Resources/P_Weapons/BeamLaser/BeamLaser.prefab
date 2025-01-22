@@ -9788,9 +9788,10 @@ MonoBehaviour:
   Level: 0
   availableUpgrades: []
   TierUpgrades: []
-  maxLaserDistance: 15
-  hitCooldown: 0.3
-  damage: 1
+  aimDirection: {x: 0, y: 0}
+  maxLaserDistance: 12
+  hitCooldown: 0.2
+  damage: 200
   SlowAmount: 0
   firepoint: {fileID: 1676693617155118520}
   lineRenderer: {fileID: 1461646606429722491}

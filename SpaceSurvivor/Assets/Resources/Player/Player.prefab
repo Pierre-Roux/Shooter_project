@@ -359,11 +359,11 @@ MonoBehaviour:
     Path: event:/Shield/Shiled Break
   globalSpeed: 2
   GlowIntensity: 10
-  maxHealth: 10
-  maxXP: 10
-  maxShield: 20
+  maxHealth: 1000
+  maxXP: 800
+  maxShield: 1500
   shieldRegen: 1
-  shieldRegenDelay: 5
+  shieldRegenDelay: 4
   maxTurbo: 75
   turboRegen: 0.05
   turboRegenDelay: 2
