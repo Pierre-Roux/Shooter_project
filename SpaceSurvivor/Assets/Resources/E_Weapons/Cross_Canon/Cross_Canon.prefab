@@ -174,11 +174,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shoot_soundEvent:
     Guid:
-      Data1: -1508532605
-      Data2: 1340717281
-      Data3: -67772752
-      Data4: 1913839264
-    Path: event:/Ennemies/Artillery Shoot
+      Data1: -1452140728
+      Data2: 1247251222
+      Data3: -1146132843
+      Data4: 201900833
+    Path: event:/Sound of Silence
   fireCooldown: 1
   fireForce: 10
   bulletPrefab: {fileID: 7751217143057044998, guid: 72fdde0decac51c4b87f56e5a88c315f, type: 3}
@@ -188,6 +188,7 @@ MonoBehaviour:
   Level: 0
   availableUpgrades: []
   TierUpgrades: []
+  aimDirection: {x: 0, y: 0}
   firepoint1: {fileID: 3406272968821379561}
   firepoint2: {fileID: 4841015419475822705}
   firepoint3: {fileID: 6331382276199306499}

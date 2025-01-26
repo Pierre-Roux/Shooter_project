@@ -3038,11 +3038,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BtnClick_soundEvent:
     Guid:
-      Data1: -1532816874
-      Data2: 1210096676
-      Data3: 333388672
-      Data4: 788356013
-    Path: event:/Ennemies/Death
+      Data1: -1452140728
+      Data2: 1247251222
+      Data3: -1146132843
+      Data4: 201900833
+    Path: event:/Sound of Silence
 --- !u!1001 &341107161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4170,7 +4170,7 @@ MonoBehaviour:
       Data2: 1210096676
       Data3: 333388672
       Data4: 788356013
-    Path: event:/Ennemies/Death
+    Path: event:/Enemies/Death Light
 --- !u!1001 &510964318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10098,7 +10098,7 @@ MonoBehaviour:
       Data2: 1210096676
       Data3: 333388672
       Data4: 788356013
-    Path: event:/Ennemies/Death
+    Path: event:/Enemies/Death Light
 --- !u!1001 &1345430145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10930,11 +10930,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BtnClick_soundEvent:
     Guid:
-      Data1: -1532816874
-      Data2: 1210096676
-      Data3: 333388672
-      Data4: 788356013
-    Path: event:/Ennemies/Death
+      Data1: -1452140728
+      Data2: 1247251222
+      Data3: -1146132843
+      Data4: 201900833
+    Path: event:/Sound of Silence
 --- !u!1001 &1421356633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14365,11 +14365,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelUp_soundEvent:
     Guid:
-      Data1: -1532816874
-      Data2: 1210096676
-      Data3: 333388672
-      Data4: 788356013
-    Path: event:/Ennemies/Death
+      Data1: -1452140728
+      Data2: 1247251222
+      Data3: -1146132843
+      Data4: 201900833
+    Path: event:/Sound of Silence
   LevelUpPanel: {fileID: 1588265195}
   Button1: {fileID: 334815566}
   Button2: {fileID: 2050229002}
@@ -16960,11 +16960,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BtnClick_soundEvent:
     Guid:
-      Data1: -1532816874
-      Data2: 1210096676
-      Data3: 333388672
-      Data4: 788356013
-    Path: event:/Ennemies/Death
+      Data1: -1452140728
+      Data2: 1247251222
+      Data3: -1146132843
+      Data4: 201900833
+    Path: event:/Sound of Silence
 --- !u!1001 &2064532511
 PrefabInstance:
   m_ObjectHideFlags: 0

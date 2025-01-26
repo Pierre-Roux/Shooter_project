@@ -51,18 +51,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Death_soundEvent:
     Guid:
-      Data1: -1532816874
-      Data2: 1210096676
-      Data3: 333388672
-      Data4: 788356013
-    Path: event:/Ennemies/Death
+      Data1: 637188113
+      Data2: 1266568887
+      Data3: -919657299
+      Data4: 1588563658
+    Path: event:/Enemies/Death Heavy
   Hit_soundEvent:
     Guid:
-      Data1: 970887523
-      Data2: 1104475970
-      Data3: 1193924746
-      Data4: 485612282
-    Path: event:/XP loot
+      Data1: -2080660904
+      Data2: 1331534181
+      Data3: 1829174681
+      Data4: -1334663661
+    Path: event:/Enemies/Enemies Hit Heavy
   health: 10000
   damage: 1
   speed: 2
