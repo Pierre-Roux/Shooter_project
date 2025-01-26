@@ -259,10 +259,11 @@ MonoBehaviour:
   MasterBanks:
   - Master
   Banks:
-  - Ennemies
+  - Enemies
   - Experience
   - Guns
   - Music
+  - Place Holder
   - Shield
   - Soundscape
   - Spaceship

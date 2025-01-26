@@ -317,11 +317,11 @@ MonoBehaviour:
     Path: event:/Player/Turbo
   ShieldBreak_soundEvent:
     Guid:
-      Data1: -1532816874
-      Data2: 1210096676
-      Data3: 333388672
-      Data4: 788356013
-    Path: event:/Ennemies/Death
+      Data1: 639297166
+      Data2: 1132524140
+      Data3: 1143009163
+      Data4: -1974284493
+    Path: event:/Shield/Shiled Break
   ShieldHit_soundEvent:
     Guid:
       Data1: 1336328069
@@ -338,25 +338,25 @@ MonoBehaviour:
     Path: event:/Player/Player Hit
   ShieldHitCac_soundEvent:
     Guid:
-      Data1: 1056941103
-      Data2: 1330867405
-      Data3: -448847
-      Data4: -1212864075
-    Path: event:/Guns/flak canon
+      Data1: 1336328069
+      Data2: 1129015783
+      Data3: -1553109116
+      Data4: -719928804
+    Path: event:/Shield/Shield Hit
   PlayerHitCac_soundEvent:
     Guid:
-      Data1: 1056941103
-      Data2: 1330867405
-      Data3: -448847
-      Data4: -1212864075
-    Path: event:/Guns/flak canon
+      Data1: -1969358276
+      Data2: 1293679867
+      Data3: -2069903964
+      Data4: -1715551100
+    Path: event:/Player/Player Hit
   PlayerShieldRecharge_soundEvent:
     Guid:
-      Data1: 639297166
-      Data2: 1132524140
-      Data3: 1143009163
-      Data4: -1974284493
-    Path: event:/Shield/Shiled Break
+      Data1: -1452140728
+      Data2: 1247251222
+      Data3: -1146132843
+      Data4: 201900833
+    Path: event:/Sound of Silence
   globalSpeed: 2
   GlowIntensity: 10
   maxHealth: 1000

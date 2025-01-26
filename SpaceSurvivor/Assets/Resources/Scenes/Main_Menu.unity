@@ -633,7 +633,7 @@ MonoBehaviour:
       Data2: 1210096676
       Data3: 333388672
       Data4: 788356013
-    Path: event:/Ennemies/Death
+    Path: event:/Enemies/Death Light
 --- !u!1 &1144646631
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,7 +1034,7 @@ MonoBehaviour:
       Data2: 1210096676
       Data3: 333388672
       Data4: 788356013
-    Path: event:/Ennemies/Death
+    Path: event:/Enemies/Death Light
 --- !u!1 &1679673621
 GameObject:
   m_ObjectHideFlags: 0

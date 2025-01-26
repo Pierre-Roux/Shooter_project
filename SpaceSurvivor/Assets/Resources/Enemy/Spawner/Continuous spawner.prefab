@@ -86,7 +86,7 @@ MonoBehaviour:
       Data2: 1210096676
       Data3: 333388672
       Data4: 788356013
-    Path: event:/Ennemies/Death
+    Path: event:/Enemies/Death Light
   Hit_soundEvent:
     Guid:
       Data1: 970887523
