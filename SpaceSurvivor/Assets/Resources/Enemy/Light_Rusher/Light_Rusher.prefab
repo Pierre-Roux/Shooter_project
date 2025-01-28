@@ -117,7 +117,7 @@ MonoBehaviour:
       Data3: 1016653453
       Data4: 1265026961
     Path: event:/Enemies/Enemies Hit Light
-  health: 1000000
+  health: 1000
   damage: 250
   speed: 12
   GlowIntensity: 10
